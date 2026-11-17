@@ -462,8 +462,3 @@ export async function changeUserPassword(
 export async function logoutUser(): Promise<void> {
   await clearSessionCookie();
 }
-
-export async function switchDemoPersona(roleKey: string): Promise<{ success: boolean; user?: SessionUser }> {
-  // Legacy backward compatibility stub
-  return { success: false };
-}

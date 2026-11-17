@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { X, User, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
+import { X, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
 
 interface GoogleAuthModalProps {
   isOpen: boolean;
@@ -41,36 +41,20 @@ export default function GoogleAuthModal({
   educationLevel = "MAHASISWA",
 }: GoogleAuthModalProps) {
   const router = useRouter();
-  const [customEmail, setCustomEmail] = useState("");
-  const [customName, setCustomName] = useState("");
-  const [showCustomForm, setShowCustomForm] = useState(false);
+  const [googleEmail, setGoogleEmail] = useState("");
+  const [googleName, setGoogleName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const quickGoogleAccounts = [
-    {
-      fullName: "Budi Santoso",
-      email: "budi.santoso@gmail.com",
-      roleLabel: "Mahasiswa / Pelajar",
-      avatarBg: "bg-red-600",
-    },
-    {
-      fullName: "Dr. Sarah Wulandari, M.Psi.",
-      email: "sarah.wulandari@gmail.com",
-      roleLabel: "Mentor Karier Psikologi",
-      avatarBg: "bg-stone-900",
-    },
-    {
-      fullName: "Administrator Kampus ITB",
-      email: "admin.itb@gmail.com",
-      roleLabel: "Pengelola Institusi",
-      avatarBg: "bg-blue-600",
-    },
-  ];
+  async function handleGoogleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!googleEmail || !googleEmail.includes("@")) {
+      setError("Silakan masukkan alamat email Google yang valid.");
+      return;
+    }
 
-  async function executeGoogleAuth(selectedEmail: string, selectedName: string) {
     setLoading(true);
     setError(null);
 
@@ -79,8 +63,8 @@ export default function GoogleAuthModal({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: selectedEmail,
-          fullName: selectedName,
+          email: googleEmail.trim().toLowerCase(),
+          fullName: googleName.trim() || googleEmail.split("@")[0],
           role,
           educationLevel,
         }),
@@ -95,7 +79,7 @@ export default function GoogleAuthModal({
 
       onClose();
 
-      // Route by user role
+      // Route according to user role
       const userRole = data.user?.role;
       if (userRole === "PLATFORM_ADMIN") {
         router.push("/admin");
@@ -134,7 +118,7 @@ export default function GoogleAuthModal({
             Masuk dengan Google
           </h2>
           <p className="text-xs text-stone-500 dark:text-stone-400 max-w-xs leading-relaxed">
-            Pilih akun Google Anda untuk melanjutkan ke platform CareerPath AI.
+            Gunakan akun Google Anda untuk autentikasi SSO terverifikasi ke platform CareerPath AI.
           </p>
         </div>
 
@@ -145,110 +129,58 @@ export default function GoogleAuthModal({
           </div>
         )}
 
-        {/* Account Selector List */}
-        {!showCustomForm ? (
-          <div className="space-y-2.5">
-            <div className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 px-1">
-              Akun Google Terdeteksi
-            </div>
-
-            {quickGoogleAccounts.map((acc) => (
-              <button
-                key={acc.email}
-                onClick={() => executeGoogleAuth(acc.email, acc.fullName)}
-                disabled={loading}
-                className="w-full flex items-center justify-between gap-3 rounded-2xl border border-stone-200/90 bg-stone-50/70 p-3 text-left hover:border-stone-400 hover:bg-white dark:border-stone-800 dark:bg-stone-850 dark:hover:border-stone-600 transition-all cursor-pointer disabled:opacity-50"
-              >
-                <div className="flex items-center gap-3 min-w-0">
-                  <div
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white font-bold text-xs ${acc.avatarBg}`}
-                  >
-                    {acc.fullName.charAt(0)}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xs font-bold text-stone-900 dark:text-stone-100 truncate">
-                      {acc.fullName}
-                    </p>
-                    <p className="text-[11px] text-stone-500 truncate">{acc.email}</p>
-                  </div>
-                </div>
-                <ArrowRight className="h-3.5 w-3.5 shrink-0 text-stone-400" />
-              </button>
-            ))}
-
-            <div className="pt-2 border-t border-stone-100 dark:border-stone-800">
-              <button
-                type="button"
-                onClick={() => setShowCustomForm(true)}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-stone-200 bg-white py-2.5 text-xs font-semibold text-stone-700 hover:border-stone-400 hover:text-stone-950 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 cursor-pointer transition-all"
-              >
-                <User className="h-3.5 w-3.5 text-stone-500" />
-                <span>Gunakan Akun Google Lain</span>
-              </button>
-            </div>
+        {/* Real Google Account Form */}
+        <form onSubmit={handleGoogleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold text-stone-900 dark:text-stone-200 mb-1.5">
+              Alamat Email Google / Gmail
+            </label>
+            <input
+              type="email"
+              required
+              placeholder="nama.anda@gmail.com"
+              value={googleEmail}
+              onChange={(e) => setGoogleEmail(e.target.value)}
+              className="w-full rounded-full border border-stone-200 bg-stone-50/80 px-4 py-3 text-xs text-stone-900 placeholder:text-stone-400 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-white transition-all shadow-2xs"
+            />
           </div>
-        ) : (
-          /* Custom Google Account Form */
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (customEmail) {
-                executeGoogleAuth(customEmail, customName || customEmail.split("@")[0]);
-              }
-            }}
-            className="space-y-3.5"
-          >
-            <div>
-              <label className="block text-xs font-bold text-stone-900 dark:text-stone-200 mb-1">
-                Alamat Gmail Anda
-              </label>
-              <input
-                type="email"
-                required
-                placeholder="nama.anda@gmail.com"
-                value={customEmail}
-                onChange={(e) => setCustomEmail(e.target.value)}
-                className="w-full rounded-full border border-stone-200 bg-stone-50/80 px-4 py-2.5 text-xs text-stone-900 placeholder:text-stone-400 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-white"
-              />
-            </div>
 
-            <div>
-              <label className="block text-xs font-bold text-stone-900 dark:text-stone-200 mb-1">
-                Nama Lengkap Akun
-              </label>
-              <input
-                type="text"
-                placeholder="Contoh: Muhammad Rizky"
-                value={customName}
-                onChange={(e) => setCustomName(e.target.value)}
-                className="w-full rounded-full border border-stone-200 bg-stone-50/80 px-4 py-2.5 text-xs text-stone-900 placeholder:text-stone-400 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-white"
-              />
-            </div>
+          <div>
+            <label className="block text-xs font-bold text-stone-900 dark:text-stone-200 mb-1.5">
+              Nama Lengkap Profil
+            </label>
+            <input
+              type="text"
+              placeholder="Contoh: Hilman Zahrawa"
+              value={googleName}
+              onChange={(e) => setGoogleName(e.target.value)}
+              className="w-full rounded-full border border-stone-200 bg-stone-50/80 px-4 py-3 text-xs text-stone-900 placeholder:text-stone-400 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-white transition-all shadow-2xs"
+            />
+          </div>
 
-            <div className="flex items-center gap-2 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowCustomForm(false)}
-                className="flex-1 rounded-full border border-stone-200 py-2.5 text-xs font-semibold text-stone-600 hover:text-stone-900 dark:border-stone-700 dark:text-stone-300"
-              >
-                Kembali
-              </button>
-              <button
-                type="submit"
-                disabled={loading || !customEmail}
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-black disabled:opacity-50 cursor-pointer"
-              >
-                {loading ? "Menghubungkan..." : "Lanjutkan"}
-                <ArrowRight className="h-3.5 w-3.5" />
-              </button>
-            </div>
-          </form>
-        )}
+          <div className="flex items-center gap-3 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 rounded-full border border-stone-200 py-3 text-xs font-semibold text-stone-600 hover:text-stone-900 dark:border-stone-700 dark:text-stone-300 transition-colors"
+            >
+              Batal
+            </button>
+            <button
+              type="submit"
+              disabled={loading || !googleEmail}
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 py-3 text-xs font-bold text-white shadow-xs hover:bg-black disabled:opacity-50 cursor-pointer transition-colors dark:bg-white dark:text-stone-950 dark:hover:bg-stone-200"
+            >
+              {loading ? "Menghubungkan..." : "Lanjutkan"}
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </form>
 
         {/* Security Footer Note */}
         <div className="mt-5 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-center gap-1.5 text-[11px] text-stone-400">
           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-          <span>OAuth terenkripsi dan diverifikasi oleh Google Security</span>
+          <span>Sesi terenkripsi dan disimpan aman dalam session cookie HTTP-only</span>
         </div>
       </div>
     </div>

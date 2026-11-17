@@ -135,46 +135,6 @@ export default function LoginPage() {
                 </div>
               )}
 
-              {/* Quick 1-Click Demo Accounts Bar */}
-              <div className="mb-5 p-3.5 rounded-2xl bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 space-y-2">
-                <div className="flex items-center gap-1.5 text-[11px] font-bold text-stone-700 dark:text-stone-300">
-                  <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-                  <span>Akun Cepat (Klik untuk Isi Otomatis):</span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEmail("budiarto3788@gmail.com");
-                      setPassword("DemoPass123!");
-                    }}
-                    className="px-2.5 py-1 rounded-lg bg-red-600 text-white text-[11px] font-bold hover:bg-red-700 transition-colors shadow-2xs cursor-pointer flex items-center gap-1"
-                  >
-                    <span>⭐ Hilman Zahrawa (Mahasiswa Vokasi SIB)</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEmail("reza.develop@careerpath.id");
-                      setPassword("DemoPass123!");
-                    }}
-                    className="px-2.5 py-1 rounded-lg bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-[11px] font-semibold hover:border-red-600 hover:text-red-600 transition-colors cursor-pointer"
-                  >
-                    🚀 Reza (Mahasiswa IT)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEmail("mentor.sarah@careerpath.id");
-                      setPassword("DemoPass123!");
-                    }}
-                    className="px-2.5 py-1 rounded-lg bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-[11px] font-semibold hover:border-red-600 hover:text-red-600 transition-colors cursor-pointer"
-                  >
-                    👩‍🏫 Sarah (Mentor BK)
-                  </button>
-                </div>
-              </div>
-
               {/* Google Sign-in Button */}
               <button
                 type="button"
