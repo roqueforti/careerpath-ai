@@ -17,9 +17,9 @@ interface AssessmentResult {
   createdAt: string;
 }
 
-function AssessmentResultContent({ params }: { params: Promise<{ id: string }> }) {
+function AssessmentResultContent({ params }: { params: Promise<{ attemptId: string }> }) {
   const resolvedParams = use(params);
-  const attemptId = resolvedParams.id;
+  const attemptId = resolvedParams.attemptId;
 
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [loading, setLoading] = useState(true);
@@ -208,7 +208,7 @@ function AssessmentResultContent({ params }: { params: Promise<{ id: string }> }
   );
 }
 
-export default function AssessmentResultPage({ params }: { params: Promise<{ id: string }> }) {
+export default function AssessmentResultPage({ params }: { params: Promise<{ attemptId: string }> }) {
   return (
     <Suspense
       fallback={
