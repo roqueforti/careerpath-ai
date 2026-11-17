@@ -392,11 +392,11 @@ Catatan AI Mentor: ${result.mentoring.aiMentor.guidance}`;
   }
 
   return (
-    <div className="w-full font-sans">
+    <div className="w-full max-w-full overflow-x-hidden font-sans">
       {/* Tab Navigation Header */}
-      <section className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 sticky top-[57px] z-30 shadow-xs">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 overflow-x-auto py-2.5 text-xs font-bold">
+      <section className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 sticky top-16 z-20 shadow-xs w-full max-w-full">
+        <div className="max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-8 w-full max-w-full">
+          <div className="flex items-center gap-2 overflow-x-auto py-2.5 text-xs font-bold w-full max-w-full no-scrollbar">
             <button
               onClick={() => setActiveTab("assess")}
               className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 cursor-pointer ${

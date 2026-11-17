@@ -33,8 +33,8 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="id" className={`${plusJakartaSans.variable} h-full antialiased font-sans`}>
-      <body className="min-h-full flex flex-col bg-[#f8fafc] text-[#0f172a] font-sans">
+    <html lang="id" className={`${plusJakartaSans.variable} h-full antialiased font-sans overflow-x-hidden`}>
+      <body className="min-h-full w-full max-w-full overflow-x-hidden flex flex-col bg-[#f8fafc] text-[#0f172a] font-sans">
         <Suspense fallback={null}>
           <LanguageProvider>
             <AppShell>

@@ -53,10 +53,10 @@ export default function HomePage() {
             </p>
 
             {/* Public Action CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 pt-3">
               <Link
                 href="/assessments"
-                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer group"
+                className="w-full sm:w-auto justify-center px-5 sm:px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer group"
               >
                 <Sparkles className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span>Mulai Asesmen Minat (RIASEC)</span>
@@ -65,7 +65,7 @@ export default function HomePage() {
 
               <Link
                 href="/input"
-                className="px-6 py-3.5 rounded-2xl bg-white hover:bg-zinc-50 text-zinc-800 font-bold text-sm border border-zinc-200 shadow-xs hover:border-zinc-300 transition-all flex items-center gap-2"
+                className="w-full sm:w-auto justify-center px-5 sm:px-6 py-3.5 rounded-2xl bg-white hover:bg-zinc-50 text-zinc-800 font-bold text-sm border border-zinc-200 shadow-xs hover:border-zinc-300 transition-all flex items-center gap-2"
               >
                 <Target className="h-4 w-4 text-red-600" />
                 <span>Simulasi Keselarasan Karier</span>
@@ -73,7 +73,7 @@ export default function HomePage() {
 
               <a
                 href="#explorer"
-                className="px-6 py-3.5 rounded-2xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold text-sm transition-all flex items-center gap-2"
+                className="w-full sm:w-auto justify-center px-5 sm:px-6 py-3.5 rounded-2xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold text-sm transition-all flex items-center gap-2"
               >
                 <Compass className="h-4 w-4 text-red-600" />
                 <span>Jelajahi Peta Karier</span>
@@ -81,7 +81,7 @@ export default function HomePage() {
 
               <Link
                 href="/architecture"
-                className="px-6 py-3.5 rounded-2xl bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-sm shadow-xs transition-all flex items-center gap-2"
+                className="w-full sm:w-auto justify-center px-5 sm:px-6 py-3.5 rounded-2xl bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-sm shadow-xs transition-all flex items-center gap-2"
               >
                 <Layers className="h-4 w-4 text-red-400" />
                 <span>Arsitektur Sistem (Presentasi)</span>
@@ -90,31 +90,31 @@ export default function HomePage() {
           </div>
 
           {/* 4 Quantitative Platform Metric Badges */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-            <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs space-y-1">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-4">
+            <div className="rounded-2xl border border-zinc-200/90 bg-white p-3.5 sm:p-5 shadow-xs space-y-1">
               <div className="flex items-center justify-between text-zinc-500 mb-1">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Taksonomi Baku</span>
                 <Database className="h-4 w-4 text-red-600" />
               </div>
-              <div className="text-2xl font-black text-zinc-950">1.016+ Okupasi</div>
+              <div className="text-xl sm:text-2xl font-black text-zinc-950">1.016+ Okupasi</div>
               <p className="text-[11px] text-zinc-500">Terstandar O*NET v31.0 & KBJI 2026</p>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs space-y-1">
+            <div className="rounded-2xl border border-zinc-200/90 bg-white p-3.5 sm:p-5 shadow-xs space-y-1">
               <div className="flex items-center justify-between text-zinc-500 mb-1">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Framework Vokasi</span>
                 <Workflow className="h-4 w-4 text-red-600" />
               </div>
-              <div className="text-2xl font-black text-zinc-950">5 Pilar Terpadu</div>
+              <div className="text-xl sm:text-2xl font-black text-zinc-950">5 Pilar Terpadu</div>
               <p className="text-[11px] text-zinc-500">Assess, Map, Develop, Prove, Match</p>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs space-y-1">
+            <div className="rounded-2xl border border-zinc-200/90 bg-white p-3.5 sm:p-5 shadow-xs space-y-1">
               <div className="flex items-center justify-between text-zinc-500 mb-1">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Presisi Rekomendasi</span>
                 <Target className="h-4 w-4 text-red-600" />
               </div>
-              <div className="text-2xl font-black text-zinc-950">&gt;90% Hit Rate</div>
+              <div className="text-xl sm:text-2xl font-black text-zinc-950">&gt;90% Hit Rate</div>
               <p className="text-[11px] text-emerald-600 font-semibold">Target Akurasi Top-3 Rekomendasi</p>
             </div>
 
@@ -133,7 +133,7 @@ export default function HomePage() {
       {/* ========================================================= */}
       {/* 2. INTERACTIVE CAREER EXPLORER PREVIEW                    */}
       {/* ========================================================= */}
-      <section id="explorer" className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-8 scroll-mt-20">
+      <section id="explorer" className="w-full max-w-full overflow-hidden max-w-[1720px] mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-6 sm:space-y-8 scroll-mt-20">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider">
             <Compass className="h-3.5 w-3.5" />
@@ -461,10 +461,10 @@ export default function HomePage() {
       {/* ========================================================= */}
       {/* 6. CALL TO ACTION BANNER                                  */}
       {/* ========================================================= */}
-      <section className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 p-8 sm:p-12 text-white shadow-xl shadow-red-500/20 text-center space-y-6">
+      <section className="max-w-[1720px] mx-auto px-3.5 sm:px-6 lg:px-8 pt-12 sm:pt-16">
+        <div className="rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 p-6 sm:p-12 text-white shadow-xl shadow-red-500/20 text-center space-y-6">
           <div className="max-w-2xl mx-auto space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
               Siap Memetakan Kariermu Secara Terukur?
             </h2>
             <p className="text-xs sm:text-sm text-red-100 leading-relaxed font-medium">
@@ -472,10 +472,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-2">
             <Link
               href="/assessments"
-              className="px-7 py-3.5 rounded-2xl bg-white hover:bg-zinc-100 text-red-600 font-black text-sm shadow-md transition-all flex items-center gap-2"
+              className="w-full sm:w-auto justify-center px-6 sm:px-7 py-3.5 rounded-2xl bg-white hover:bg-zinc-100 text-red-600 font-black text-sm shadow-md transition-all flex items-center gap-2"
             >
               <Sparkles className="h-4 w-4" />
               <span>Mulai Asesmen Minat (RIASEC)</span>
@@ -483,14 +483,14 @@ export default function HomePage() {
             </Link>
             <Link
               href="/input"
-              className="px-7 py-3.5 rounded-2xl bg-red-800/60 hover:bg-red-800 text-white font-bold text-sm border border-red-400/40 transition-all flex items-center gap-2"
+              className="w-full sm:w-auto justify-center px-6 sm:px-7 py-3.5 rounded-2xl bg-red-800/60 hover:bg-red-800 text-white font-bold text-sm border border-red-400/40 transition-all flex items-center gap-2"
             >
               <Target className="h-4 w-4" />
               <span>Simulasi Cepat</span>
             </Link>
             <Link
               href="/login"
-              className="px-7 py-3.5 rounded-2xl bg-zinc-950/40 hover:bg-zinc-950/60 text-white font-bold text-sm border border-white/20 transition-all"
+              className="w-full sm:w-auto justify-center px-6 sm:px-7 py-3.5 rounded-2xl bg-zinc-950/40 hover:bg-zinc-950/60 text-white font-bold text-sm border border-white/20 transition-all"
             >
               <span>Masuk Akun</span>
             </Link>

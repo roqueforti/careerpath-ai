@@ -281,9 +281,97 @@ export default function CareerExplorerGraph({
       </div>
 
       {/* ========================================================= */}
-      {/* 2. INTERACTIVE VISUAL CAREER GRAPH CANVAS                 */}
+      {/* 2A. MOBILE-OPTIMIZED RESPONSIVE VIEW (md:hidden)          */}
       {/* ========================================================= */}
-      <div className="relative w-full rounded-3xl border border-zinc-200/90 bg-gradient-to-br from-[#f8fafc] via-white to-[#f1f5f9] p-6 sm:p-8 shadow-xs overflow-x-auto min-h-[660px]">
+      <div className="md:hidden space-y-4">
+        {/* Candidate Profile Card */}
+        <div className="rounded-3xl border-2 border-red-500/20 bg-white p-5 shadow-xs space-y-3">
+          <div className="flex items-center gap-3">
+            <CuteStudentAvatar className="w-12 h-12" showBadge={true} />
+            <div>
+              <div className="text-[10px] font-black uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-full inline-block">
+                {candidateLevel}
+              </div>
+              <h3 className="font-extrabold text-zinc-950 text-sm mt-0.5">
+                {candidateName}
+              </h3>
+            </div>
+          </div>
+          <div className="border-t border-zinc-100 pt-2.5 space-y-0.5">
+            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+              Target Jangka Panjang:
+            </span>
+            <p className="font-black text-zinc-900 text-sm">{targetCareer}</p>
+            <p className="text-[11px] text-zinc-500">{candidateRole} · {candidateTrack}</p>
+          </div>
+        </div>
+
+        {/* Sector Target Snapshot */}
+        <div className="rounded-2xl bg-amber-50/95 border border-amber-200/90 p-4 text-amber-950 space-y-2">
+          <div className="flex items-center justify-between text-xs font-bold text-amber-800">
+            <div className="flex items-center gap-1.5">
+              <Building2 className="w-4 h-4 text-amber-700" />
+              <span>Sektor Target:</span>
+            </div>
+            <span className="font-black text-amber-950">Enterprise Software</span>
+          </div>
+          <div className="flex items-center justify-between text-xs border-t border-amber-200/60 pt-2">
+            <span className="text-amber-800">Estimasi Gaji Pasar:</span>
+            <span className="font-black text-amber-950">Rp 12jt - Rp 22jt / bln</span>
+          </div>
+        </div>
+
+        {/* 4 Career Pathway Destination Cards */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+              Rekomendasi Jalur Okupasi ({Object.keys(CAREER_NODES).length})
+            </span>
+            <span className="text-[10px] font-semibold text-zinc-400">Ketuk untuk detail</span>
+          </div>
+
+          {Object.values(CAREER_NODES).map((node) => (
+            <div
+              key={node.id}
+              onClick={() => setSelectedNode(node)}
+              className="p-4 rounded-2xl bg-white border border-zinc-200 hover:border-red-500 shadow-xs transition-all cursor-pointer space-y-2.5 active:scale-[0.99]"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <h4 className="font-black text-sm text-zinc-950">{node.title}</h4>
+                  <p className="text-[11px] text-zinc-500 font-medium">{node.category}</p>
+                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">{node.onetCode}</p>
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-xs font-black bg-red-600 text-white shrink-0">
+                  {node.fitPercentage}% Fit
+                </span>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {node.badges.map((b) => (
+                  <span key={b} className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-700 border border-zinc-200">
+                    {b}
+                  </span>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className="w-full py-2 px-3 rounded-xl bg-zinc-50 hover:bg-red-50 text-zinc-800 hover:text-red-600 border border-zinc-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mt-2"
+              >
+                <span>Lihat Analisis Kecocokan & IDP</span>
+                <ChevronRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ========================================================= */}
+      {/* 2B. INTERACTIVE DESKTOP VISUAL CANVAS (hidden md:block)   */}
+      {/* ========================================================= */}
+      <div className="hidden md:block w-full max-w-full overflow-hidden">
+        <div className="relative w-full rounded-3xl border border-zinc-200/90 bg-gradient-to-br from-[#f8fafc] via-white to-[#f1f5f9] p-6 sm:p-8 shadow-xs overflow-x-auto min-h-[660px]">
         {/* Subtle grid pattern background */}
         <div
           className="absolute inset-0 opacity-[0.35] pointer-events-none rounded-3xl"
@@ -661,6 +749,7 @@ export default function CareerExplorerGraph({
           </div>
         </div>
       </div>
+    </div>
 
       {/* ========================================================= */}
       {/* 3. INTERACTIVE DETAIL DRAWER / MODAL                      */}

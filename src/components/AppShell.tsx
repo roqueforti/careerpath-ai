@@ -25,6 +25,7 @@ import {
   CheckCircle2,
   ArrowRight,
   LogIn,
+  Layers,
 } from "lucide-react";
 import {
   CuteStudentAvatar,
@@ -44,6 +45,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { language, setLanguage, t } = useLanguage();
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [publicMobileMenuOpen, setPublicMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [mentorModalOpen, setMentorModalOpen] = useState(false);
@@ -57,6 +59,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     avatarUrl?: string | null;
     educationLevel?: string;
   } | null>(null);
+
+  useEffect(() => {
+    setPublicMobileMenuOpen(false);
+    setMobileSidebarOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     async function fetchMe() {
@@ -127,39 +134,63 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // =========================================================
   // SCENARIO B: PUBLIC LANDING PAGE (/) & PRESENTATION (/architecture)
-  // Clean full-width public layout, NO sidebar!
-  // Shows clean Public Navbar with "Masuk" & "Mulai Asesmen"
+  // Clean full-width public layout with mobile-responsive navbar
   // =========================================================
   if (isPublicPage) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#f8fafc] text-zinc-900 font-sans antialiased">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-[#f8fafc] text-zinc-900 font-sans antialiased">
         {/* Public Top Header Bar */}
-        <header className="sticky top-0 z-40 w-full border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1720px] mx-auto h-16 flex items-center justify-between">
-            {/* Left: Brand Logo & Public Nav Links */}
-            <div className="flex items-center gap-8">
-              <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-sm shadow-red-500/25 group-hover:scale-105 transition-transform">
-                  <Compass className="h-5 w-5" />
+        <header className="sticky top-0 z-40 w-full max-w-full border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-3 sm:px-6 lg:px-8">
+          <div className="max-w-[1720px] mx-auto h-16 flex items-center justify-between gap-2 sm:gap-4">
+            {/* Left: Brand Logo & Desktop Nav Links */}
+            <div className="flex items-center gap-6 lg:gap-8 min-w-0">
+              <Link href="/" className="flex items-center gap-2 group shrink-0">
+                <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-sm shadow-red-500/25 group-hover:scale-105 transition-transform shrink-0">
+                  <Compass className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-black tracking-tight text-zinc-950">
+                  <span className="text-lg sm:text-xl font-black tracking-tight text-zinc-950">
                     Career<span className="text-red-600">Path.</span>
                   </span>
-                  <span className="text-[10px] font-semibold text-zinc-400 -mt-1 tracking-wider uppercase">
+                  <span className="hidden sm:block text-[9px] sm:text-[10px] font-semibold text-zinc-400 -mt-1 tracking-wider uppercase">
                     Enterprise Platform
                   </span>
                 </div>
               </Link>
 
-              <nav className="hidden md:flex items-center gap-1 text-xs font-bold text-zinc-600">
+              {/* Desktop Nav Links */}
+              <nav className="hidden lg:flex items-center gap-1 text-xs font-bold text-zinc-600">
                 <Link
                   href="/#explorer"
                   className={`px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all ${
                     pathname === "/" ? "text-red-600 font-extrabold" : ""
                   }`}
                 >
-                  {t("Peta Karier (Explorer)", "Career Explorer")}
+                  {t("Peta Karier", "Career Explorer")}
+                </Link>
+                <Link
+                  href="/assessments"
+                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
+                >
+                  {t("Asesmen Minat", "Assessments")}
+                </Link>
+                <Link
+                  href="/career-map"
+                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
+                >
+                  {t("Peta Okupasi (1.016+)", "Career Map")}
+                </Link>
+                <Link
+                  href="/input"
+                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
+                >
+                  {t("Simulasi Cepat", "Simulator")}
+                </Link>
+                <Link
+                  href="/opportunities"
+                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
+                >
+                  {t("Peluang Industri", "Opportunities")}
                 </Link>
                 <Link
                   href="/architecture"
@@ -167,31 +198,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     pathname === "/architecture" ? "text-red-600 font-extrabold" : ""
                   }`}
                 >
-                  {t("Arsitektur Sistem (Presentasi)", "System Architecture")}
-                </Link>
-                <Link
-                  href="/input"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Asesmen Minat & Skill", "Assessments")}
-                </Link>
-                <Link
-                  href="/opportunities"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Peluang Karier & Magang", "Opportunities")}
+                  {t("Arsitektur", "Architecture")}
                 </Link>
               </nav>
             </div>
 
-            {/* Right: Language Pill & Auth Actions */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Right: Language Pill, Auth Actions & Mobile Hamburger */}
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
               {/* Language Switcher Pill Toggle */}
-              <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs">
+              <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs shrink-0">
                 <button
                   type="button"
                   onClick={() => setLanguage("id")}
-                  className={`px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                  className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
                     language === "id"
                       ? "bg-white text-red-600 shadow-2xs font-extrabold"
                       : "text-zinc-500 hover:text-zinc-900"
@@ -205,7 +224,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 <button
                   type="button"
                   onClick={() => setLanguage("en")}
-                  className={`px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                  className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
                     language === "en"
                       ? "bg-white text-red-600 shadow-2xs font-extrabold"
                       : "text-zinc-500 hover:text-zinc-900"
@@ -218,51 +237,172 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 </button>
               </div>
 
-              {/* Dynamic Auth Action Buttons */}
+              {/* Desktop Auth Buttons */}
               {currentUser ? (
-                <div className="flex items-center gap-2 sm:gap-3">
+                <div className="hidden sm:flex items-center gap-2">
                   <Link
                     href="/dashboard"
-                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
                   >
-                    <CuteStudentAvatar className="w-5 h-5" showBadge={false} />
-                    <span>{t("Buka Dashboard", "Open Dashboard")}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <CuteStudentAvatar className="w-4 h-4" showBadge={false} />
+                    <span>{t("Dashboard", "Dashboard")}</span>
+                    <ArrowRight className="w-3 h-3" />
                   </Link>
 
                   <button
                     type="button"
                     onClick={handleLogout}
-                    className="p-2 text-zinc-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
+                    className="p-1.5 text-zinc-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
                     title={t("Keluar Akun", "Sign Out")}
                   >
                     <LogOut className="w-4 h-4" />
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-2">
                   <Link
                     href="/login"
-                    className="px-3 sm:px-4 py-2 rounded-xl text-xs font-bold text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 transition-all flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 transition-all flex items-center gap-1"
                   >
                     <LogIn className="w-3.5 h-3.5 text-zinc-500" />
-                    <span>{t("Masuk Akun", "Sign In")}</span>
+                    <span>{t("Masuk", "Sign In")}</span>
                   </Link>
                   <Link
-                    href="/input"
-                    className="px-3.5 sm:px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                    href="/assessments"
+                    className="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1 cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>{t("Mulai Asesmen", "Start Free")}</span>
+                    <span>{t("Mulai", "Start")}</span>
                   </Link>
                 </div>
               )}
+
+              {/* Mobile Hamburger Toggle Button (lg:hidden) */}
+              <button
+                type="button"
+                onClick={() => setPublicMobileMenuOpen(!publicMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-xl text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 transition-colors cursor-pointer shrink-0"
+                aria-label="Toggle navigation menu"
+              >
+                {publicMobileMenuOpen ? (
+                  <X className="h-5 w-5 text-zinc-900" />
+                ) : (
+                  <Menu className="h-5 w-5 text-zinc-900" />
+                )}
+              </button>
             </div>
           </div>
+
+          {/* Mobile Drawer Dropdown Menu (Public) */}
+          {publicMobileMenuOpen && (
+            <div className="lg:hidden border-t border-zinc-200/90 bg-white/98 backdrop-blur-md px-4 py-4 space-y-3 animate-fadeIn shadow-xl">
+              <nav className="flex flex-col space-y-1 text-sm font-semibold text-zinc-700">
+                <Link
+                  href="/#explorer"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Compass className="h-4 w-4 text-red-600" />
+                  <span>{t("Peta Karier (Explorer)", "Career Explorer")}</span>
+                </Link>
+
+                <Link
+                  href="/assessments"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Target className="h-4 w-4 text-red-600" />
+                  <span>{t("Asesmen Minat (Holland RIASEC)", "Holland RIASEC Assessment")}</span>
+                </Link>
+
+                <Link
+                  href="/career-map"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Map className="h-4 w-4 text-red-600" />
+                  <span>{t("Peta Okupasi (1.016+ Standar O*NET)", "Occupational Map (1,016+ O*NET)")}</span>
+                </Link>
+
+                <Link
+                  href="/input"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Sparkles className="h-4 w-4 text-red-600" />
+                  <span>{t("Simulasi Keselarasan Karier Cepat", "Quick Fit Simulator")}</span>
+                </Link>
+
+                <Link
+                  href="/opportunities"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Briefcase className="h-4 w-4 text-red-600" />
+                  <span>{t("Peluang Karier & Magang Industri", "Career & Internship Opportunities")}</span>
+                </Link>
+
+                <Link
+                  href="/architecture"
+                  onClick={() => setPublicMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
+                >
+                  <Layers className="h-4 w-4 text-red-600" />
+                  <span>{t("Arsitektur Sistem (Presentasi)", "System Architecture")}</span>
+                </Link>
+              </nav>
+
+              <div className="pt-3 border-t border-zinc-100 flex flex-col gap-2">
+                {currentUser ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setPublicMobileMenuOpen(false)}
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-colors"
+                    >
+                      <CuteStudentAvatar className="w-5 h-5" showBadge={false} />
+                      <span>{t("Buka Dashboard", "Open Dashboard")}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPublicMobileMenuOpen(false);
+                        handleLogout();
+                      }}
+                      className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-zinc-500 hover:text-red-600 transition-colors cursor-pointer"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      <span>{t("Keluar Akun", "Sign Out")}</span>
+                    </button>
+                  </>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="/login"
+                      onClick={() => setPublicMobileMenuOpen(false)}
+                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-zinc-200 text-zinc-800 hover:bg-zinc-50 font-bold text-xs transition-colors"
+                    >
+                      <LogIn className="w-3.5 h-3.5 text-zinc-500" />
+                      <span>{t("Masuk Akun", "Sign In")}</span>
+                    </Link>
+                    <Link
+                      href="/assessments"
+                      onClick={() => setPublicMobileMenuOpen(false)}
+                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-colors"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{t("Mulai Asesmen", "Start Free")}</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </header>
 
         {/* Public Content (Full Width) */}
-        <main className="flex-1 w-full">{children}</main>
+        <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
       </div>
     );
   }
@@ -447,23 +587,33 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* 2. MAIN APPLICATION CONTENT AREA */}
-      <div className="flex-1 flex flex-col min-w-0 lg:pl-64">
+      <div className="flex-1 flex flex-col min-w-0 w-full max-w-full overflow-x-hidden lg:pl-64">
         {/* Top Header Bar */}
-        <header className="sticky top-0 z-30 h-16 border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <header className="sticky top-0 z-30 h-16 border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 w-full max-w-full">
           {/* Left: Mobile Toggle & Page Context */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <button
               onClick={() => setMobileSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl text-zinc-700 hover:bg-zinc-100 transition-colors"
+              className="lg:hidden p-2 rounded-xl text-zinc-700 hover:bg-zinc-100 transition-colors shrink-0"
               aria-label="Open sidebar"
             >
               <Menu className="h-5 w-5" />
             </button>
 
-            <div className="hidden sm:flex items-center gap-2 text-xs">
+            {/* Mobile Brand emblem for quick orientation (lg:hidden) */}
+            <Link href="/" className="lg:hidden flex items-center gap-1.5 shrink-0">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-xs">
+                <Compass className="h-4 w-4" />
+              </div>
+              <span className="text-sm font-black tracking-tight text-zinc-950">
+                Career<span className="text-red-600">Path</span>
+              </span>
+            </Link>
+
+            <div className="hidden sm:flex items-center gap-2 text-xs truncate">
               <span className="font-medium text-zinc-400">CareerPath</span>
               <span className="text-zinc-300">/</span>
-              <span className="font-bold text-zinc-800">
+              <span className="font-bold text-zinc-800 truncate">
                 {pathname === "/dashboard" && t("Dashboard Karier Mahasiswa", "Student Career Dashboard")}
                 {pathname === "/input" && t("Asesmen Minat, Holland & Kompetensi", "Interest, Holland & Competency Assessment")}
                 {pathname === "/output" && t("Peta Karier & Rekomendasi O*NET", "Career Map & O*NET Recommendations")}
@@ -476,13 +626,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Right: Language Switcher, Notification Bell & User Avatar */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Language Switcher Pill Toggle */}
-            <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs">
+            <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs shrink-0">
               <button
                 type="button"
                 onClick={() => setLanguage("id")}
-                className={`px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
                   language === "id"
                     ? "bg-white text-red-600 shadow-2xs font-extrabold"
                     : "text-zinc-500 hover:text-zinc-900"
@@ -496,7 +646,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
-                className={`px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
                   language === "en"
                     ? "bg-white text-red-600 shadow-2xs font-extrabold"
                     : "text-zinc-500 hover:text-zinc-900"
