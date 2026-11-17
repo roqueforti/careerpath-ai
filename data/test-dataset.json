@@ -1,0 +1,2888 @@
+[
+  {
+    "student_id": "MHS-001",
+    "name": "Ahmad Fauzi",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.26,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 3.13,
+      "I": 5.58,
+      "A": 2.37,
+      "S": 1.78,
+      "E": 2.69,
+      "C": 4.45
+    },
+    "verified_skills": [
+      "Docker",
+      "System Architecture",
+      "TypeScript",
+      "Git",
+      "REST APIs",
+      "Next.js"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-002",
+    "name": "Rizky Ramadhani",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.2,
+    "career_maturity_score": 76,
+    "riasec_scores": {
+      "R": 3.23,
+      "I": 6.1,
+      "A": 2.19,
+      "S": 1.61,
+      "E": 2.6,
+      "C": 5.03
+    },
+    "verified_skills": [
+      "TypeScript",
+      "SQL Query Optimization",
+      "Next.js",
+      "PostgreSQL",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-003",
+    "name": "Siti Nurhaliza",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.89,
+    "career_maturity_score": 94,
+    "riasec_scores": {
+      "R": 3.4,
+      "I": 5.51,
+      "A": 2.22,
+      "S": 1.69,
+      "E": 2.41,
+      "C": 4.6
+    },
+    "verified_skills": [
+      "Docker",
+      "PostgreSQL",
+      "REST APIs",
+      "Git"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-004",
+    "name": "Budi Santoso",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.41,
+    "career_maturity_score": 87,
+    "riasec_scores": {
+      "R": 3.28,
+      "I": 5.88,
+      "A": 2.11,
+      "S": 1.63,
+      "E": 2.13,
+      "C": 4.94
+    },
+    "verified_skills": [
+      "TypeScript",
+      "SQL Query Optimization",
+      "PostgreSQL",
+      "Next.js",
+      "Microservices",
+      "System Architecture",
+      "REST APIs"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-005",
+    "name": "Dewi Lestari",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.4,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 3.06,
+      "I": 6.02,
+      "A": 2.34,
+      "S": 1.69,
+      "E": 2.2,
+      "C": 4.99
+    },
+    "verified_skills": [
+      "TypeScript",
+      "Git",
+      "PostgreSQL",
+      "REST APIs",
+      "SQL Query Optimization",
+      "System Architecture"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-006",
+    "name": "Muhammad Ihsan",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.31,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 3.1,
+      "I": 6.1,
+      "A": 2.12,
+      "S": 1.96,
+      "E": 2.27,
+      "C": 4.59
+    },
+    "verified_skills": [
+      "Next.js",
+      "REST APIs",
+      "TypeScript",
+      "Microservices",
+      "Docker",
+      "Git"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-007",
+    "name": "Putri Anggraini",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.63,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 3.32,
+      "I": 5.98,
+      "A": 2.42,
+      "S": 2.05,
+      "E": 2.07,
+      "C": 4.37
+    },
+    "verified_skills": [
+      "TypeScript",
+      "Next.js",
+      "SQL Query Optimization",
+      "PostgreSQL",
+      "REST APIs",
+      "Microservices"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-008",
+    "name": "Aditya Pratama",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.85,
+    "career_maturity_score": 81,
+    "riasec_scores": {
+      "R": 3.54,
+      "I": 5.81,
+      "A": 2.21,
+      "S": 1.49,
+      "E": 2.4,
+      "C": 4.51
+    },
+    "verified_skills": [
+      "TypeScript",
+      "REST APIs",
+      "Microservices",
+      "Next.js"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-009",
+    "name": "Anisa Rahmawati",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.23,
+    "career_maturity_score": 87,
+    "riasec_scores": {
+      "R": 3.09,
+      "I": 5.85,
+      "A": 1.94,
+      "S": 1.68,
+      "E": 2.61,
+      "C": 4.73
+    },
+    "verified_skills": [
+      "SQL Query Optimization",
+      "Docker",
+      "Git",
+      "REST APIs",
+      "PostgreSQL",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-010",
+    "name": "Fajar Hidayat",
+    "university": "Telkom University",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.19,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 3.15,
+      "I": 5.45,
+      "A": 2.34,
+      "S": 2.05,
+      "E": 2.44,
+      "C": 4.37
+    },
+    "verified_skills": [
+      "Docker",
+      "Microservices",
+      "System Architecture",
+      "Git",
+      "REST APIs",
+      "SQL Query Optimization",
+      "Linux"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-011",
+    "name": "Bayu Wicaksono",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.22,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 3.13,
+      "I": 5.48,
+      "A": 1.91,
+      "S": 1.74,
+      "E": 2.49,
+      "C": 4.82
+    },
+    "verified_skills": [
+      "TypeScript",
+      "SQL Query Optimization",
+      "Next.js",
+      "Docker",
+      "PostgreSQL",
+      "REST APIs"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-012",
+    "name": "Nurul Hidayati",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.2,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 3.54,
+      "I": 5.59,
+      "A": 2.24,
+      "S": 1.9,
+      "E": 2.47,
+      "C": 4.75
+    },
+    "verified_skills": [
+      "REST APIs",
+      "PostgreSQL",
+      "Docker",
+      "Next.js",
+      "SQL Query Optimization",
+      "Git"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-013",
+    "name": "Dimas Setiawan",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.52,
+    "career_maturity_score": 75,
+    "riasec_scores": {
+      "R": 2.91,
+      "I": 5.64,
+      "A": 1.91,
+      "S": 1.69,
+      "E": 2.6,
+      "C": 4.37
+    },
+    "verified_skills": [
+      "REST APIs",
+      "Next.js",
+      "Docker",
+      "Microservices",
+      "Git",
+      "TypeScript"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-014",
+    "name": "Rina Marlina",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.33,
+    "career_maturity_score": 76,
+    "riasec_scores": {
+      "R": 3.51,
+      "I": 5.68,
+      "A": 1.93,
+      "S": 2.15,
+      "E": 2.75,
+      "C": 4.68
+    },
+    "verified_skills": [
+      "TypeScript",
+      "Docker",
+      "PostgreSQL",
+      "System Architecture"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-015",
+    "name": "Eko Prasetyo",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.52,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 2.86,
+      "I": 5.64,
+      "A": 2.09,
+      "S": 2.02,
+      "E": 2.61,
+      "C": 4.43
+    },
+    "verified_skills": [
+      "SQL Query Optimization",
+      "REST APIs",
+      "Docker",
+      "PostgreSQL",
+      "Next.js",
+      "Git",
+      "Microservices"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-016",
+    "name": "Mega Utami",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.82,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 3.32,
+      "I": 6.08,
+      "A": 1.84,
+      "S": 1.61,
+      "E": 2.75,
+      "C": 5.03
+    },
+    "verified_skills": [
+      "Docker",
+      "SQL Query Optimization",
+      "TypeScript",
+      "Git",
+      "REST APIs"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-017",
+    "name": "Wahyu Nugroho",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.24,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 2.87,
+      "I": 5.94,
+      "A": 1.92,
+      "S": 2.09,
+      "E": 2.25,
+      "C": 4.67
+    },
+    "verified_skills": [
+      "Git",
+      "Microservices",
+      "PostgreSQL",
+      "SQL Query Optimization",
+      "TypeScript",
+      "REST APIs"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-018",
+    "name": "Dian Permata",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.18,
+    "career_maturity_score": 89,
+    "riasec_scores": {
+      "R": 3.37,
+      "I": 6.1,
+      "A": 1.8,
+      "S": 1.71,
+      "E": 2.64,
+      "C": 4.66
+    },
+    "verified_skills": [
+      "System Architecture",
+      "REST APIs",
+      "PostgreSQL",
+      "Docker",
+      "Git",
+      "Next.js",
+      "SQL Query Optimization"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-019",
+    "name": "Agus Supriyanto",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.35,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 3.53,
+      "I": 5.99,
+      "A": 1.93,
+      "S": 1.57,
+      "E": 2.56,
+      "C": 4.77
+    },
+    "verified_skills": [
+      "Git",
+      "PostgreSQL",
+      "Docker",
+      "SQL Query Optimization",
+      "Microservices",
+      "TypeScript"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-020",
+    "name": "Tia Safitri",
+    "university": "Telkom University",
+    "major": "Teknologi Rekayasa Perangkat Lunak",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.66,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 3.53,
+      "I": 5.47,
+      "A": 2.05,
+      "S": 1.97,
+      "E": 2.69,
+      "C": 4.51
+    },
+    "verified_skills": [
+      "TypeScript",
+      "Git",
+      "Next.js",
+      "PostgreSQL",
+      "REST APIs",
+      "Docker",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "software-engineer",
+    "ground_truth_label": "Software Engineer / Enterprise Application Developer",
+    "onet_code": "15-1252.00",
+    "kbji_code": "2512"
+  },
+  {
+    "student_id": "MHS-021",
+    "name": "Gilang Ramadhan",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Sains Data",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.6,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 1.9,
+      "I": 5.84,
+      "A": 2.3,
+      "S": 1.52,
+      "E": 2.31,
+      "C": 5.39
+    },
+    "verified_skills": [
+      "Python",
+      "Scikit-Learn",
+      "Machine Learning",
+      "SQL",
+      "TensorFlow",
+      "Git",
+      "Statistics",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-022",
+    "name": "Nadia Safira",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Statistika Terapan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.46,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 2.23,
+      "I": 5.93,
+      "A": 1.65,
+      "S": 1.75,
+      "E": 2.74,
+      "C": 5.05
+    },
+    "verified_skills": [
+      "Python",
+      "Pandas",
+      "TensorFlow",
+      "Machine Learning",
+      "Scikit-Learn",
+      "Statistics"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-023",
+    "name": "Hendra Gunawan",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.32,
+    "career_maturity_score": 84,
+    "riasec_scores": {
+      "R": 1.81,
+      "I": 6.22,
+      "A": 1.98,
+      "S": 1.65,
+      "E": 2.32,
+      "C": 5.1
+    },
+    "verified_skills": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Git",
+      "Statistics",
+      "TensorFlow",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-024",
+    "name": "Ayu Wulandari",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Matematika Komputasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.4,
+    "career_maturity_score": 75,
+    "riasec_scores": {
+      "R": 1.83,
+      "I": 6.26,
+      "A": 2.09,
+      "S": 1.64,
+      "E": 2.38,
+      "C": 5.06
+    },
+    "verified_skills": [
+      "Data Visualization",
+      "Python",
+      "Scikit-Learn",
+      "Pandas",
+      "SQL",
+      "Statistics",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-025",
+    "name": "Farhan Maulana",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Sains Data",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.8,
+    "career_maturity_score": 82,
+    "riasec_scores": {
+      "R": 1.78,
+      "I": 6.23,
+      "A": 2,
+      "S": 1.44,
+      "E": 2.71,
+      "C": 5.02
+    },
+    "verified_skills": [
+      "Python",
+      "SQL",
+      "Machine Learning",
+      "Pandas"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-026",
+    "name": "Salsa Bila",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Statistika Terapan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.64,
+    "career_maturity_score": 81,
+    "riasec_scores": {
+      "R": 2.41,
+      "I": 6.34,
+      "A": 1.74,
+      "S": 1.27,
+      "E": 2.4,
+      "C": 5.43
+    },
+    "verified_skills": [
+      "SQL",
+      "Scikit-Learn",
+      "Pandas",
+      "Machine Learning",
+      "Git"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-027",
+    "name": "Yoga Pratama",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.69,
+    "career_maturity_score": 81,
+    "riasec_scores": {
+      "R": 2.42,
+      "I": 5.99,
+      "A": 1.72,
+      "S": 1.23,
+      "E": 2.51,
+      "C": 5.26
+    },
+    "verified_skills": [
+      "Data Visualization",
+      "Pandas",
+      "SQL",
+      "Statistics",
+      "Scikit-Learn",
+      "Python",
+      "TensorFlow"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-028",
+    "name": "Riska Amalia",
+    "university": "Telkom University",
+    "major": "Matematika Komputasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.29,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 1.82,
+      "I": 6.22,
+      "A": 1.77,
+      "S": 1.58,
+      "E": 2.54,
+      "C": 5.36
+    },
+    "verified_skills": [
+      "Machine Learning",
+      "Pandas",
+      "Git",
+      "TensorFlow",
+      "Statistics",
+      "Python",
+      "SQL"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-029",
+    "name": "Aldi Firmansyah",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Sains Data",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.89,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 2.21,
+      "I": 5.99,
+      "A": 1.77,
+      "S": 1.49,
+      "E": 2.23,
+      "C": 4.91
+    },
+    "verified_skills": [
+      "Machine Learning",
+      "Pandas",
+      "Statistics",
+      "SQL",
+      "Data Visualization"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-030",
+    "name": "Intan Permatasari",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Statistika Terapan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.74,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 2.36,
+      "I": 5.66,
+      "A": 1.97,
+      "S": 1.2,
+      "E": 2.51,
+      "C": 5.37
+    },
+    "verified_skills": [
+      "SQL",
+      "Pandas",
+      "Machine Learning",
+      "TensorFlow",
+      "Scikit-Learn",
+      "Python"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-031",
+    "name": "Reza Pahlevi",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.59,
+    "career_maturity_score": 83,
+    "riasec_scores": {
+      "R": 1.94,
+      "I": 5.67,
+      "A": 2.02,
+      "S": 1.33,
+      "E": 2.2,
+      "C": 4.98
+    },
+    "verified_skills": [
+      "Machine Learning",
+      "SQL",
+      "Python",
+      "TensorFlow",
+      "Communication"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-032",
+    "name": "Bella Amanda",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Matematika Komputasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.47,
+    "career_maturity_score": 92,
+    "riasec_scores": {
+      "R": 2.39,
+      "I": 5.84,
+      "A": 2.05,
+      "S": 1.36,
+      "E": 2.75,
+      "C": 4.92
+    },
+    "verified_skills": [
+      "Python",
+      "SQL",
+      "Data Visualization",
+      "Machine Learning",
+      "Git",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-033",
+    "name": "Satria Wibowo",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Sains Data",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.36,
+    "career_maturity_score": 75,
+    "riasec_scores": {
+      "R": 2.17,
+      "I": 5.98,
+      "A": 1.87,
+      "S": 1.6,
+      "E": 2.34,
+      "C": 5.21
+    },
+    "verified_skills": [
+      "Data Visualization",
+      "Python",
+      "SQL",
+      "Statistics",
+      "TensorFlow",
+      "Scikit-Learn"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-034",
+    "name": "Nita Oktavia",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Statistika Terapan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.49,
+    "career_maturity_score": 86,
+    "riasec_scores": {
+      "R": 2.38,
+      "I": 6.04,
+      "A": 2.05,
+      "S": 1.53,
+      "E": 2.63,
+      "C": 4.86
+    },
+    "verified_skills": [
+      "Git",
+      "Python",
+      "SQL",
+      "Statistics",
+      "TensorFlow",
+      "Scikit-Learn",
+      "Machine Learning"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-035",
+    "name": "Danang Kusuma",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.69,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 1.91,
+      "I": 5.83,
+      "A": 1.89,
+      "S": 1.53,
+      "E": 2.19,
+      "C": 5.39
+    },
+    "verified_skills": [
+      "Data Visualization",
+      "Python",
+      "TensorFlow",
+      "Machine Learning",
+      "SQL"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-036",
+    "name": "Larasati Dewi",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Matematika Komputasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.65,
+    "career_maturity_score": 89,
+    "riasec_scores": {
+      "R": 2.43,
+      "I": 6.13,
+      "A": 1.98,
+      "S": 1.15,
+      "E": 2.78,
+      "C": 5.26
+    },
+    "verified_skills": [
+      "Pandas",
+      "Git",
+      "Data Visualization",
+      "Python"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-037",
+    "name": "Arif Budiman",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Sains Data",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.44,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 2.18,
+      "I": 5.81,
+      "A": 1.98,
+      "S": 1.37,
+      "E": 2.68,
+      "C": 4.95
+    },
+    "verified_skills": [
+      "Statistics",
+      "Machine Learning",
+      "SQL",
+      "Data Visualization",
+      "Python",
+      "Pandas",
+      "Git",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-038",
+    "name": "Zahra Aulia",
+    "university": "Telkom University",
+    "major": "Statistika Terapan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.4,
+    "career_maturity_score": 79,
+    "riasec_scores": {
+      "R": 2.31,
+      "I": 6.06,
+      "A": 1.83,
+      "S": 1.29,
+      "E": 2.37,
+      "C": 5.23
+    },
+    "verified_skills": [
+      "Python",
+      "Git",
+      "Machine Learning",
+      "Scikit-Learn",
+      "Statistics",
+      "Data Visualization"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-039",
+    "name": "Rian Hidayat",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.71,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 1.79,
+      "I": 5.9,
+      "A": 1.87,
+      "S": 1.46,
+      "E": 2.38,
+      "C": 5.02
+    },
+    "verified_skills": [
+      "Git",
+      "Data Visualization",
+      "Statistics",
+      "Scikit-Learn",
+      "TensorFlow",
+      "Pandas",
+      "Machine Learning"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-040",
+    "name": "Maya Anggraini",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Matematika Komputasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.3,
+    "career_maturity_score": 76,
+    "riasec_scores": {
+      "R": 2.37,
+      "I": 6.17,
+      "A": 1.7,
+      "S": 1.84,
+      "E": 2.71,
+      "C": 5.42
+    },
+    "verified_skills": [
+      "TensorFlow",
+      "Python",
+      "Statistics",
+      "SQL",
+      "Machine Learning",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "data-scientist",
+    "ground_truth_label": "Data Scientist & Machine Learning Specialist",
+    "onet_code": "15-2051.00",
+    "kbji_code": "2511"
+  },
+  {
+    "student_id": "MHS-041",
+    "name": "Fikri Haikal",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.59,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 1.52,
+      "I": 3.66,
+      "A": 6.34,
+      "S": 3.87,
+      "E": 3.41,
+      "C": 2.28
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "Figma",
+      "Design Systems",
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "Linux"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-042",
+    "name": "Siti Fatimah",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.26,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 1.51,
+      "I": 3.44,
+      "A": 6.31,
+      "S": 4.34,
+      "E": 3.2,
+      "C": 2.23
+    },
+    "verified_skills": [
+      "Information Architecture",
+      "User Research",
+      "Usability Testing",
+      "Wireframing",
+      "Design Systems",
+      "Design Thinking",
+      "Communication"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-043",
+    "name": "Ilham Saputra",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.86,
+    "career_maturity_score": 81,
+    "riasec_scores": {
+      "R": 1.4,
+      "I": 3.57,
+      "A": 5.86,
+      "S": 4.53,
+      "E": 3.25,
+      "C": 2.35
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "Figma",
+      "Design Systems",
+      "User Research",
+      "Information Architecture",
+      "Wireframing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-044",
+    "name": "Dini Rahayu",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.9,
+    "career_maturity_score": 95,
+    "riasec_scores": {
+      "R": 1.08,
+      "I": 3.14,
+      "A": 5.88,
+      "S": 4.16,
+      "E": 2.81,
+      "C": 1.92
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "User Research",
+      "Design Systems",
+      "Figma",
+      "Wireframing",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-045",
+    "name": "Panji Asmara",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.76,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 1,
+      "I": 3.23,
+      "A": 6.23,
+      "S": 4.1,
+      "E": 3.28,
+      "C": 2.34
+    },
+    "verified_skills": [
+      "Figma",
+      "Design Systems",
+      "User Research",
+      "Wireframing",
+      "Design Thinking",
+      "Usability Testing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-046",
+    "name": "Widya Astuti",
+    "university": "Telkom University",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.28,
+    "career_maturity_score": 87,
+    "riasec_scores": {
+      "R": 1.44,
+      "I": 3.58,
+      "A": 5.73,
+      "S": 4.21,
+      "E": 3.38,
+      "C": 2.35
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "Figma",
+      "Prototyping",
+      "Design Systems",
+      "User Research",
+      "Wireframing",
+      "Usability Testing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-047",
+    "name": "Guntur Prakoso",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.19,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 1,
+      "I": 3.44,
+      "A": 6.33,
+      "S": 4.18,
+      "E": 2.75,
+      "C": 2.17
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "User Research",
+      "Design Systems",
+      "Usability Testing",
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-048",
+    "name": "Melati Sukma",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.74,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 1.03,
+      "I": 3.51,
+      "A": 5.68,
+      "S": 4.14,
+      "E": 2.8,
+      "C": 1.68
+    },
+    "verified_skills": [
+      "Figma",
+      "Design Systems",
+      "Prototyping",
+      "Usability Testing",
+      "Wireframing",
+      "User Research",
+      "Information Architecture"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-049",
+    "name": "Bagas Saputra",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.43,
+    "career_maturity_score": 83,
+    "riasec_scores": {
+      "R": 1.34,
+      "I": 3.5,
+      "A": 6.33,
+      "S": 3.95,
+      "E": 2.84,
+      "C": 2.19
+    },
+    "verified_skills": [
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "Design Thinking"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-050",
+    "name": "Tari Handayani",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.4,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 1.11,
+      "I": 3.1,
+      "A": 5.98,
+      "S": 3.93,
+      "E": 2.78,
+      "C": 2.24
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "Information Architecture",
+      "Usability Testing",
+      "Prototyping",
+      "Wireframing",
+      "User Research",
+      "Design Systems",
+      "Git"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-051",
+    "name": "Kuncoro Jati",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.37,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 1.08,
+      "I": 3.63,
+      "A": 6.13,
+      "S": 4.48,
+      "E": 3.18,
+      "C": 1.72
+    },
+    "verified_skills": [
+      "Figma",
+      "Design Systems",
+      "Wireframing",
+      "Design Thinking"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-052",
+    "name": "Fitri Handayani",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.89,
+    "career_maturity_score": 86,
+    "riasec_scores": {
+      "R": 1.4,
+      "I": 3.27,
+      "A": 5.77,
+      "S": 4.46,
+      "E": 2.8,
+      "C": 1.93
+    },
+    "verified_skills": [
+      "Usability Testing",
+      "Design Thinking",
+      "Wireframing",
+      "Design Systems"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-053",
+    "name": "Bobby Kurniawan",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.83,
+    "career_maturity_score": 87,
+    "riasec_scores": {
+      "R": 1.25,
+      "I": 3.49,
+      "A": 6.15,
+      "S": 4.47,
+      "E": 2.99,
+      "C": 1.81
+    },
+    "verified_skills": [
+      "Figma",
+      "Information Architecture",
+      "Wireframing",
+      "Design Thinking",
+      "Usability Testing",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-054",
+    "name": "Cindy Claudia",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.29,
+    "career_maturity_score": 95,
+    "riasec_scores": {
+      "R": 1,
+      "I": 3.22,
+      "A": 6.27,
+      "S": 3.94,
+      "E": 2.95,
+      "C": 1.8
+    },
+    "verified_skills": [
+      "Information Architecture",
+      "Usability Testing",
+      "User Research",
+      "Design Thinking",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-055",
+    "name": "Doni Darmawan",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.28,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 1.54,
+      "I": 3.56,
+      "A": 5.85,
+      "S": 4.52,
+      "E": 2.89,
+      "C": 1.66
+    },
+    "verified_skills": [
+      "Figma",
+      "Design Systems",
+      "Usability Testing",
+      "User Research",
+      "Wireframing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-056",
+    "name": "Erna Wati",
+    "university": "Telkom University",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.67,
+    "career_maturity_score": 82,
+    "riasec_scores": {
+      "R": 1.28,
+      "I": 3.3,
+      "A": 6.35,
+      "S": 4.1,
+      "E": 3.41,
+      "C": 2.14
+    },
+    "verified_skills": [
+      "Figma",
+      "Usability Testing",
+      "Design Systems",
+      "User Research",
+      "Wireframing",
+      "Information Architecture",
+      "Prototyping"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-057",
+    "name": "Galih Rakasiwi",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.38,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 1.17,
+      "I": 3.46,
+      "A": 5.99,
+      "S": 4.37,
+      "E": 3.41,
+      "C": 1.82
+    },
+    "verified_skills": [
+      "Design Systems",
+      "Information Architecture",
+      "Figma",
+      "Wireframing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-058",
+    "name": "Hana Pertiwi",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknologi Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.75,
+    "career_maturity_score": 96,
+    "riasec_scores": {
+      "R": 1.43,
+      "I": 3.7,
+      "A": 5.88,
+      "S": 4,
+      "E": 3.18,
+      "C": 1.65
+    },
+    "verified_skills": [
+      "Prototyping",
+      "User Research",
+      "Design Thinking",
+      "Usability Testing"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-059",
+    "name": "Indra Kusuma",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Desain Komunikasi Visual",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.39,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 1.53,
+      "I": 3.24,
+      "A": 6.31,
+      "S": 3.99,
+      "E": 2.92,
+      "C": 2.04
+    },
+    "verified_skills": [
+      "Wireframing",
+      "Usability Testing",
+      "User Research",
+      "Design Thinking",
+      "Design Systems",
+      "Prototyping",
+      "Figma"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-060",
+    "name": "Joko Susilo",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Sistem Informasi",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.71,
+    "career_maturity_score": 89,
+    "riasec_scores": {
+      "R": 1.52,
+      "I": 3.29,
+      "A": 5.96,
+      "S": 4.12,
+      "E": 3.16,
+      "C": 1.92
+    },
+    "verified_skills": [
+      "Design Thinking",
+      "User Research",
+      "Usability Testing",
+      "Information Architecture",
+      "Communication"
+    ],
+    "ground_truth_career": "ui-ux-designer",
+    "ground_truth_label": "Product Designer & UI/UX Specialist",
+    "onet_code": "15-1255.00",
+    "kbji_code": "2166"
+  },
+  {
+    "student_id": "MHS-061",
+    "name": "Kartika Sari",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.88,
+    "career_maturity_score": 95,
+    "riasec_scores": {
+      "R": 3.84,
+      "I": 5.91,
+      "A": 1.44,
+      "S": 1.83,
+      "E": 2.09,
+      "C": 5.68
+    },
+    "verified_skills": [
+      "Vulnerability Assessment",
+      "Cryptography",
+      "SIEM",
+      "Penetration Testing",
+      "Git",
+      "Wireshark",
+      "Linux"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-062",
+    "name": "Lukman Hakim",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.65,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 4.04,
+      "I": 5.44,
+      "A": 1.21,
+      "S": 1.74,
+      "E": 1.91,
+      "C": 5.56
+    },
+    "verified_skills": [
+      "Git",
+      "Vulnerability Assessment",
+      "Network Security",
+      "Linux",
+      "Cryptography",
+      "Penetration Testing"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-063",
+    "name": "Miftah Fauzan",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.25,
+    "career_maturity_score": 86,
+    "riasec_scores": {
+      "R": 3.79,
+      "I": 5.89,
+      "A": 1.23,
+      "S": 1.64,
+      "E": 2.05,
+      "C": 5.18
+    },
+    "verified_skills": [
+      "Network Security",
+      "Linux",
+      "Penetration Testing",
+      "SIEM",
+      "Cryptography"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-064",
+    "name": "Nugroho Adi",
+    "university": "Telkom University",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.59,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 4.35,
+      "I": 5.66,
+      "A": 1.31,
+      "S": 1.66,
+      "E": 2.38,
+      "C": 5.57
+    },
+    "verified_skills": [
+      "Penetration Testing",
+      "Wireshark",
+      "Linux",
+      "Network Security",
+      "Cryptography",
+      "SIEM",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-065",
+    "name": "Oki Setiawan",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.78,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 3.97,
+      "I": 5.38,
+      "A": 1.38,
+      "S": 1.72,
+      "E": 2.54,
+      "C": 5.6
+    },
+    "verified_skills": [
+      "SIEM",
+      "Wireshark",
+      "Penetration Testing",
+      "Cryptography",
+      "Git",
+      "Network Security"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-066",
+    "name": "Pandu Wijaya",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.8,
+    "career_maturity_score": 88,
+    "riasec_scores": {
+      "R": 4.11,
+      "I": 5.42,
+      "A": 1.5,
+      "S": 1.99,
+      "E": 1.9,
+      "C": 5.19
+    },
+    "verified_skills": [
+      "Cryptography",
+      "Linux",
+      "Vulnerability Assessment",
+      "Network Security",
+      "SIEM",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-067",
+    "name": "Qori Alamsyah",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.82,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 4.07,
+      "I": 5.37,
+      "A": 1.4,
+      "S": 1.64,
+      "E": 2.08,
+      "C": 5.7
+    },
+    "verified_skills": [
+      "Vulnerability Assessment",
+      "Linux",
+      "Network Security",
+      "Git",
+      "Penetration Testing"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-068",
+    "name": "Rendi Saputra",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.65,
+    "career_maturity_score": 88,
+    "riasec_scores": {
+      "R": 3.88,
+      "I": 5.46,
+      "A": 1.41,
+      "S": 2.15,
+      "E": 2.17,
+      "C": 5.71
+    },
+    "verified_skills": [
+      "Vulnerability Assessment",
+      "Git",
+      "Penetration Testing",
+      "SIEM",
+      "Linux",
+      "Communication"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-069",
+    "name": "Surya Saputra",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.61,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 3.83,
+      "I": 5.33,
+      "A": 1.35,
+      "S": 1.75,
+      "E": 2.23,
+      "C": 5.45
+    },
+    "verified_skills": [
+      "Wireshark",
+      "SIEM",
+      "Linux",
+      "Vulnerability Assessment",
+      "Cryptography",
+      "Git",
+      "Penetration Testing"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-070",
+    "name": "Tri Wahyuni",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.42,
+    "career_maturity_score": 77,
+    "riasec_scores": {
+      "R": 4.19,
+      "I": 5.69,
+      "A": 1.39,
+      "S": 2.02,
+      "E": 2.19,
+      "C": 5.53
+    },
+    "verified_skills": [
+      "Git",
+      "Network Security",
+      "Linux",
+      "Penetration Testing"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-071",
+    "name": "Umar Said",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.39,
+    "career_maturity_score": 92,
+    "riasec_scores": {
+      "R": 4.26,
+      "I": 5.48,
+      "A": 1.36,
+      "S": 1.94,
+      "E": 1.89,
+      "C": 5.17
+    },
+    "verified_skills": [
+      "Penetration Testing",
+      "SIEM",
+      "Linux",
+      "Cryptography",
+      "Wireshark",
+      "Git",
+      "Vulnerability Assessment"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-072",
+    "name": "Vina Panduwinata",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.3,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 4.08,
+      "I": 5.55,
+      "A": 1.45,
+      "S": 1.9,
+      "E": 2.54,
+      "C": 5.42
+    },
+    "verified_skills": [
+      "Vulnerability Assessment",
+      "Wireshark",
+      "Penetration Testing",
+      "Git"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-073",
+    "name": "Wawan Setiawan",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.78,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 3.92,
+      "I": 5.37,
+      "A": 1.52,
+      "S": 1.89,
+      "E": 2.49,
+      "C": 5.72
+    },
+    "verified_skills": [
+      "Penetration Testing",
+      "Wireshark",
+      "Network Security",
+      "Vulnerability Assessment",
+      "Public Speaking"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-074",
+    "name": "Yusuf Mansur",
+    "university": "Telkom University",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.46,
+    "career_maturity_score": 84,
+    "riasec_scores": {
+      "R": 4.12,
+      "I": 5.34,
+      "A": 1.6,
+      "S": 1.78,
+      "E": 2.46,
+      "C": 5.74
+    },
+    "verified_skills": [
+      "Network Security",
+      "Penetration Testing",
+      "SIEM",
+      "Git",
+      "Linux",
+      "Cryptography",
+      "Vulnerability Assessment"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-075",
+    "name": "Zainal Abidin",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.33,
+    "career_maturity_score": 95,
+    "riasec_scores": {
+      "R": 4.07,
+      "I": 5.43,
+      "A": 1.16,
+      "S": 2.11,
+      "E": 2.33,
+      "C": 5.23
+    },
+    "verified_skills": [
+      "SIEM",
+      "Git",
+      "Penetration Testing",
+      "Linux",
+      "Network Security"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-076",
+    "name": "Abimanyu Sekar",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.74,
+    "career_maturity_score": 88,
+    "riasec_scores": {
+      "R": 4.24,
+      "I": 5.74,
+      "A": 1.68,
+      "S": 2.1,
+      "E": 2.36,
+      "C": 5.5
+    },
+    "verified_skills": [
+      "Penetration Testing",
+      "Network Security",
+      "Vulnerability Assessment",
+      "Cryptography"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-077",
+    "name": "Berlian Citra",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.35,
+    "career_maturity_score": 81,
+    "riasec_scores": {
+      "R": 4.42,
+      "I": 5.85,
+      "A": 1.5,
+      "S": 2.03,
+      "E": 2.41,
+      "C": 5.8
+    },
+    "verified_skills": [
+      "Wireshark",
+      "Network Security",
+      "Linux",
+      "Penetration Testing"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-078",
+    "name": "Cahyo Utomo",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.47,
+    "career_maturity_score": 92,
+    "riasec_scores": {
+      "R": 4.05,
+      "I": 5.27,
+      "A": 1.51,
+      "S": 1.55,
+      "E": 2.27,
+      "C": 5.77
+    },
+    "verified_skills": [
+      "Network Security",
+      "Git",
+      "Wireshark",
+      "Linux",
+      "Penetration Testing",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-079",
+    "name": "Darmawan Saputra",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknik Komputer & Jaringan",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.24,
+    "career_maturity_score": 75,
+    "riasec_scores": {
+      "R": 4.44,
+      "I": 5.75,
+      "A": 1.69,
+      "S": 1.98,
+      "E": 2.15,
+      "C": 5.39
+    },
+    "verified_skills": [
+      "Cryptography",
+      "Penetration Testing",
+      "SIEM",
+      "Linux",
+      "Git",
+      "Wireshark"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-080",
+    "name": "Endang Susilowati",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Sistem Informasi Keamanan",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.64,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 3.76,
+      "I": 5.27,
+      "A": 1.49,
+      "S": 1.5,
+      "E": 2.4,
+      "C": 5.48
+    },
+    "verified_skills": [
+      "SIEM",
+      "Penetration Testing",
+      "Linux",
+      "Wireshark",
+      "Git"
+    ],
+    "ground_truth_career": "cybersecurity-analyst",
+    "ground_truth_label": "Information Security & Cybersecurity Analyst",
+    "onet_code": "15-1212.00",
+    "kbji_code": "2529"
+  },
+  {
+    "student_id": "MHS-081",
+    "name": "Fahmi Idris",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.42,
+    "career_maturity_score": 89,
+    "riasec_scores": {
+      "R": 4.77,
+      "I": 5.13,
+      "A": 1.27,
+      "S": 1.61,
+      "E": 2.35,
+      "C": 4.92
+    },
+    "verified_skills": [
+      "Cloud Infrastructure (AWS/GCP)",
+      "Docker",
+      "Bash Scripting",
+      "Terraform",
+      "Kubernetes",
+      "Linux Administration",
+      "Git",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-082",
+    "name": "Gita Gutawa",
+    "university": "Telkom University",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.78,
+    "career_maturity_score": 78,
+    "riasec_scores": {
+      "R": 4.8,
+      "I": 5.15,
+      "A": 1.07,
+      "S": 1.71,
+      "E": 2.36,
+      "C": 5.28
+    },
+    "verified_skills": [
+      "Bash Scripting",
+      "CI/CD Pipelines",
+      "Terraform",
+      "Linux Administration"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-083",
+    "name": "Haris Munandar",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.43,
+    "career_maturity_score": 85,
+    "riasec_scores": {
+      "R": 5.07,
+      "I": 4.9,
+      "A": 1.62,
+      "S": 1.64,
+      "E": 2.12,
+      "C": 5.25
+    },
+    "verified_skills": [
+      "Cloud Infrastructure (AWS/GCP)",
+      "Bash Scripting",
+      "Linux Administration",
+      "CI/CD Pipelines",
+      "Terraform",
+      "Communication"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-084",
+    "name": "Irfan Bachdim",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.72,
+    "career_maturity_score": 93,
+    "riasec_scores": {
+      "R": 4.49,
+      "I": 5.24,
+      "A": 1.13,
+      "S": 1.57,
+      "E": 2,
+      "C": 5.15
+    },
+    "verified_skills": [
+      "Linux Administration",
+      "Git",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Kubernetes",
+      "Docker",
+      "CI/CD Pipelines",
+      "Terraform"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-085",
+    "name": "Juwita Bahar",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.7,
+    "career_maturity_score": 82,
+    "riasec_scores": {
+      "R": 4.6,
+      "I": 4.59,
+      "A": 1.65,
+      "S": 1.75,
+      "E": 2.16,
+      "C": 4.98
+    },
+    "verified_skills": [
+      "CI/CD Pipelines",
+      "Bash Scripting",
+      "Linux Administration",
+      "Docker",
+      "Git",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Kubernetes"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-086",
+    "name": "Kharisma Jati",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.18,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 5.14,
+      "I": 4.65,
+      "A": 1.51,
+      "S": 1.78,
+      "E": 2.59,
+      "C": 5.34
+    },
+    "verified_skills": [
+      "Docker",
+      "Kubernetes",
+      "CI/CD Pipelines",
+      "Linux Administration"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-087",
+    "name": "Lintang Kemukus",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.32,
+    "career_maturity_score": 76,
+    "riasec_scores": {
+      "R": 4.63,
+      "I": 5.1,
+      "A": 1.5,
+      "S": 1.56,
+      "E": 2.3,
+      "C": 4.77
+    },
+    "verified_skills": [
+      "Bash Scripting",
+      "Git",
+      "Kubernetes",
+      "Docker",
+      "Linux Administration"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-088",
+    "name": "Mahesa Jenar",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.73,
+    "career_maturity_score": 82,
+    "riasec_scores": {
+      "R": 4.95,
+      "I": 4.64,
+      "A": 1.11,
+      "S": 1.8,
+      "E": 2.15,
+      "C": 5.18
+    },
+    "verified_skills": [
+      "CI/CD Pipelines",
+      "Linux Administration",
+      "Kubernetes",
+      "Cloud Infrastructure (AWS/GCP)"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-089",
+    "name": "Novita Sari",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.27,
+    "career_maturity_score": 86,
+    "riasec_scores": {
+      "R": 4.49,
+      "I": 5.2,
+      "A": 1.58,
+      "S": 1.75,
+      "E": 1.97,
+      "C": 4.91
+    },
+    "verified_skills": [
+      "CI/CD Pipelines",
+      "Docker",
+      "Git",
+      "Kubernetes"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-090",
+    "name": "Oscar Lawalata",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.23,
+    "career_maturity_score": 82,
+    "riasec_scores": {
+      "R": 5.1,
+      "I": 4.89,
+      "A": 1.28,
+      "S": 1.67,
+      "E": 2.13,
+      "C": 4.85
+    },
+    "verified_skills": [
+      "Cloud Infrastructure (AWS/GCP)",
+      "Docker",
+      "Linux Administration",
+      "Kubernetes",
+      "Terraform",
+      "Git"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-091",
+    "name": "Pramudya Ananta",
+    "university": "Universitas Diponegoro (UNDIP)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.71,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 4.94,
+      "I": 4.81,
+      "A": 1.39,
+      "S": 1.32,
+      "E": 2.35,
+      "C": 5.21
+    },
+    "verified_skills": [
+      "CI/CD Pipelines",
+      "Kubernetes",
+      "Docker",
+      "Git"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-092",
+    "name": "Qonita Syahab",
+    "university": "Telkom University",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.31,
+    "career_maturity_score": 80,
+    "riasec_scores": {
+      "R": 4.57,
+      "I": 4.62,
+      "A": 1.51,
+      "S": 1.34,
+      "E": 2.31,
+      "C": 4.79
+    },
+    "verified_skills": [
+      "Bash Scripting",
+      "Linux Administration",
+      "Kubernetes",
+      "Git",
+      "Terraform",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-093",
+    "name": "Raden Saleh",
+    "university": "Politeknik Elektronika Negeri Surabaya (PENS)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.64,
+    "career_maturity_score": 96,
+    "riasec_scores": {
+      "R": 4.9,
+      "I": 4.66,
+      "A": 1.31,
+      "S": 1.88,
+      "E": 2.24,
+      "C": 5.33
+    },
+    "verified_skills": [
+      "Bash Scripting",
+      "Docker",
+      "CI/CD Pipelines",
+      "Kubernetes",
+      "Linux Administration",
+      "Git",
+      "Terraform"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-094",
+    "name": "Sekar Arum",
+    "university": "Institut Teknologi Sepuluh Nopember (ITS)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.33,
+    "career_maturity_score": 95,
+    "riasec_scores": {
+      "R": 4.47,
+      "I": 5.06,
+      "A": 1.43,
+      "S": 1.27,
+      "E": 2.38,
+      "C": 5.29
+    },
+    "verified_skills": [
+      "Cloud Infrastructure (AWS/GCP)",
+      "Kubernetes",
+      "Docker",
+      "Terraform",
+      "Linux Administration",
+      "Git",
+      "CI/CD Pipelines"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-095",
+    "name": "Tegar Septian",
+    "university": "Universitas Indonesia (UI)",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.46,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 5,
+      "I": 5.19,
+      "A": 1.6,
+      "S": 1.63,
+      "E": 1.96,
+      "C": 5.38
+    },
+    "verified_skills": [
+      "Docker",
+      "Terraform",
+      "Bash Scripting",
+      "Kubernetes",
+      "Linux"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-096",
+    "name": "Utari Maharani",
+    "university": "Institut Teknologi Bandung (ITB)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.3,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 4.9,
+      "I": 5.06,
+      "A": 1.35,
+      "S": 1.88,
+      "E": 1.96,
+      "C": 5.1
+    },
+    "verified_skills": [
+      "Git",
+      "Terraform",
+      "Bash Scripting",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Linux Administration",
+      "CI/CD Pipelines",
+      "Kubernetes"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-097",
+    "name": "Vicky Shu",
+    "university": "Universitas Gadjah Mada (UGM)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.65,
+    "career_maturity_score": 90,
+    "riasec_scores": {
+      "R": 4.95,
+      "I": 4.57,
+      "A": 1.52,
+      "S": 1.67,
+      "E": 2.42,
+      "C": 5.24
+    },
+    "verified_skills": [
+      "CI/CD Pipelines",
+      "Kubernetes",
+      "Docker",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Bash Scripting"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-098",
+    "name": "Wira Yudha",
+    "university": "Politeknik Negeri Jakarta (PNJ)",
+    "major": "Sistem Komputer",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.5,
+    "career_maturity_score": 91,
+    "riasec_scores": {
+      "R": 4.47,
+      "I": 4.88,
+      "A": 1.51,
+      "S": 1.9,
+      "E": 2.49,
+      "C": 5.29
+    },
+    "verified_skills": [
+      "Docker",
+      "Kubernetes",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Linux Administration",
+      "Terraform",
+      "Agile/Scrum"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-099",
+    "name": "Xaverius Tio",
+    "university": "Universitas Brawijaya (UB)",
+    "major": "Teknologi Rekayasa Komputer",
+    "education_level": "MAHASISWA_VOKASI_TINGKAT_4",
+    "gpa": 3.71,
+    "career_maturity_score": 88,
+    "riasec_scores": {
+      "R": 4.76,
+      "I": 4.62,
+      "A": 1.58,
+      "S": 1.43,
+      "E": 2.31,
+      "C": 4.79
+    },
+    "verified_skills": [
+      "Terraform",
+      "Linux Administration",
+      "Git",
+      "Kubernetes",
+      "Bash Scripting",
+      "CI/CD Pipelines",
+      "Docker"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  },
+  {
+    "student_id": "MHS-100",
+    "name": "Yuni Shara",
+    "university": "Politeknik Negeri Bandung (POLBAN)",
+    "major": "Teknik Informatika",
+    "education_level": "MAHASISWA_SARJANA_TINGKAT_4",
+    "gpa": 3.66,
+    "career_maturity_score": 96,
+    "riasec_scores": {
+      "R": 5.13,
+      "I": 4.65,
+      "A": 1.34,
+      "S": 1.26,
+      "E": 2.29,
+      "C": 5.41
+    },
+    "verified_skills": [
+      "Git",
+      "Docker",
+      "Kubernetes",
+      "CI/CD Pipelines",
+      "Bash Scripting",
+      "Cloud Infrastructure (AWS/GCP)",
+      "Communication"
+    ],
+    "ground_truth_career": "devops-cloud-engineer",
+    "ground_truth_label": "DevOps & Cloud Infrastructure Engineer",
+    "onet_code": "15-1254.00",
+    "kbji_code": "2519"
+  }
+]
