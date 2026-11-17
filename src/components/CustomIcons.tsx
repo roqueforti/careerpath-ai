@@ -5,7 +5,7 @@ import React from "react";
 // =========================================================================
 
 /**
- * Cute, friendly student developer avatar (Hilman - Tech Lead / D4 SIB)
+ * Cute, friendly student developer avatar (Vocational / Tech Student)
  * Designed with soft gradients, stylish glasses, cool hairstyle, and hoodie.
  */
 export function CuteStudentAvatar({

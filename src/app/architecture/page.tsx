@@ -555,10 +555,10 @@ export default function ArchitecturePage() {
                   </div>
                 </div>
 
-                {/* Example applied to Hilman Zahrawa */}
+                {/* Example applied to Software Engineering Student */}
                 <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2.5">
                   <div className="text-[10px] font-black uppercase text-zinc-500">
-                    {t("Kasus Riil: Hilman Zahrawa (D4 SIB)", "Case Study: Hilman Zahrawa (D4 SIB)")}
+                    {t("Contoh Kasus: Calon Software Engineer (D4 SIB)", "Case Study: Software Engineer Candidate (D4 SIB)")}
                   </div>
                   <div className="text-xs space-y-1">
                     <div className="text-emerald-700 font-bold">
@@ -678,7 +678,7 @@ export default function ArchitecturePage() {
                 </div>
                 <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800 text-sky-300">
                   <span className="text-[10px] uppercase text-zinc-500 font-bold block mb-1">[CONTEXT INGESTION]</span>
-                  Candidate = Hilman (D4 SIB Polinema), GPA = 3.63, RIASEC = I-E-R, Matched = [Next.js, TS, Laravel, Postgres], Target = Software Engineer & Tech Lead.
+                  Candidate = Talenta Vokasi (D4 SIB Polinema), GPA = 3.63, RIASEC = I-E-R, Matched = [Next.js, TS, Laravel, Postgres], Target = Software Engineer & Tech Lead.
                 </div>
                 <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800 text-amber-300">
                   <span className="text-[10px] uppercase text-zinc-500 font-bold block mb-1">[STRUCTURED OUTPUT]</span>

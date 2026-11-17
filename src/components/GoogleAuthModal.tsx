@@ -151,7 +151,7 @@ export default function GoogleAuthModal({
             </label>
             <input
               type="text"
-              placeholder="Contoh: Hilman Zahrawa"
+              placeholder="Contoh: Budi Santoso"
               value={googleName}
               onChange={(e) => setGoogleName(e.target.value)}
               className="w-full rounded-full border border-stone-200 bg-stone-50/80 px-4 py-3 text-xs text-stone-900 placeholder:text-stone-400 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-white transition-all shadow-2xs"

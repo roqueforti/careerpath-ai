@@ -49,8 +49,22 @@ interface CareerNodeDetail {
   recommendedCertifications: string[];
 }
 
-export default function CareerExplorerGraph() {
-  const [filter, setFilter] = useState<"all" | "job" | "education" | "pal">("all");
+interface CareerExplorerGraphProps {
+  candidateName?: string;
+  candidateRole?: string;
+  candidateLevel?: string;
+  candidateTrack?: string;
+  targetCareer?: string;
+}
+
+export default function CareerExplorerGraph({
+  candidateName = "Profil Talenta Digital",
+  candidateRole = "Mahasiswa / Lulusan Vokasi",
+  candidateLevel = "Tingkat 4: READY",
+  candidateTrack = "Pendidikan Vokasi & Rekayasa TI",
+  targetCareer = "Software Engineer & Tech Lead",
+}: CareerExplorerGraphProps = {}) {
+  const [filter, setFilter] = useState<"all" | "job" | "education" | "featured">("all");
   const [selectedNode, setSelectedNode] = useState<CareerNodeDetail | null>(null);
   const [activeBranch, setActiveBranch] = useState<string>("se");
 
@@ -65,11 +79,11 @@ export default function CareerExplorerGraph() {
       fitPercentage: 94,
       salaryRange: "Rp 12.000.000 - Rp 22.000.000 / bln",
       timeToAchieve: "6 - 12 Bulan (3 Fase IDP)",
-      popularityText: "94% Mahasiswa D4 SIB dengan profil RIASEC I-E-R sukses di jalur ini",
+      popularityText: "94% talenta dengan profil RIASEC I-E-R sukses di jalur ini",
       description:
         "Merancang, mengembangkan, dan memimpin arsitektur sistem informasi enterprise modern. Bertanggung jawab atas skalabilitas aplikasi, arsitektur microservices, keandalan basis data, dan kepatuhan standar rekayasa perangkat lunak internasional.",
       whyFit:
-        "Sangat selaras dengan keahlian Full-Stack Hilman (Next.js, TypeScript, Laravel, PostgreSQL) dan dimensi Holland Investigative-Enterprising (analisis teknis + kepemimpinan tim).",
+        "Sangat selaras dengan keahlian Full-Stack modern (Next.js, TypeScript, Laravel, PostgreSQL) dan dimensi Holland Investigative-Enterprising (analisis teknis + kepemimpinan tim).",
       badges: ["Gaji Tertinggi", "Paling Direkomendasikan", "High Growth Tech"],
       matchedSkills: [
         "Next.js & React.js",
@@ -126,11 +140,11 @@ export default function CareerExplorerGraph() {
       fitPercentage: 92,
       salaryRange: "Rp 10.000.000 - Rp 15.000.000 / bln",
       timeToAchieve: "3 - 6 Bulan (Fastest Path)",
-      popularityText: "Jalur tercepat dengan 92% kesesuaian kurikulum D4 SIB Polinema",
+      popularityText: "Jalur tercepat dengan 92% kesesuaian kurikulum vokasi teknologi informasi",
       description:
         "Membangun antarmuka interaktif responsif berbasis Next.js/Tailwind CSS dan backend modular berkecepatan tinggi dengan integrasi API enterprise.",
       whyFit:
-        "Langsung menggunakan keahlian inti yang sudah dibuktikan melalui 5 portofolio riil Hilman (Next.js, Laravel, Tailwind CSS).",
+        "Mengoptimalkan keahlian inti pengembangan web modern yang terverifikasi (Next.js, Laravel, Tailwind CSS).",
       badges: ["Fastest Path", "In-Demand"],
       matchedSkills: [
         "Next.js & React.js",
@@ -251,12 +265,12 @@ export default function CareerExplorerGraph() {
                 : "bg-white border border-zinc-200 text-zinc-600 hover:border-zinc-300"
             }`}
           >
-            By Education (D4 SIB)
+            By Education (Vokasi)
           </button>
           <button
-            onClick={() => setFilter("pal")}
+            onClick={() => setFilter("featured")}
             className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-              filter === "pal"
+              filter === "featured"
                 ? "bg-red-600 text-white shadow-xs"
                 : "bg-white border border-zinc-200 text-zinc-600 hover:border-zinc-300"
             }`}
@@ -349,7 +363,7 @@ export default function CareerExplorerGraph() {
         {/* Content Flow Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-start justify-between gap-8 min-w-[980px]">
           {/* ===================================================== */}
-          {/* LEFT: CANDIDATE / STUDENT ORIGIN NODE (Hilman)        */}
+          {/* LEFT: CANDIDATE / STUDENT ORIGIN NODE                 */}
           {/* ===================================================== */}
           <div className="w-64 shrink-0 space-y-4">
             <div className="rounded-3xl border-2 border-red-500/20 bg-white p-5 shadow-lg shadow-red-500/5 relative space-y-4 hover:border-red-500/40 transition-all">
@@ -358,10 +372,10 @@ export default function CareerExplorerGraph() {
                 <CuteStudentAvatar className="w-13 h-13" showBadge={true} />
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-full inline-block">
-                    Tingkat 4: READY
+                    {candidateLevel}
                   </div>
                   <h3 className="font-extrabold text-zinc-950 text-sm mt-0.5">
-                    Hilman Zahrawa
+                    {candidateName}
                   </h3>
                 </div>
               </div>
@@ -372,10 +386,10 @@ export default function CareerExplorerGraph() {
                   Target Jangka Panjang:
                 </span>
                 <p className="font-black text-zinc-900 text-sm leading-snug">
-                  Software Engineer & Tech Lead
+                  {targetCareer}
                 </p>
                 <p className="text-[11px] text-zinc-500">
-                  D4 Sistem Informasi Bisnis · IPK 3.63 (Polinema)
+                  {candidateRole} · {candidateTrack}
                 </p>
               </div>
 
