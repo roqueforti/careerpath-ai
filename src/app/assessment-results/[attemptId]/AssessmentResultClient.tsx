@@ -190,7 +190,7 @@ export default function AssessmentResultClient({ attemptId }: { attemptId: strin
 
               <div className="w-24 h-28 relative shrink-0">
                 <img
-                  src="/illustrations/mentor-woman.jpg"
+                  src="/illustrations/mentor-woman.png"
                   alt="Career mentor"
                   className="w-full h-full object-contain rounded-xl drop-shadow-sm"
                 />
