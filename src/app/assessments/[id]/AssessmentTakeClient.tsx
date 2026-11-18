@@ -148,10 +148,10 @@ export default function AssessmentTakeClient({ id }: { id: string }) {
       </div>
 
       {/* Sticky Progress Bar */}
-      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-md p-3 rounded-full border border-stone-200/90 shadow-2xs dark:bg-stone-900/95 dark:border-stone-800">
-        <div className="h-2 w-full rounded-full bg-stone-100 dark:bg-stone-800 overflow-hidden">
+      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#e8ebf8] shadow-sm">
+        <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
           <div
-            className="h-full rounded-full bg-red-600 transition-all duration-300"
+            className="h-full rounded-full bg-[#5452e6] transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -159,42 +159,42 @@ export default function AssessmentTakeClient({ id }: { id: string }) {
 
       {/* Error Alert */}
       {errorMsg && (
-        <div className="flex items-center gap-2 rounded-2xl border border-red-200 bg-red-50 p-4 text-xs font-medium text-red-700 dark:border-red-900 dark:bg-red-950/60 dark:text-red-300">
+        <div className="flex items-center gap-2 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-xs font-semibold text-rose-700">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       {/* Questions List */}
-      <div className="space-y-5">
+      <div className="space-y-4">
         {questions.map((q, idx) => {
           const selected = answers[q.id]?.value;
           return (
             <div
               key={q.id}
-              className={`rounded-[28px] border p-6 sm:p-7 transition-all ${
+              className={`rounded-2xl border p-5 sm:p-6 transition-all bg-white ${
                 selected
-                  ? "border-stone-950/40 bg-white shadow-xs dark:border-stone-700 dark:bg-stone-900"
-                  : "border-stone-200/90 bg-white shadow-xs dark:border-stone-800 dark:bg-stone-900"
+                  ? "border-[#5452e6]/40 shadow-sm"
+                  : "border-[#e8ebf8] shadow-xs"
               }`}
             >
               <div className="flex items-start gap-3.5">
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-black transition-colors ${
                     selected
-                      ? "bg-stone-950 text-white dark:bg-white dark:text-stone-950"
-                      : "bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300"
+                      ? "bg-[#5452e6] text-white"
+                      : "bg-slate-100 text-slate-700"
                   }`}
                 >
                   {idx + 1}
                 </span>
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-stone-950 dark:text-white leading-relaxed">
+                  <p className="text-sm font-bold text-slate-900 leading-relaxed">
                     {q.questionText}
                   </p>
 
                   {/* 1-5 Likert Options */}
-                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+                  <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
                     {q.options.map((opt) => {
                       const isSelected = selected === opt.value;
                       return (
@@ -202,14 +202,14 @@ export default function AssessmentTakeClient({ id }: { id: string }) {
                           key={opt.value}
                           type="button"
                           onClick={() => handleSelectOption(q.id, opt.value, opt.score)}
-                          className={`flex flex-col items-center justify-center rounded-2xl p-3 text-center text-xs font-medium border transition-all ${
+                          className={`w-9 h-9 rounded-full text-xs font-bold transition-all flex items-center justify-center cursor-pointer ${
                             isSelected
-                              ? "border-red-600 bg-red-600 text-white shadow-xs font-bold"
-                              : "border-stone-200 bg-stone-50/70 text-stone-700 hover:border-stone-900 hover:bg-white dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-750"
+                              ? "bg-[#5452e6] text-white shadow-md shadow-purple-500/30 scale-105"
+                              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                           }`}
+                          title={opt.label}
                         >
-                          <span className="text-base font-black mb-0.5">{opt.score}</span>
-                          <span className="text-[10px] leading-tight line-clamp-1">{opt.label.split("-")[1] || opt.label}</span>
+                          {opt.score}
                         </button>
                       );
                     })}
@@ -222,11 +222,11 @@ export default function AssessmentTakeClient({ id }: { id: string }) {
       </div>
 
       {/* Submit Button */}
-      <div className="pt-6 border-t border-stone-200/90 dark:border-stone-800 flex justify-end">
+      <div className="pt-6 border-t border-[#e8ebf8] flex justify-end">
         <button
           onClick={handleSubmit}
           disabled={submitting || answeredCount < questions.length}
-          className="inline-flex items-center gap-2 rounded-full bg-red-600 px-8 py-3 text-xs font-bold text-white shadow-xs hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="inline-flex items-center gap-2 rounded-xl bg-[#5452e6] px-8 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#433ec8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
         >
           {submitting ? "Menghitung Skor..." : "Kirim Jawaban & Lihat Laporan"}
           <ArrowRight className="h-4 w-4" />

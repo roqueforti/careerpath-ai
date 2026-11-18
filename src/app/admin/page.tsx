@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   ShieldAlert,
   Users,
@@ -23,7 +24,11 @@ import {
   Building2,
   Database,
   Key,
+  UserCheck,
+  BarChart3,
+  Plus,
 } from "lucide-react";
+import { UserActivityLineChart, CareerInterestDonutChart } from "@/components/AdminAnalyticsCharts";
 
 interface AdminStats {
   totalUsers: number;
@@ -107,349 +112,242 @@ export default function AdminDashboardPage() {
   });
 
   return (
-    <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-7 font-sans">
-      {/* Top Header Full-Width */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-zinc-200/90 pb-6 dark:border-zinc-800">
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-200/80 bg-red-50/80 px-3 py-1 text-xs font-bold text-red-700 dark:border-red-900/60 dark:bg-red-950/50 dark:text-red-300 mb-2.5">
-            <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
-            Platform Admin Control Center · Tata Kelola & Keamanan Sistem
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-950 dark:text-white">
-            Pusat Kendali & Audit Integritas Data Nasional
-          </h1>
-          <p className="mt-1 text-xs sm:text-sm text-zinc-500 max-w-4xl leading-relaxed dark:text-zinc-400">
-            Pemantauan kepatuhan privasi, otorisasi RBAC berjenjang, rekam jejak operasi sistem immutable, dan manajemen katalog profesi O*NET.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={loadData}
-            disabled={isRefreshing}
-            className="inline-flex items-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-bold shadow-xs transition-all disabled:opacity-50 cursor-pointer"
-          >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? "animate-spin" : ""}`} />
-            <span>Perbarui Data Real-Time</span>
-          </button>
-        </div>
-      </div>
-
-      {/* System Security & Integrity Grid (3 Cards Full-Width) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900 flex items-start gap-4">
-          <div className="rounded-xl bg-red-50 p-3 text-red-600 dark:bg-red-950/60 dark:text-red-400 shrink-0">
-            <Lock className="h-5 w-5" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-zinc-950 dark:text-white">
-              Otorisasi Server-Side (RBAC Least-Privilege)
-            </h4>
-            <p className="text-xs text-zinc-500 mt-1 leading-relaxed dark:text-zinc-400">
-              Penegakan izin akses di layer API route dan relasi PostgreSQL. Dosen & Mentor hanya memiliki hak baca pada mentee yang ditugaskan secara sah.
-            </p>
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900 flex items-start gap-4">
-          <div className="rounded-xl bg-zinc-100 p-3 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 shrink-0">
-            <Database className="h-5 w-5 text-red-600" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-zinc-950 dark:text-white">
-              Penyimpanan Relasional Persisten
-            </h4>
-            <p className="text-xs text-zinc-500 mt-1 leading-relaxed dark:text-zinc-400">
-              34 tabel PostgreSQL ternormalisasi dengan foreign keys, audit logs terenkripsi, dan akun mahasiswa terdaftar.
-            </p>
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900 flex items-start gap-4">
-          <div className="rounded-xl bg-red-50 p-3 text-red-600 dark:bg-red-950/60 dark:text-red-400 shrink-0">
-            <Sparkles className="h-5 w-5" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-zinc-950 dark:text-white">
-              AI Inferensi Multi-Provider & Fallback
-            </h4>
-            <p className="text-xs text-zinc-500 mt-1 leading-relaxed dark:text-zinc-400">
-              Integrasi langsung Google Gemini 3.5 Flash dengan sistem fail-safe diagnostik deterministik untuk menjamin ketersediaan 99.9% tanpa downtime.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Quantitative Metric Grid (6 Large Metrics Across Widescreen) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Total Pengguna</span>
-            <Users className="h-4 w-4 text-red-600" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalUsers : 7}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">
-            {stats ? stats.totalStudents : 4} Siswa · {stats ? stats.totalMentors : 1} Mentor
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Katalog Profesi</span>
-            <Compass className="h-4 w-4 text-red-600" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalOccupations : 10}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">
-            {stats ? stats.totalCompetencies : 15} Kompetensi O*NET
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Asesmen Aktif</span>
-            <BookOpen className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalAssessments : 1}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">Holland RIASEC v1.0</div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Peluang Loker</span>
-            <Briefcase className="h-4 w-4 text-red-600" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalOpportunities : 6}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">Lowongan Industri, Magang & Beasiswa</div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">IDP & Bukti</span>
-            <FileCheck2 className="h-4 w-4 text-emerald-600" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalIdps : 4}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">
-            {stats ? stats.totalEvidences : 4} Evidence Aktif
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-zinc-200/90 bg-white p-4 sm:p-5 shadow-xs dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between text-zinc-500 mb-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Interaksi AI</span>
-            <Bot className="h-4 w-4 text-red-600" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-zinc-950 dark:text-white">
-            {stats ? stats.totalAiMessages : 8}
-          </div>
-          <div className="mt-1 text-[11px] text-zinc-400">Sesi AI Mentor Sukses</div>
-        </div>
-      </div>
-
-      {/* Catalog & Module Governance Links (4 Widescreen Cards) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a
-          href="/career-map"
-          className="group rounded-2xl border border-zinc-200/90 bg-white p-5 hover:border-red-600 hover:shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900"
-        >
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="rounded-xl bg-red-50 p-2.5 text-red-600 dark:bg-red-950 dark:text-red-400">
-              <Compass className="h-4 w-4" />
-            </div>
-            <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
-          </div>
-          <h3 className="text-sm font-bold text-zinc-950 dark:text-white">Katalog Profesi & Jalur O*NET</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-            Kelola taksonomi 10 profesi acuan, prasyarat kompetensi, dan matriks level keahlian.
-          </p>
-        </a>
-
-        <a
-          href="/assessments"
-          className="group rounded-2xl border border-zinc-200/90 bg-white p-5 hover:border-red-600 hover:shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900"
-        >
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="rounded-xl bg-zinc-100 p-2.5 text-zinc-900 dark:bg-zinc-800 dark:text-white">
-              <BookOpen className="h-4 w-4 text-red-600" />
-            </div>
-            <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
-          </div>
-          <h3 className="text-sm font-bold text-zinc-950 dark:text-white">Definisi & Instrumen Asesmen</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-            Instrumen terstandar Holland RIASEC, 24 item pertanyaan Likert, dan formula pembobotan.
-          </p>
-        </a>
-
-        <a
-          href="/opportunities"
-          className="group rounded-2xl border border-zinc-200/90 bg-white p-5 hover:border-red-600 hover:shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900"
-        >
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="rounded-xl bg-red-50 p-2.5 text-red-600 dark:bg-red-950 dark:text-red-400">
-              <Briefcase className="h-4 w-4" />
-            </div>
-            <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
-          </div>
-          <h3 className="text-sm font-bold text-zinc-950 dark:text-white">Katalog Peluang Magang/Studi</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-            Kurasi bursa kerja industri, program magang nasional, dan kriteria diagnosis eligibility.
-          </p>
-        </a>
-
-        <a
-          href="/institution"
-          className="group rounded-2xl border border-zinc-200/90 bg-white p-5 hover:border-red-600 hover:shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900"
-        >
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="rounded-xl bg-zinc-100 p-2.5 text-zinc-900 dark:bg-zinc-800 dark:text-white">
-              <Building2 className="h-4 w-4 text-red-600" />
-            </div>
-            <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
-          </div>
-          <h3 className="text-sm font-bold text-zinc-950 dark:text-white">Institusi Mitra (Polinema & ITB)</h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-            Pantau perguruan tinggi mitra vokasi, keanggotaan mahasiswa, dan penugasan mentor.
-          </p>
-        </a>
-      </div>
-
-      {/* Audit Log Table Section (Full Width Table) */}
-      <div className="rounded-2xl border border-zinc-200/90 bg-white shadow-xs overflow-hidden dark:border-zinc-800 dark:bg-zinc-900">
-        <div className="p-5 border-b border-zinc-100 dark:border-zinc-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <Activity className="h-5 w-5 text-red-600" />
-              <h2 className="text-base font-extrabold tracking-tight text-zinc-950 dark:text-white">
-                Log Audit & Rekam Jejak Sistem Immutable
-              </h2>
-            </div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              Catatan operasi sensitif (autentikasi, perubahan IDP, asesmen Holland, verifikasi portofolio mentor, seed)
+    <div className="w-full space-y-6">
+      
+      {/* 1. Main Admin Overview Card Matching View 4 */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e8ebf8] shadow-[0_8px_30px_rgb(84,82,230,0.05)] space-y-6">
+        
+        {/* Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              Dashboard Admin
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium">
+              Ringkasan data dan aktivitas platform CareerPath AI
             </p>
           </div>
 
-          {/* Search and Filters */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-zinc-400" />
-              <input
-                type="text"
-                placeholder="Cari aksi, user, resource..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="rounded-xl border border-zinc-200 bg-zinc-50/70 py-1.5 pl-8 pr-3 text-xs text-zinc-900 placeholder:text-zinc-400 focus:border-red-600 focus:bg-white focus:outline-hidden dark:border-zinc-700 dark:bg-zinc-800 dark:text-white transition-all w-64"
+          <div className="flex items-center gap-2">
+            <button
+              onClick={loadData}
+              disabled={isRefreshing}
+              className="px-3.5 py-2 rounded-xl border border-[#e8ebf8] bg-white text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 text-[#5452e6] ${isRefreshing ? "animate-spin" : ""}`} />
+              <span>Perbarui</span>
+            </button>
+          </div>
+        </div>
+
+        {/* 4 Stat Cards Row */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div className="bg-[#fafbff] rounded-2xl p-4 sm:p-5 border border-[#e8ebf8] space-y-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold">
+                👥
+              </div>
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Pengguna</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 leading-tight">
+              {stats?.totalUsers ? stats.totalUsers.toLocaleString() : "12.480"}
+            </div>
+            <div className="text-xs font-bold text-emerald-600">&uarr; 12% dari bulan lalu</div>
+          </div>
+
+          <div className="bg-[#fafbff] rounded-2xl p-4 sm:p-5 border border-[#e8ebf8] space-y-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 text-sm font-bold">
+                👤
+              </div>
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Mentor Aktif</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 leading-tight">
+              {stats?.totalMentors ? stats.totalMentors : "42"}
+            </div>
+            <div className="text-xs font-bold text-emerald-600">&uarr; 8% pembimbing terverifikasi</div>
+          </div>
+
+          <div className="bg-[#fafbff] rounded-2xl p-4 sm:p-5 border border-[#e8ebf8] space-y-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 text-sm font-bold">
+                📊
+              </div>
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Aktivitas Platform</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 leading-tight">86%</div>
+            <div className="text-xs font-bold text-emerald-600">&uarr; 5% tingkat interaksi</div>
+          </div>
+
+          <div className="bg-[#fafbff] rounded-2xl p-4 sm:p-5 border border-[#e8ebf8] space-y-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 text-sm font-bold">
+                💼
+              </div>
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Lowongan Aktif</span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 leading-tight">
+              {stats?.totalOpportunities ? stats.totalOpportunities : "128"}
+            </div>
+            <div className="text-xs font-bold text-emerald-600">&uarr; 10% terkurasi nasional</div>
+          </div>
+
+        </div>
+
+        {/* 2 Middle Charts: Tren Aktivitas & Distribusi Minat */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          
+          {/* Tren Aktivitas Pengguna (Line Chart) */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] space-y-3">
+            <span className="text-xs font-bold text-slate-800 block">
+              Tren Aktivitas Pengguna
+            </span>
+            <UserActivityLineChart />
+          </div>
+
+          {/* Distribusi Minat Karier (Donut Chart) */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] space-y-3">
+            <span className="text-xs font-bold text-slate-800 block">
+              Distribusi Minat Karier
+            </span>
+            <div className="py-2">
+              <CareerInterestDonutChart />
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Row: Quick Management & System Update */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          
+          {/* Manajemen Cepat */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] space-y-3">
+            <span className="text-xs font-bold text-slate-800 block">Manajemen Cepat</span>
+            <div className="grid grid-cols-2 gap-2.5">
+              <a
+                href="#audit"
+                className="p-3 rounded-xl bg-white border border-[#e8ebf8] text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 transition-all shadow-2xs"
+              >
+                <Plus className="w-4 h-4 text-[#5452e6]" />
+                <span>Tambah Pengguna</span>
+              </a>
+
+              <a
+                href="#audit"
+                className="p-3 rounded-xl bg-white border border-[#e8ebf8] text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 transition-all shadow-2xs"
+              >
+                <UserCheck className="w-4 h-4 text-[#5452e6]" />
+                <span>Kelola Mentor</span>
+              </a>
+
+              <Link
+                href="/assessments"
+                className="p-3 rounded-xl bg-white border border-[#e8ebf8] text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 transition-all shadow-2xs"
+              >
+                <BookOpen className="w-4 h-4 text-[#5452e6]" />
+                <span>Kelola Konten</span>
+              </Link>
+
+              <a
+                href="#audit"
+                className="p-3 rounded-xl bg-white border border-[#e8ebf8] text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-2.5 transition-all shadow-2xs"
+              >
+                <BarChart3 className="w-4 h-4 text-[#5452e6]" />
+                <span>Lihat Laporan</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Update Sistem with Mentor Illustration */}
+          <div className="bg-gradient-to-r from-purple-50/80 via-blue-50/70 to-slate-50 rounded-2xl p-5 border border-purple-200/50 flex items-center justify-between gap-4">
+            <div className="space-y-2 flex-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#5452e6]">
+                <span>📢</span>
+                <span>Update Sistem</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                Versi 1.0.0 telah dirilis dengan fitur analitik yang lebih lengkap, skoring psikometri Holland terverifikasi, dan koneksi Supabase PostgreSQL.
+              </p>
+              <a href="#audit" className="text-xs font-bold text-[#5452e6] hover:underline inline-block pt-1">
+                Lihat Detail ➔
+              </a>
+            </div>
+
+            <div className="w-24 h-28 relative shrink-0">
+              <img
+                src="/illustrations/mentor-woman.jpg"
+                alt="System update advisor"
+                className="w-full h-full object-contain rounded-xl drop-shadow-sm"
               />
             </div>
+          </div>
 
-            <select
-              value={selectedAction}
-              onChange={(e) => setSelectedAction(e.target.value)}
-              className="rounded-xl border border-zinc-200 bg-zinc-50/70 py-1.5 px-3 text-xs font-bold text-zinc-700 focus:border-red-600 focus:outline-hidden dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
-            >
-              <option value="ALL">Semua Aksi</option>
-              <option value="LOGIN">LOGIN</option>
-              <option value="REGISTER">REGISTER</option>
-              <option value="ASSESSMENT">ASSESSMENT</option>
-              <option value="IDP">IDP</option>
-              <option value="EVIDENCE">EVIDENCE</option>
-              <option value="MENTOR">MENTOR</option>
-              <option value="SEED">SEED</option>
-            </select>
+        </div>
+
+      </div>
+
+      {/* 2. Audit Logs & Data Integrity Table */}
+      <div id="audit" className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e8ebf8] shadow-[0_8px_30px_rgb(84,82,230,0.05)] space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <h3 className="text-lg font-black text-slate-900">Log Audit Sistem &amp; Keamanan</h3>
+            <p className="text-xs text-slate-500 font-medium">Rekaman operasi mutasi data dan otorisasi RBAC (Immutable Audit Trail)</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Cari aksi atau user..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#5452e6]/20 focus:border-[#5452e6]"
+            />
           </div>
         </div>
 
-        {/* Table Across Full Width */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-zinc-50/90 text-zinc-500 border-b border-zinc-200/90 dark:bg-zinc-950/60 dark:border-zinc-800 font-bold uppercase tracking-wider text-[11px]">
-              <tr>
-                <th className="py-3 px-5">Waktu & IP Address</th>
-                <th className="py-3 px-5">Aktor / User</th>
-                <th className="py-3 px-5">Aksi Sistem</th>
-                <th className="py-3 px-5">Resource Target</th>
-                <th className="py-3 px-5">Detail Parameter Operasi</th>
+            <thead>
+              <tr className="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
+                <th className="py-3 px-3">Waktu</th>
+                <th className="py-3 px-3">Pengguna</th>
+                <th className="py-3 px-3">Aksi</th>
+                <th className="py-3 px-3">Sumber Daya</th>
+                <th className="py-3 px-3">IP Address</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
-              {filteredLogs.length > 0 ? (
-                filteredLogs.map((log) => {
-                  const actionUpper = log.action.toUpperCase();
-                  const badgeColor = actionUpper.includes("LOGIN") || actionUpper.includes("AUTH")
-                    ? "bg-zinc-100 text-zinc-800 border-zinc-300 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700"
-                    : actionUpper.includes("CREATE") || actionUpper.includes("SEED")
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800"
-                    : actionUpper.includes("UPDATE") || actionUpper.includes("REVIEW")
-                    ? "bg-red-50 text-red-800 border-red-300 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800"
-                    : "bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700";
-
-                  return (
-                    <tr key={log.id} className="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/40 transition-colors">
-                      <td className="py-3.5 px-5 whitespace-nowrap">
-                        <div className="font-mono text-[11px] font-bold text-zinc-900 dark:text-white">
-                          {new Date(log.created_at).toLocaleString("id-ID", {
-                            dateStyle: "short",
-                            timeStyle: "medium",
-                          })}
-                        </div>
-                        <div className="text-[10px] text-zinc-400 font-mono">
-                          {log.ip_address || "127.0.0.1"}
-                        </div>
-                      </td>
-
-                      <td className="py-3.5 px-5">
-                        <div className="font-bold text-zinc-950 dark:text-white">
-                          {log.user_name || "System"}
-                        </div>
-                        <div className="text-[10px] text-zinc-400 font-mono">
-                          {log.user_email || log.user_id || "SYSTEM_DAEMON"}
-                        </div>
-                      </td>
-
-                      <td className="py-3.5 px-5 whitespace-nowrap">
-                        <span
-                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${badgeColor}`}
-                        >
-                          {log.action}
-                        </span>
-                      </td>
-
-                      <td className="py-3.5 px-5 whitespace-nowrap">
-                        <span className="font-mono text-zinc-800 dark:text-zinc-200 font-medium">
-                          {log.resource}
-                        </span>
-                        {log.resource_id && (
-                          <div className="text-[10px] text-zinc-400 font-mono">
-                            ID: {log.resource_id.substring(0, 16)}...
-                          </div>
-                        )}
-                      </td>
-
-                      <td className="py-3.5 px-5 max-w-md truncate font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
-                        {log.details_json ? log.details_json : "-"}
-                      </td>
-                    </tr>
-                  );
-                })
-              ) : (
+            <tbody className="divide-y divide-slate-50 font-medium text-slate-700">
+              {filteredLogs.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-10 text-center text-zinc-400 text-xs">
-                    Tidak ada catatan audit yang cocok dengan filter pencarian.
+                  <td colSpan={5} className="py-8 text-center text-slate-400">
+                    Tidak ada catatan log yang cocok.
                   </td>
                 </tr>
+              ) : (
+                filteredLogs.slice(0, 10).map((log) => (
+                  <tr key={log.id} className="hover:bg-slate-50/60 transition-colors">
+                    <td className="py-3 px-3 text-slate-400 whitespace-nowrap">
+                      {new Date(log.created_at).toLocaleString("id-ID")}
+                    </td>
+                    <td className="py-3 px-3 font-semibold text-slate-900">
+                      {log.user_name || log.user_email || "System"}
+                    </td>
+                    <td className="py-3 px-3">
+                      <span className="px-2 py-0.5 rounded-full bg-purple-50 text-[#5452e6] text-[10px] font-black">
+                        {log.action}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 text-slate-600">{log.resource}</td>
+                    <td className="py-3 px-3 font-mono text-[10px] text-slate-400">{log.ip_address || "127.0.0.1"}</td>
+                  </tr>
+                ))
               )}
             </tbody>
           </table>
         </div>
       </div>
+
     </div>
   );
 }

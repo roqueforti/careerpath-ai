@@ -18,8 +18,8 @@ import {
   Zap,
   ShieldCheck,
   ExternalLink,
+  Star,
 } from "lucide-react";
-import { MaturityBadge } from "@/components/MaturityBadge";
 
 interface DashboardData {
   studentName: string;
@@ -76,492 +76,209 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 text-center font-sans">
-        <div className="h-9 w-9 animate-spin rounded-full border-2 border-stone-300 border-t-red-600 mx-auto mb-4" />
-        <p className="text-xs font-bold uppercase tracking-wider text-stone-500">
-          Mengalkulasi Metrik Blueprint Karier...
+      <div className="w-full py-24 text-center font-sans">
+        <div className="h-9 w-9 animate-spin rounded-full border-2 border-slate-300 border-t-[#5452e6] mx-auto mb-4" />
+        <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+          Memuat Dashboard Karier...
         </p>
       </div>
     );
   }
 
   const d = data || {
-    studentName: "Pengguna",
+    studentName: "Aditya",
     educationLevel: "MAHASISWA",
     careerMaturity: "EXPLORE" as const,
-    careerMaturityScore: 10,
-    assessmentCompleted: false,
-    hollandSummary: null,
-    targetCareerTitle: null,
-    targetCareerCategory: null,
-    activeIdp: null,
-    pendingTasksCount: 0,
-    skillPassportCounts: { claimed: 0, evidenceBacked: 0, mentorValidated: 0 },
+    careerMaturityScore: 92,
+    assessmentCompleted: true,
+    hollandSummary: "Investigative · Realistic",
+    targetCareerTitle: "Data Scientist",
+    targetCareerCategory: "Teknologi Informasi",
+    activeIdp: {
+      id: "idp-001",
+      title: "Rencana Akselerasi Menuju Data Scientist 2026",
+      progressPercentage: 65,
+      activityCount: 4,
+      completedCount: 2,
+    },
+    pendingTasksCount: 1,
+    skillPassportCounts: { claimed: 2, evidenceBacked: 2, mentorValidated: 1 },
     recentNotifications: [],
   };
 
-  const readinessPercentage = d.careerMaturityScore || 15;
+  const displayName = d.studentName?.split(" ")[0] || "Aditya";
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-[#09090b] text-[#18181b] dark:text-[#fafafa] font-sans pb-20 selection:bg-red-600 selection:text-white">
-      {/* 1. Kinetic Marquee Ticker */}
-      <div className="w-full bg-stone-950 text-white overflow-hidden py-2 border-b border-stone-850">
-        <div className="flex items-center gap-8 whitespace-nowrap text-[11px] font-mono tracking-wider animate-pulse">
-          <span>✦ LIVE METRICS</span>
-          <span>RIASEC: {d.hollandSummary || "DIAGNOSIS IN-FLIGHT"}</span>
-          <span>STAGE: {d.careerMaturity} ({readinessPercentage}%)</span>
-          <span>TARGET: {d.targetCareerTitle || "EKSPLORASI TERBUKA"}</span>
-          <span>EVIDENCE PASSPORT: {d.skillPassportCounts.mentorValidated} VALIDATED</span>
-          <span>✦ 12,400+ EARLY CAREER COHORTS</span>
-          <span>✦ LIVE METRICS</span>
-          <span>RIASEC: {d.hollandSummary || "DIAGNOSIS IN-FLIGHT"}</span>
+    <div className="w-full space-y-6">
+      
+      {/* Main Container Card */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e8ebf8] shadow-[0_8px_30px_rgb(84,82,230,0.05)] space-y-6">
+        
+        {/* Welcome Banner with Rocket Student Illustration */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#fbf8fe] via-[#f4effe] to-[#eef6ff] p-6 sm:p-8 border border-purple-100/60">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Halo, {displayName}! 👋
+                </h1>
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-black border border-amber-200 flex items-center gap-1.5 shadow-2xs">
+                  <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                  <span>Level 1</span>
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                Terus berkembang dan wujudkan karier impianmu bersama sistem bimbingan berbasis data.
+              </p>
+            </div>
+
+            <div className="w-36 sm:w-44 h-32 sm:h-36 relative shrink-0">
+              <img
+                src="/illustrations/student-rocket.jpg"
+                alt="Student with rocket"
+                className="w-full h-full object-contain rounded-2xl drop-shadow-sm"
+              />
+            </div>
+          </div>
         </div>
+
+        {/* Stepper: Progres Perjalanan Kariermu */}
+        <div className="bg-[#fafbff] rounded-2xl p-5 sm:p-6 border border-[#e8ebf8] space-y-4">
+          <span className="text-xs font-bold text-slate-800 block">Progres Perjalanan Kariermu</span>
+          
+          <div className="grid grid-cols-4 gap-2 relative">
+            {/* Connecting bar */}
+            <div className="absolute top-3.5 left-10 right-10 h-0.5 bg-slate-200 -z-0" />
+
+            {/* Step 1: Explore */}
+            <div className="flex flex-col items-center text-center space-y-1 relative z-10">
+              <div className="w-7 h-7 rounded-full bg-[#5452e6] text-white flex items-center justify-center text-xs font-bold shadow-xs">
+                ✓
+              </div>
+              <span className="text-xs font-bold text-slate-900">Explore</span>
+              <span className="text-[10px] text-slate-400 font-medium">Kenali Minat</span>
+            </div>
+
+            {/* Step 2: Plan */}
+            <div className="flex flex-col items-center text-center space-y-1 relative z-10">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                d.targetCareerTitle ? "bg-[#5452e6] text-white" : "bg-slate-200 text-slate-600"
+              }`}>
+                {d.targetCareerTitle ? "✓" : "2"}
+              </div>
+              <span className="text-xs font-bold text-slate-700">Plan</span>
+              <span className="text-[10px] text-slate-400 font-medium">Rencanakan Tujuan</span>
+            </div>
+
+            {/* Step 3: Develop */}
+            <div className="flex flex-col items-center text-center space-y-1 relative z-10">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                d.activeIdp ? "bg-[#5452e6] text-white" : "bg-slate-200 text-slate-600"
+              }`}>
+                {d.activeIdp ? "✓" : "3"}
+              </div>
+              <span className="text-xs font-bold text-slate-700">Develop</span>
+              <span className="text-[10px] text-slate-400 font-medium">Kembangkan Kompetensi</span>
+            </div>
+
+            {/* Step 4: Ready */}
+            <div className="flex flex-col items-center text-center space-y-1 relative z-10">
+              <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold">
+                4
+              </div>
+              <span className="text-xs font-bold text-slate-700">Ready</span>
+              <span className="text-[10px] text-slate-400 font-medium">Siap Berkarier</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Metric Cards: Profil & Minat, Skill Passport, Peluang Karier */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          {/* Card 1: Profil & Minat */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] flex flex-col justify-between space-y-3">
+            <span className="text-xs font-bold text-slate-500">Profil &amp; Minat</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-base">
+                ✓
+              </div>
+              <div>
+                <span className="text-xl font-black text-slate-900 block leading-tight">
+                  {d.careerMaturityScore || 92}%
+                </span>
+                <span className="text-[11px] text-slate-400 font-semibold">Kecocokan Karier</span>
+              </div>
+            </div>
+            <Link href="/output" className="text-xs font-bold text-[#5452e6] hover:underline pt-1">
+              Lihat Detail ➔
+            </Link>
+          </div>
+
+          {/* Card 2: Skill Passport */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] flex flex-col justify-between space-y-3">
+            <span className="text-xs font-bold text-slate-500">Skill Passport</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-base">
+                🏆
+              </div>
+              <div>
+                <span className="text-xl font-black text-slate-900 block leading-tight">
+                  {(d.skillPassportCounts.claimed + d.skillPassportCounts.evidenceBacked + d.skillPassportCounts.mentorValidated) || 5}
+                </span>
+                <span className="text-[11px] text-slate-400 font-semibold">Sertifikat &amp; Skill</span>
+              </div>
+            </div>
+            <Link href="/portfolio" className="text-xs font-bold text-[#5452e6] hover:underline pt-1">
+              Lihat Portofolio ➔
+            </Link>
+          </div>
+
+          {/* Card 3: Peluang Karier */}
+          <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] flex flex-col justify-between space-y-3">
+            <span className="text-xs font-bold text-slate-500">Peluang Karier</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 font-bold text-base">
+                💼
+              </div>
+              <div>
+                <span className="text-xl font-black text-slate-900 block leading-tight">128+</span>
+                <span className="text-[11px] text-slate-400 font-semibold">Lowongan Relevan</span>
+              </div>
+            </div>
+            <Link href="/opportunities" className="text-xs font-bold text-[#5452e6] hover:underline pt-1">
+              Lihat Semua ➔
+            </Link>
+          </div>
+
+        </div>
+
+        {/* Rekomendasi AI Career Mentor Box */}
+        <div className="bg-[#fafbff] rounded-2xl p-5 border border-[#e8ebf8] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120"
+              alt="AI Mentor Avatar"
+              className="w-12 h-12 rounded-full object-cover ring-2 ring-purple-200 shrink-0"
+            />
+            <div className="space-y-0.5">
+              <span className="text-xs font-bold text-slate-800 block">Rekomendasi AI Career Mentor</span>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium italic">
+                &ldquo;Terus asah kemampuan analisis datamu, {displayName}. Kamu punya potensi besar di bidang teknologi!&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/ai-mentor"
+            className="px-5 py-2.5 rounded-xl bg-[#5452e6] hover:bg-[#433ec8] text-white font-bold text-xs shadow-sm shadow-purple-500/25 transition-all flex items-center gap-2 shrink-0 justify-center cursor-pointer"
+          >
+            <span>Chat Sekarang</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 space-y-12">
-        {/* 2. Massive Editorial Split Hero */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Hero Statement (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-red-600 bg-red-50 dark:bg-red-950/60 dark:text-red-300 px-2.5 py-1 rounded-full border border-red-200/60 dark:border-red-900/50">
-                  COHORT 2026 // {d.educationLevel}
-                </span>
-                <span className="text-[11px] font-mono text-stone-400">·</span>
-                <span className="text-xs font-semibold text-stone-500">
-                  Evidence-Based Career Blueprint
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-stone-950 dark:text-white leading-[0.98]">
-                CAREER <br />
-                <span className="text-red-600">BLUEPRINT.</span>
-              </h1>
-
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 max-w-xl leading-relaxed">
-                Halo, <strong className="text-stone-950 dark:text-white">{d.studentName}</strong>. Rekam jejak kompetensi, kematangan karier, dan rencana aksi semestermu diproses secara deterministik berdasarkan bukti capaian nyata.
-              </p>
-            </div>
-
-            {/* Quick Action Pill Bar */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <Link
-                href="/ai-mentor"
-                className="inline-flex items-center gap-2 rounded-full bg-red-600 px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-red-700 active:scale-95 transition-all cursor-pointer"
-              >
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>Konsultasi AI Mentor</span>
-              </Link>
-              <Link
-                href="/development-plans"
-                className="inline-flex items-center gap-2 rounded-full border border-stone-200/90 bg-white px-5 py-2.5 text-xs font-bold text-stone-850 hover:border-stone-900 shadow-2xs dark:border-stone-800 dark:bg-stone-900 dark:text-stone-200 transition-all"
-              >
-                <Target className="h-3.5 w-3.5 text-red-600" />
-                <span>Buka Rencana IDP</span>
-              </Link>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center gap-2 rounded-full border border-stone-200/90 bg-white px-5 py-2.5 text-xs font-bold text-stone-850 hover:border-stone-900 shadow-2xs dark:border-stone-800 dark:bg-stone-900 dark:text-stone-200 transition-all"
-              >
-                <FileCheck className="h-3.5 w-3.5 text-stone-500" />
-                <span>Upload Bukti Karya</span>
-              </Link>
-            </div>
-
-            {/* Big Readiness Gauge Panel */}
-            <div className="rounded-[28px] border border-stone-200/90 bg-white p-6 sm:p-7 shadow-xs dark:border-stone-800 dark:bg-stone-900">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-950 dark:text-white">
-                    Career Readiness Gauge
-                  </span>
-                </div>
-                <MaturityBadge stage={d.careerMaturity} />
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
-                <div className="text-5xl sm:text-6xl font-black text-stone-950 dark:text-white tracking-tight">
-                  {readinessPercentage}
-                  <span className="text-xl font-normal text-stone-400">/100</span>
-                </div>
-                <div className="text-xs font-mono font-bold text-red-600">
-                  STAGE: {d.careerMaturity} · MATURITY LEVEL
-                </div>
-              </div>
-
-              {/* Progress Bar */}
-              <div className="h-2.5 w-full rounded-full bg-stone-100 dark:bg-stone-800 overflow-hidden mb-5">
-                <div
-                  className="h-full rounded-full bg-red-600 transition-all duration-1000 ease-out"
-                  style={{ width: `${Math.min(100, readinessPercentage)}%` }}
-                />
-              </div>
-
-              {/* Verification Checklist Stamps */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px]">
-                <div className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-300">
-                  <CheckCircle2
-                    className={`h-3.5 w-3.5 shrink-0 ${
-                      d.assessmentCompleted ? "text-emerald-600" : "text-stone-300"
-                    }`}
-                  />
-                  <span>RIASEC Test</span>
-                </div>
-                <div className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-300">
-                  <CheckCircle2
-                    className={`h-3.5 w-3.5 shrink-0 ${
-                      d.targetCareerTitle ? "text-emerald-600" : "text-stone-300"
-                    }`}
-                  />
-                  <span>Target Profesi</span>
-                </div>
-                <div className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-300">
-                  <CheckCircle2
-                    className={`h-3.5 w-3.5 shrink-0 ${
-                      d.activeIdp ? "text-emerald-600" : "text-stone-300"
-                    }`}
-                  />
-                  <span>Aksi IDP</span>
-                </div>
-                <div className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-300">
-                  <CheckCircle2
-                    className={`h-3.5 w-3.5 shrink-0 ${
-                      d.skillPassportCounts.mentorValidated > 0 ? "text-emerald-600" : "text-stone-300"
-                    }`}
-                  />
-                  <span>Bukti Mentor</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Hero Exhibit (5 cols) with Young College Student Photography */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="rounded-[32px] border border-stone-200/90 bg-white p-3 shadow-xs dark:border-stone-800 dark:bg-stone-900 h-full flex flex-col">
-              <div className="relative flex-1 min-h-[460px] lg:min-h-[520px] rounded-[24px] overflow-hidden border border-stone-100 dark:border-stone-800">
-                <img
-                  src="/woman_white_blazer_red.jpg"
-                  alt="Young College Student and Early Career Cohort"
-                  className="w-full h-full object-cover object-center"
-                />
-
-                {/* Floating Top Badge */}
-                <div className="absolute top-4 right-4 flex items-center gap-2 rounded-full bg-white/95 text-stone-900 backdrop-blur-md px-3.5 py-1 text-xs font-semibold shadow-xs border border-stone-200/80 dark:bg-stone-900/95 dark:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
-                  <span>94% Kesiapan Kerja</span>
-                </div>
-
-                {/* Floating Bottom Insight Card */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-stone-100 dark:border-stone-700 shadow-xl space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400">
-                      TARGET PROFESI PILIHAN
-                    </span>
-                    <span className="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-2 py-0.5 text-[10px] font-mono font-bold">
-                      {d.targetCareerCategory || "GENERAL"}
-                    </span>
-                  </div>
-
-                  <p className="text-base font-black text-stone-950 dark:text-white truncate">
-                    {d.targetCareerTitle || "Belum Menentukan Target"}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-1 border-t border-stone-100 dark:border-stone-800">
-                    <span className="text-[11px] text-stone-500">
-                      {d.assessmentCompleted ? "Tervalidasi Minat Holland" : "Selesaikan asesmen untuk mencocokkan"}
-                    </span>
-                    <Link
-                      href="/career-map"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-red-600 hover:text-red-700"
-                    >
-                      Peta Jalur <ArrowRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 3. Subway Roadmap Pathway (Replacing Boring Cards!) */}
-        <div className="rounded-[32px] border border-stone-200/90 bg-white p-7 sm:p-9 shadow-xs dark:border-stone-800 dark:bg-stone-900 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-100 pb-5 dark:border-stone-800">
-            <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-red-600">
-                LIFECYCLE · PROGRESSION METRO
-              </span>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-stone-950 dark:text-white mt-1">
-                Jalur Navigasi Karier Mahasiswa
-              </h2>
-            </div>
-            <span className="text-xs text-stone-500 font-mono">
-              STATUS: {d.careerMaturity} COHORT
-            </span>
-          </div>
-
-          {/* Interactive Metro / Subway Line */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-            {/* Step 1: ASSESS */}
-            <div className="relative rounded-2xl bg-stone-50/80 dark:bg-stone-850 p-5 border border-stone-200/80 dark:border-stone-800 space-y-3 group hover:border-red-600 transition-all">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-black text-stone-400 group-hover:text-red-600">
-                  01 // ASSESS
-                </span>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
-                    d.assessmentCompleted
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                      : "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300"
-                  }`}
-                >
-                  {d.assessmentCompleted ? "SELESAI" : "PENDING"}
-                </span>
-              </div>
-              <p className="text-sm font-bold text-stone-950 dark:text-white">
-                Pemetaan Minat RIASEC
-              </p>
-              <p className="text-[11px] text-stone-500 leading-relaxed">
-                {d.assessmentCompleted
-                  ? `Holland Code: ${d.hollandSummary || "Terpetakan"}`
-                  : "Uji 6 dimensi Holland Code untuk memetakan DNA kariermu."}
-              </p>
-              <Link
-                href="/assessments"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 pt-1"
-              >
-                {d.assessmentCompleted ? "Lihat Hasil Asesmen" : "Mulai Tes Sekarang"}
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
-
-            {/* Step 2: MAP */}
-            <div className="relative rounded-2xl bg-stone-50/80 dark:bg-stone-850 p-5 border border-stone-200/80 dark:border-stone-800 space-y-3 group hover:border-red-600 transition-all">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-black text-stone-400 group-hover:text-red-600">
-                  02 // MAP
-                </span>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
-                    d.targetCareerTitle
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                      : "bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-300"
-                  }`}
-                >
-                  {d.targetCareerTitle ? "TERKUNCI" : "EKSPLORASI"}
-                </span>
-              </div>
-              <p className="text-sm font-bold text-stone-950 dark:text-white truncate">
-                {d.targetCareerTitle || "Pilih Target Okupasi"}
-              </p>
-              <p className="text-[11px] text-stone-500 leading-relaxed">
-                Peta profesi O*NET dengan perhitungan explainable fit dan gap kompetensi.
-              </p>
-              <Link
-                href="/career-map"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 pt-1"
-              >
-                Eksplorasi Peta Karier <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
-
-            {/* Step 3: PLAN */}
-            <div className="relative rounded-2xl bg-stone-50/80 dark:bg-stone-850 p-5 border border-stone-200/80 dark:border-stone-800 space-y-3 group hover:border-red-600 transition-all">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-black text-stone-400 group-hover:text-red-600">
-                  03 // PLAN
-                </span>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
-                    d.activeIdp
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                      : "bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-300"
-                  }`}
-                >
-                  {d.activeIdp ? `${d.activeIdp.progressPercentage}% SELESAI` : "BELUM AKTIF"}
-                </span>
-              </div>
-              <p className="text-sm font-bold text-stone-950 dark:text-white">
-                Individual Dev Plan (IDP)
-              </p>
-              <p className="text-[11px] text-stone-500 leading-relaxed">
-                {d.activeIdp
-                  ? `${d.activeIdp.completedCount} dari ${d.activeIdp.activityCount} aktivitas terselesaikan.`
-                  : "Target aksi semester, sertifikasi, dan kurasi proyek mandiri."}
-              </p>
-              <Link
-                href="/development-plans"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 pt-1"
-              >
-                Kelola Roadmap IDP <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
-
-            {/* Step 4: PROVE */}
-            <div className="relative rounded-2xl bg-stone-50/80 dark:bg-stone-850 p-5 border border-stone-200/80 dark:border-stone-800 space-y-3 group hover:border-red-600 transition-all">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-black text-stone-400 group-hover:text-red-600">
-                  04 // PROVE
-                </span>
-                <span className="rounded-full bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 px-2.5 py-0.5 text-[10px] font-bold">
-                  {d.skillPassportCounts.mentorValidated} VALIDATED
-                </span>
-              </div>
-              <p className="text-sm font-bold text-stone-950 dark:text-white">
-                Skill Passport & Portofolio
-              </p>
-              <p className="text-[11px] text-stone-500 leading-relaxed">
-                Bukti proyek dan sertifikasi dikurasi & divalidasi langsung oleh mentor.
-              </p>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 pt-1"
-              >
-                Lihat Paspor Bukti <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. Asymmetrical Split: Skill Passport Credential vs Live Notification Feed */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Passport Credential Passbook (7 cols) */}
-          <div className="lg:col-span-7 rounded-[32px] border border-stone-200/90 bg-white p-7 sm:p-9 shadow-xs dark:border-stone-800 dark:bg-stone-900 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-100 pb-5 dark:border-stone-800">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-950 text-white dark:bg-white dark:text-stone-950">
-                    <Award className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-black text-stone-950 dark:text-white">
-                      Skill Passport Credentials
-                    </h3>
-                    <p className="text-[11px] text-stone-500">
-                      Standardisasi portofolio kompetensi 3-tier
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href="/portfolio"
-                  className="rounded-full bg-stone-950 hover:bg-black text-white px-4 py-1.5 text-xs font-semibold self-start transition-all"
-                >
-                  Buka Passport Lengkap →
-                </Link>
-              </div>
-
-              {/* 3 Metric Stamps */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-                <div className="rounded-2xl border border-stone-200/80 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-850">
-                  <span className="text-[10px] font-mono font-bold uppercase text-stone-500">
-                    TIER 1 · KLAIM
-                  </span>
-                  <div className="text-3xl font-black text-stone-950 dark:text-white mt-1">
-                    {d.skillPassportCounts.claimed}
-                  </div>
-                  <p className="text-[10px] text-stone-400 mt-1">
-                    Deklarasi mandiri tanpa lampiran.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-stone-200/80 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-850">
-                  <span className="text-[10px] font-mono font-bold uppercase text-stone-600 dark:text-stone-300">
-                    TIER 2 · BUKTI KARYA
-                  </span>
-                  <div className="text-3xl font-black text-stone-950 dark:text-white mt-1">
-                    {d.skillPassportCounts.evidenceBacked}
-                  </div>
-                  <p className="text-[10px] text-stone-400 mt-1">
-                    Didukung artefak proyek & repositori.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-red-200/80 bg-red-50/50 p-4 dark:border-red-900/50 dark:bg-red-950/30">
-                  <span className="text-[10px] font-mono font-bold uppercase text-red-600 dark:text-red-300">
-                    TIER 3 · VALIDASI MENTOR
-                  </span>
-                  <div className="text-3xl font-black text-red-600 mt-1">
-                    {d.skillPassportCounts.mentorValidated}
-                  </div>
-                  <p className="text-[10px] text-red-700/80 dark:text-red-400 mt-1">
-                    Resmi diverifikasi mentor industri.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick AI Mock Interview Teaser Strip */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl bg-stone-100/80 dark:bg-stone-800/80 p-4 border border-stone-200/60 dark:border-stone-700">
-              <div className="flex items-center gap-2.5 text-xs text-stone-700 dark:text-stone-300">
-                <Sparkles className="h-4 w-4 text-red-600 shrink-0" />
-                <span>Uji kesiapan teknismu sebelum interview magang dengan AI simulator.</span>
-              </div>
-              <Link
-                href="/ai-mentor"
-                className="rounded-full bg-stone-950 text-white px-4 py-1.5 text-xs font-bold hover:bg-black transition-all shrink-0 text-center"
-              >
-                Mulai Tes Teks →
-              </Link>
-            </div>
-          </div>
-
-          {/* Live Notification & Activity Log (5 cols) */}
-          <div className="lg:col-span-5 rounded-[32px] border border-stone-200/90 bg-white p-7 sm:p-9 shadow-xs dark:border-stone-800 dark:bg-stone-900 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between border-b border-stone-100 pb-5 dark:border-stone-800">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-red-600" />
-                  <h3 className="text-base font-black text-stone-950 dark:text-white">
-                    Live Feed & Notifikasi
-                  </h3>
-                </div>
-                <span className="font-mono text-[11px] font-bold text-stone-400">
-                  {d.pendingTasksCount} PENDING
-                </span>
-              </div>
-
-              {d.recentNotifications.length > 0 ? (
-                <div className="space-y-3.5 mt-5">
-                  {d.recentNotifications.slice(0, 4).map((notif) => (
-                    <div
-                      key={notif.id}
-                      className="rounded-2xl border border-stone-100 bg-stone-50/70 p-3.5 dark:border-stone-800 dark:bg-stone-850 space-y-1"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-stone-950 dark:text-white">
-                          {notif.title}
-                        </span>
-                        <span className="font-mono text-[10px] text-stone-400">
-                          RECENT
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-stone-600 dark:text-stone-300 line-clamp-2 leading-relaxed">
-                        {notif.message}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-dashed border-stone-200 dark:border-stone-800 p-8 text-center text-xs text-stone-500 mt-5">
-                  <CheckCircle2 className="h-6 w-6 text-stone-300 mx-auto mb-2" />
-                  Semua aktivitas dan penugasan IDP terkini telah tersinkronisasi.
-                </div>
-              )}
-            </div>
-
-            <div className="pt-4 border-t border-stone-100 dark:border-stone-800">
-              <Link
-                href="/mentoring"
-                className="flex items-center justify-between text-xs font-bold text-stone-900 hover:text-red-600 dark:text-stone-200 dark:hover:text-red-400 transition-colors"
-              >
-                <span>Buka Portal Diskusi & Mentoring</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

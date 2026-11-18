@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import Footer from "@/components/Footer";
@@ -7,17 +7,17 @@ import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { seedDatabase } from "@/lib/db/seed";
 import { Suspense } from "react";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const montserrat = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "CareerPath AI-Assisted Mentoring | Platform Bimbingan Karier Berbasis Data",
+  title: "CareerPath AI | Temukan Arah Kariermu Bersama CareerPath AI",
   description:
-    "Platform pengembangan dan pendampingan karier berbasis data O*NET, rencana aksi IDP, portofolio skill passport, dan kurasi peluang rekrutmen industri serta magang nasional terakreditasi.",
+    "Kenali minat, potensi, dan jelajahi peluang karier terbaik untuk masa depanmu dengan asesmen Holland RIASEC dan pemetaan O*NET.",
 };
 
 export default async function RootLayout({
@@ -33,13 +33,12 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="id" className={`${plusJakartaSans.variable} h-full antialiased font-sans overflow-x-hidden`}>
-      <body className="min-h-full w-full max-w-full overflow-x-hidden flex flex-col bg-[#f8fafc] text-[#0f172a] font-sans">
+    <html lang="id" className={`${montserrat.variable} h-full antialiased font-sans overflow-x-hidden`}>
+      <body className="min-h-full w-full max-w-full overflow-x-hidden flex flex-col bg-[#eef0fb] text-[#0f172a] font-sans">
         <Suspense fallback={null}>
           <LanguageProvider>
             <AppShell>
               {children}
-              <Footer />
             </AppShell>
           </LanguageProvider>
         </Suspense>

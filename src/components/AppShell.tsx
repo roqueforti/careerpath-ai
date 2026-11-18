@@ -4,51 +4,37 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  Compass,
+  Home,
+  FileEdit,
+  Sparkles,
   LayoutDashboard,
-  Target,
-  Map,
-  GraduationCap,
-  FileCheck,
-  Briefcase,
-  ShieldCheck,
-  Bell,
-  ChevronDown,
-  User,
+  HelpCircle,
+  Settings,
   LogOut,
+  Bell,
   Menu,
   X,
-  MessageSquare,
-  Sparkles,
-  ExternalLink,
-  Award,
-  CheckCircle2,
-  ArrowRight,
+  Users,
+  UserCheck,
+  BarChart3,
+  BookOpen,
+  Sliders,
+  ChevronRight,
   LogIn,
-  Layers,
+  User,
+  Compass,
+  Briefcase,
+  Award,
 } from "lucide-react";
-import {
-  CuteStudentAvatar,
-  CuteMentorAvatar,
-  CuteBotMascot,
-  IconCoolRocket,
-  IconCoolCompass,
-  IconCoolShip,
-  IconCoolPassport,
-  IconCoolTarget,
-  IconCoolAI,
-} from "@/components/CustomIcons";
+import BrandLogo from "@/components/BrandLogo";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { language, setLanguage, t } = useLanguage();
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [publicMobileMenuOpen, setPublicMobileMenuOpen] = useState(false);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [mentorModalOpen, setMentorModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   // Authenticated user state
   const [currentUser, setCurrentUser] = useState<{
@@ -61,8 +47,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   } | null>(null);
 
   useEffect(() => {
-    setPublicMobileMenuOpen(false);
-    setMobileSidebarOpen(false);
+    setMobileMenuOpen(false);
+    setUserDropdownOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -93,781 +79,395 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       console.error("Logout error:", err);
     } finally {
       setCurrentUser(null);
-      setUserMenuOpen(false);
+      setUserDropdownOpen(false);
       router.push("/login");
       router.refresh();
     }
   }
 
   const isAuthPage = pathname === "/login" || pathname === "/register";
-  const isPublicPage = pathname === "/" || pathname === "/architecture";
-
-  const isActive = (path: string) => {
-    if (path === "/" && pathname === "/") return true;
-    if (path !== "/" && pathname.startsWith(path)) return true;
-    return false;
-  };
-
-  const navTools = [
-    { name: t("Peta Karier (Explorer)", "Career Explorer"), href: "/#explorer", icon: IconCoolCompass, badge: "Interactive" },
-    { name: t("Asesmen Minat & Skill", "Skill & Interest Assessment"), href: "/input", icon: IconCoolTarget },
-    { name: t("Peta Karier & O*NET", "Career Map & O*NET"), href: "/output", icon: Map },
-  ];
-
-  const navTasks = [
-    { name: t("Rencana Aksi (IDP)", "Individual Plan (IDP)"), href: "/development-plans", icon: IconCoolRocket },
-    { name: t("Digital Skill Passport", "Digital Skill Passport"), href: "/portfolio", icon: IconCoolPassport },
-    { name: t("Peluang Karier & Magang", "Career & Internships"), href: "/opportunities", icon: Briefcase },
-  ];
-
-  const navAdmin = [
-    { name: t("Pusat Kendali Admin", "Admin Control Center"), href: "/admin", icon: ShieldCheck },
-  ];
-
-  // =========================================================
-  // SCENARIO A: AUTHENTICATION PAGES (/login, /register)
-  // No sidebar, pure full-page auth layout
-  // =========================================================
   if (isAuthPage) {
     return <>{children}</>;
   }
 
-  // =========================================================
-  // SCENARIO B: PUBLIC LANDING PAGE (/) & PRESENTATION (/architecture)
-  // Clean full-width public layout with mobile-responsive navbar
-  // =========================================================
-  if (isPublicPage) {
-    return (
-      <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-[#f8fafc] text-zinc-900 font-sans antialiased">
-        {/* Public Top Header Bar */}
-        <header className="sticky top-0 z-40 w-full max-w-full border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-3 sm:px-6 lg:px-8">
-          <div className="max-w-[1720px] mx-auto h-16 flex items-center justify-between gap-2 sm:gap-4">
-            {/* Left: Brand Logo & Desktop Nav Links */}
-            <div className="flex items-center gap-6 lg:gap-8 min-w-0">
-              <Link href="/" className="flex items-center gap-2 group shrink-0">
-                <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-sm shadow-red-500/25 group-hover:scale-105 transition-transform shrink-0">
-                  <Compass className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-lg sm:text-xl font-black tracking-tight text-zinc-950">
-                    Career<span className="text-red-600">Path.</span>
-                  </span>
-                  <span className="hidden sm:block text-[9px] sm:text-[10px] font-semibold text-zinc-400 -mt-1 tracking-wider uppercase">
-                    Enterprise Platform
-                  </span>
-                </div>
-              </Link>
+  // Active link helper
+  const isHomeActive = pathname === "/";
+  const isInputActive = pathname === "/input" || pathname.startsWith("/assessments");
+  const isResultActive =
+    pathname === "/output" ||
+    pathname.startsWith("/assessment-results") ||
+    pathname.startsWith("/career-map");
+  const isAdminDashboard = pathname.startsWith("/admin");
+  const isStudentDashboard = pathname.startsWith("/dashboard");
 
-              {/* Desktop Nav Links */}
-              <nav className="hidden lg:flex items-center gap-1 text-xs font-bold text-zinc-600">
-                <Link
-                  href="/#explorer"
-                  className={`px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all ${
-                    pathname === "/" ? "text-red-600 font-extrabold" : ""
-                  }`}
-                >
-                  {t("Peta Karier", "Career Explorer")}
-                </Link>
-                <Link
-                  href="/assessments"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Asesmen Minat", "Assessments")}
-                </Link>
-                <Link
-                  href="/career-map"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Peta Okupasi (1.016+)", "Career Map")}
-                </Link>
-                <Link
-                  href="/input"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Simulasi Cepat", "Simulator")}
-                </Link>
-                <Link
-                  href="/opportunities"
-                  className="px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all"
-                >
-                  {t("Peluang Industri", "Opportunities")}
-                </Link>
-                <Link
-                  href="/architecture"
-                  className={`px-3 py-2 rounded-xl hover:text-zinc-950 hover:bg-zinc-100 transition-all ${
-                    pathname === "/architecture" ? "text-red-600 font-extrabold" : ""
-                  }`}
-                >
-                  {t("Arsitektur", "Architecture")}
-                </Link>
-              </nav>
+  const isAdmin = currentUser?.role === "PLATFORM_ADMIN" || currentUser?.role === "INSTITUTION_ADMIN";
+
+  return (
+    <div className="min-h-screen bg-[#eef0fb] text-[#0f172a] font-sans antialiased p-2.5 sm:p-4 lg:p-6 flex flex-col justify-between">
+      <div className="w-full max-w-[1780px] mx-auto flex flex-col lg:flex-row gap-4 lg:gap-6 min-h-[calc(100vh-2rem)] sm:min-h-[calc(100vh-3rem)]">
+        
+        {/* ========================================================================= */}
+        {/* LEFT FLOATING SIDEBAR (Desktop Fixed/Sticky, Mobile Drawer)               */}
+        {/* ========================================================================= */}
+        <aside
+          className={`
+            fixed lg:static top-3 bottom-3 left-3 z-50 w-64 sm:w-72 
+            bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(84,82,230,0.06)] border border-[#e8ebf8]
+            flex flex-col justify-between transition-transform duration-300 ease-in-out shrink-0
+            ${mobileMenuOpen ? "translate-x-0" : "-translate-x-[110%] lg:translate-x-0"}
+          `}
+        >
+          {/* Top: Brand Logo & Navigation */}
+          <div className="flex flex-col space-y-7">
+            {/* Logo */}
+            <div className="flex items-center justify-between">
+              <Link href="/" className="hover:opacity-90 transition-opacity">
+                <BrandLogo />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="lg:hidden p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Right: Language Pill, Auth Actions & Mobile Hamburger */}
-            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-              {/* Language Switcher Pill Toggle */}
-              <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs shrink-0">
+            {/* Core Navigation Items */}
+            <nav className="flex flex-col space-y-1.5">
+              {/* 1. Beranda */}
+              <Link
+                href="/"
+                className={`flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                  isHomeActive
+                    ? "bg-[#5452e6] text-white shadow-[0_4px_16px_rgba(84,82,230,0.28)]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                <Home className="w-4 h-4 shrink-0" />
+                <span>{t("Beranda", "Home")}</span>
+              </Link>
+
+              {/* 2. Input Asesmen */}
+              <Link
+                href="/assessments"
+                className={`flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                  isInputActive
+                    ? "bg-[#5452e6] text-white shadow-[0_4px_16px_rgba(84,82,230,0.28)]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                <FileEdit className="w-4 h-4 shrink-0" />
+                <span>{t("Input Asesmen", "Take Assessment")}</span>
+              </Link>
+
+              {/* 3. Hasil & Rekomendasi */}
+              <Link
+                href="/output"
+                className={`flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                  isResultActive
+                    ? "bg-[#5452e6] text-white shadow-[0_4px_16px_rgba(84,82,230,0.28)]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                <Sparkles className="w-4 h-4 shrink-0" />
+                <span>{t("Hasil & Rekomendasi", "Results & Recs")}</span>
+              </Link>
+
+              {/* 4. Dashboard (Siswa / Admin) */}
+              {isAdmin ? (
+                <Link
+                  href="/admin"
+                  className={`flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                    isAdminDashboard
+                      ? "bg-[#5452e6] text-white shadow-[0_4px_16px_rgba(84,82,230,0.28)]"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  }`}
+                >
+                  <LayoutDashboard className="w-4 h-4 shrink-0" />
+                  <span>{t("Dashboard Admin", "Admin Dashboard")}</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/dashboard"
+                  className={`flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                    isStudentDashboard
+                      ? "bg-[#5452e6] text-white shadow-[0_4px_16px_rgba(84,82,230,0.28)]"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  }`}
+                >
+                  <LayoutDashboard className="w-4 h-4 shrink-0" />
+                  <span>{t("Dashboard", "Dashboard")}</span>
+                </Link>
+              )}
+
+              {/* Extended Admin Menu when in Admin View or Admin user */}
+              {isAdmin && (
+                <div className="pt-3 border-t border-slate-100 space-y-1">
+                  <div className="px-4 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+                    Admin Tools
+                  </div>
+                  <Link
+                    href="/admin#users"
+                    className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <Users className="w-4 h-4 text-slate-400" />
+                    <span>{t("Manajemen Pengguna", "User Management")}</span>
+                  </Link>
+                  <Link
+                    href="/admin#mentors"
+                    className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <UserCheck className="w-4 h-4 text-slate-400" />
+                    <span>{t("Manajemen Mentor", "Mentor Management")}</span>
+                  </Link>
+                  <Link
+                    href="/admin#analytics"
+                    className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <BarChart3 className="w-4 h-4 text-slate-400" />
+                    <span>{t("Analitik", "Analytics")}</span>
+                  </Link>
+                  <Link
+                    href="/admin#content"
+                    className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  >
+                    <BookOpen className="w-4 h-4 text-slate-400" />
+                    <span>{t("Konten & Materi", "Content & Catalog")}</span>
+                  </Link>
+                </div>
+              )}
+
+              {/* Student Features Quick Links */}
+              {!isAdmin && (
+                <div className="pt-2 border-t border-slate-100 space-y-1">
+                  <Link
+                    href="/development-plans"
+                    className={`flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold transition-all ${
+                      pathname === "/development-plans"
+                        ? "bg-purple-50 text-[#5452e6] font-bold"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    }`}
+                  >
+                    <Compass className="w-4 h-4 text-slate-400" />
+                    <span>{t("Rencana Karier (IDP)", "Career Plan (IDP)")}</span>
+                  </Link>
+                  <Link
+                    href="/portfolio"
+                    className={`flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold transition-all ${
+                      pathname === "/portfolio"
+                        ? "bg-purple-50 text-[#5452e6] font-bold"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    }`}
+                  >
+                    <Award className="w-4 h-4 text-slate-400" />
+                    <span>{t("Skill Passport", "Skill Passport")}</span>
+                  </Link>
+                  <Link
+                    href="/opportunities"
+                    className={`flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-semibold transition-all ${
+                      pathname === "/opportunities"
+                        ? "bg-purple-50 text-[#5452e6] font-bold"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    }`}
+                  >
+                    <Briefcase className="w-4 h-4 text-slate-400" />
+                    <span>{t("Peluang Karier", "Career Opportunities")}</span>
+                  </Link>
+                </div>
+              )}
+            </nav>
+          </div>
+
+          {/* Bottom Sidebar: Bantuan, Pengaturan, Logout */}
+          <div className="pt-5 border-t border-slate-100 flex flex-col space-y-1">
+            <Link
+              href="/#contact"
+              className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >
+              <HelpCircle className="w-4 h-4 text-slate-400" />
+              <span>{t("Bantuan", "Help & Support")}</span>
+            </Link>
+
+            <Link
+              href="/profile"
+              className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >
+              <Settings className="w-4 h-4 text-slate-400" />
+              <span>{t("Pengaturan", "Settings")}</span>
+            </Link>
+
+            {currentUser ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-medium text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors text-left w-full cursor-pointer"
+              >
+                <LogOut className="w-4 h-4 text-rose-400" />
+                <span>{t("Keluar", "Logout")}</span>
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-xs font-bold text-[#5452e6] hover:bg-purple-50 transition-colors"
+              >
+                <LogIn className="w-4 h-4 text-[#5452e6]" />
+                <span>{t("Masuk Akun", "Sign In")}</span>
+              </Link>
+            )}
+          </div>
+        </aside>
+
+        {/* Backdrop for mobile sidebar */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-40 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* ========================================================================= */}
+        {/* RIGHT MAIN CONTENT AREA                                                   */}
+        {/* ========================================================================= */}
+        <div className="flex-1 flex flex-col min-w-0">
+          
+          {/* Top Bar: Mobile Hamburger + Language Switcher + User Profile Pill */}
+          <header className="flex items-center justify-between mb-4 sm:mb-6 px-1">
+            {/* Mobile Hamburger Button */}
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2.5 bg-white rounded-2xl border border-[#e8ebf8] shadow-sm text-slate-700 hover:bg-slate-50"
+                aria-label="Open sidebar menu"
+              >
+                <Menu className="w-5 h-5 text-[#5452e6]" />
+              </button>
+              
+              <div className="lg:hidden">
+                <BrandLogo />
+              </div>
+            </div>
+
+            {/* Right Controls: Language Pill + Bell + User Profile */}
+            <div className="flex items-center gap-2.5 sm:gap-4 ml-auto">
+              
+              {/* Language Switcher Pill */}
+              <div className="flex items-center p-1 rounded-2xl bg-white border border-[#e8ebf8] shadow-sm">
                 <button
                   type="button"
                   onClick={() => setLanguage("id")}
-                  className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                  className={`px-2 py-1 rounded-xl text-xs font-bold transition-all ${
                     language === "id"
-                      ? "bg-white text-red-600 shadow-2xs font-extrabold"
-                      : "text-zinc-500 hover:text-zinc-900"
+                      ? "bg-[#5452e6] text-white shadow-xs"
+                      : "text-slate-500 hover:text-slate-900"
                   }`}
                   title="Bahasa Indonesia"
-                  aria-label="Ubah ke Bahasa Indonesia"
                 >
-                  <span>🇮🇩</span>
-                  <span className="hidden sm:inline">ID</span>
+                  ID
                 </button>
                 <button
                   type="button"
                   onClick={() => setLanguage("en")}
-                  className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
+                  className={`px-2 py-1 rounded-xl text-xs font-bold transition-all ${
                     language === "en"
-                      ? "bg-white text-red-600 shadow-2xs font-extrabold"
-                      : "text-zinc-500 hover:text-zinc-900"
+                      ? "bg-[#5452e6] text-white shadow-xs"
+                      : "text-slate-500 hover:text-slate-900"
                   }`}
                   title="English"
-                  aria-label="Switch to English"
                 >
-                  <span>🇬🇧</span>
-                  <span className="hidden sm:inline">EN</span>
+                  EN
                 </button>
               </div>
 
-              {/* Desktop Auth Buttons */}
-              {currentUser ? (
-                <div className="hidden sm:flex items-center gap-2">
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
-                  >
-                    <CuteStudentAvatar className="w-4 h-4" showBadge={false} />
-                    <span>{t("Dashboard", "Dashboard")}</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
+              {/* Notification Bell with Badge */}
+              <button
+                type="button"
+                className="relative p-2.5 bg-white hover:bg-slate-50 rounded-2xl border border-[#e8ebf8] shadow-sm text-slate-600 transition-colors"
+                title="Notifikasi"
+              >
+                <Bell className="w-4 h-4" />
+                <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white" />
+              </button>
 
+              {/* User Profile Capsule */}
+              {currentUser ? (
+                <div className="relative">
                   <button
                     type="button"
-                    onClick={handleLogout}
-                    className="p-1.5 text-zinc-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
-                    title={t("Keluar Akun", "Sign Out")}
+                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                    className="flex items-center gap-2.5 pl-1.5 pr-3 py-1.5 bg-white hover:bg-slate-50 rounded-2xl border border-[#e8ebf8] shadow-sm transition-all"
                   >
-                    <LogOut className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <div className="hidden sm:flex items-center gap-2">
-                  <Link
-                    href="/login"
-                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 transition-all flex items-center gap-1"
-                  >
-                    <LogIn className="w-3.5 h-3.5 text-zinc-500" />
-                    <span>{t("Masuk", "Sign In")}</span>
-                  </Link>
-                  <Link
-                    href="/assessments"
-                    className="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1 cursor-pointer"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{t("Mulai", "Start")}</span>
-                  </Link>
-                </div>
-              )}
-
-              {/* Mobile Hamburger Toggle Button (lg:hidden) */}
-              <button
-                type="button"
-                onClick={() => setPublicMobileMenuOpen(!publicMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-xl text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 transition-colors cursor-pointer shrink-0"
-                aria-label="Toggle navigation menu"
-              >
-                {publicMobileMenuOpen ? (
-                  <X className="h-5 w-5 text-zinc-900" />
-                ) : (
-                  <Menu className="h-5 w-5 text-zinc-900" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Drawer Dropdown Menu (Public) */}
-          {publicMobileMenuOpen && (
-            <div className="lg:hidden border-t border-zinc-200/90 bg-white/98 backdrop-blur-md px-4 py-4 space-y-3 animate-fadeIn shadow-xl">
-              <nav className="flex flex-col space-y-1 text-sm font-semibold text-zinc-700">
-                <Link
-                  href="/#explorer"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Compass className="h-4 w-4 text-red-600" />
-                  <span>{t("Peta Karier (Explorer)", "Career Explorer")}</span>
-                </Link>
-
-                <Link
-                  href="/assessments"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Target className="h-4 w-4 text-red-600" />
-                  <span>{t("Asesmen Minat (Holland RIASEC)", "Holland RIASEC Assessment")}</span>
-                </Link>
-
-                <Link
-                  href="/career-map"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Map className="h-4 w-4 text-red-600" />
-                  <span>{t("Peta Okupasi (1.016+ Standar O*NET)", "Occupational Map (1,016+ O*NET)")}</span>
-                </Link>
-
-                <Link
-                  href="/input"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Sparkles className="h-4 w-4 text-red-600" />
-                  <span>{t("Simulasi Keselarasan Karier Cepat", "Quick Fit Simulator")}</span>
-                </Link>
-
-                <Link
-                  href="/opportunities"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Briefcase className="h-4 w-4 text-red-600" />
-                  <span>{t("Peluang Karier & Magang Industri", "Career & Internship Opportunities")}</span>
-                </Link>
-
-                <Link
-                  href="/architecture"
-                  onClick={() => setPublicMobileMenuOpen(false)}
-                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
-                >
-                  <Layers className="h-4 w-4 text-red-600" />
-                  <span>{t("Arsitektur Sistem (Presentasi)", "System Architecture")}</span>
-                </Link>
-              </nav>
-
-              <div className="pt-3 border-t border-zinc-100 flex flex-col gap-2">
-                {currentUser ? (
-                  <>
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setPublicMobileMenuOpen(false)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-colors"
-                    >
-                      <CuteStudentAvatar className="w-5 h-5" showBadge={false} />
-                      <span>{t("Buka Dashboard", "Open Dashboard")}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPublicMobileMenuOpen(false);
-                        handleLogout();
-                      }}
-                      className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-zinc-500 hover:text-red-600 transition-colors cursor-pointer"
-                    >
-                      <LogOut className="w-3.5 h-3.5" />
-                      <span>{t("Keluar Akun", "Sign Out")}</span>
-                    </button>
-                  </>
-                ) : (
-                  <div className="grid grid-cols-2 gap-2">
-                    <Link
-                      href="/login"
-                      onClick={() => setPublicMobileMenuOpen(false)}
-                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-zinc-200 text-zinc-800 hover:bg-zinc-50 font-bold text-xs transition-colors"
-                    >
-                      <LogIn className="w-3.5 h-3.5 text-zinc-500" />
-                      <span>{t("Masuk Akun", "Sign In")}</span>
-                    </Link>
-                    <Link
-                      href="/assessments"
-                      onClick={() => setPublicMobileMenuOpen(false)}
-                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-xs transition-colors"
-                    >
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>{t("Mulai Asesmen", "Start Free")}</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </header>
-
-        {/* Public Content (Full Width) */}
-        <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
-      </div>
-    );
-  }
-
-  // =========================================================
-  // SCENARIO C: INTERNAL APP PAGES (/dashboard, /input, /admin, etc.)
-  // Full Dashboard Layout with persistent Left Sidebar
-  // =========================================================
-  return (
-    <div className="min-h-screen flex bg-[#f8fafc] text-zinc-900 font-sans antialiased">
-      {/* Mobile Backdrop */}
-      {mobileSidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-zinc-950/40 backdrop-blur-xs lg:hidden transition-opacity"
-          onClick={() => setMobileSidebarOpen(false)}
-        />
-      )}
-
-      {/* 1. LEFT SIDEBAR (Desktop Fixed, Mobile Slide-Out) */}
-      <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 border-r border-zinc-200/90 bg-white flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col flex-1 overflow-y-auto px-4 py-5 space-y-6">
-          {/* Brand Logo Header */}
-          <div className="flex items-center justify-between px-2">
-            <Link
-              href="/"
-              onClick={() => setMobileSidebarOpen(false)}
-              className="flex items-center gap-2.5 group"
-            >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-sm shadow-red-500/25 group-hover:scale-105 transition-transform">
-                <Compass className="h-5 w-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tight text-zinc-950">
-                  Career<span className="text-red-600">Path.</span>
-                </span>
-                <span className="text-[10px] font-semibold text-zinc-400 -mt-1 tracking-wider uppercase">
-                  Enterprise Platform
-                </span>
-              </div>
-            </Link>
-
-            <button
-              onClick={() => setMobileSidebarOpen(false)}
-              className="lg:hidden p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Navigation Menu */}
-          <nav className="space-y-6 text-xs font-semibold">
-            {/* Dashboard Primary Item */}
-            <div>
-              <Link
-                href="/dashboard"
-                onClick={() => setMobileSidebarOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
-                  isActive("/dashboard")
-                    ? "bg-red-50 text-red-600 font-extrabold shadow-2xs"
-                    : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
-                }`}
-              >
-                <LayoutDashboard className="h-4 w-4" />
-                <span>Dashboard</span>
-              </Link>
-            </div>
-
-            {/* Group: TOOLS */}
-            <div className="space-y-1">
-              <div className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-zinc-400">
-                TOOLS
-              </div>
-              {navTools.map((item) => {
-                const Icon = item.icon;
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileSidebarOpen(false)}
-                    className={`flex items-center justify-between px-3 py-2 rounded-xl transition-all ${
-                      active
-                        ? "bg-red-50 text-red-600 font-extrabold shadow-2xs"
-                        : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <Icon className="h-4 w-4" />
-                      <span>{item.name}</span>
-                    </div>
-                    {item.badge && (
-                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-red-100/70 text-red-700 border border-red-200">
-                        {item.badge}
+                    <img
+                      src={
+                        currentUser.avatarUrl ||
+                        (currentUser.role === "PLATFORM_ADMIN"
+                          ? "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120"
+                          : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120")
+                      }
+                      alt={currentUser.fullName}
+                      className="w-8 h-8 rounded-full object-cover ring-1 ring-purple-100"
+                    />
+                    <div className="hidden sm:flex flex-col text-left">
+                      <span className="text-xs font-bold text-slate-900 leading-tight">
+                        {currentUser.fullName}
                       </span>
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Group: TASKS & IDP */}
-            <div className="space-y-1">
-              <div className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-zinc-400">
-                TASKS & DEVELOPMENT
-              </div>
-              {navTasks.map((item) => {
-                const Icon = item.icon;
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileSidebarOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all ${
-                      active
-                        ? "bg-red-50 text-red-600 font-extrabold shadow-2xs"
-                        : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Group: GOVERNANCE & ADMIN */}
-            <div className="space-y-1">
-              <div className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-zinc-400">
-                GOVERNANCE
-              </div>
-              {navAdmin.map((item) => {
-                const Icon = item.icon;
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileSidebarOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all ${
-                      active
-                        ? "bg-red-50 text-red-600 font-extrabold shadow-2xs"
-                        : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
-            </div>
-          </nav>
-        </div>
-
-        {/* Bottom Support / Help Card */}
-        <div className="p-4 border-t border-zinc-100">
-          <div className="rounded-2xl bg-gradient-to-br from-red-50 via-rose-50 to-pink-50 border border-red-100 p-4 space-y-3 shadow-2xs">
-            <div className="flex items-center gap-3">
-              <CuteBotMascot className="w-10 h-10" />
-              <div>
-                <div className="font-bold text-zinc-900 text-xs">
-                  {t("Butuh Bimbingan Karier?", "Need Career Guidance?")}
-                </div>
-                <div className="text-[10px] text-zinc-500 leading-snug mt-0.5">
-                  {t("Konsultasikan target karier Anda dengan mentor ahli.", "Consult your career target with an expert mentor.")}
-                </div>
-              </div>
-            </div>
-            <button
-              onClick={() => setMentorModalOpen(true)}
-              className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-bold shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1.5"
-            >
-              <IconCoolAI className="w-3.5 h-3.5" />
-              <span>{t("Hubungi Mentor", "Contact Mentor")}</span>
-            </button>
-          </div>
-        </div>
-      </aside>
-
-      {/* 2. MAIN APPLICATION CONTENT AREA */}
-      <div className="flex-1 flex flex-col min-w-0 w-full max-w-full overflow-x-hidden lg:pl-64">
-        {/* Top Header Bar */}
-        <header className="sticky top-0 z-30 h-16 border-b border-zinc-200/90 bg-white/95 backdrop-blur-md px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 w-full max-w-full">
-          {/* Left: Mobile Toggle & Page Context */}
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            <button
-              onClick={() => setMobileSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl text-zinc-700 hover:bg-zinc-100 transition-colors shrink-0"
-              aria-label="Open sidebar"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-
-            {/* Mobile Brand emblem for quick orientation (lg:hidden) */}
-            <Link href="/" className="lg:hidden flex items-center gap-1.5 shrink-0">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-red-600 to-rose-600 text-white shadow-xs">
-                <Compass className="h-4 w-4" />
-              </div>
-              <span className="text-sm font-black tracking-tight text-zinc-950">
-                Career<span className="text-red-600">Path</span>
-              </span>
-            </Link>
-
-            <div className="hidden sm:flex items-center gap-2 text-xs truncate">
-              <span className="font-medium text-zinc-400">CareerPath</span>
-              <span className="text-zinc-300">/</span>
-              <span className="font-bold text-zinc-800 truncate">
-                {pathname === "/dashboard" && t("Dashboard Karier Mahasiswa", "Student Career Dashboard")}
-                {pathname === "/input" && t("Asesmen Minat, Holland & Kompetensi", "Interest, Holland & Competency Assessment")}
-                {pathname === "/output" && t("Peta Karier & Rekomendasi O*NET", "Career Map & O*NET Recommendations")}
-                {pathname === "/development-plans" && t("Rencana Aksi Individu (IDP)", "Individual Development Plan (IDP)")}
-                {pathname === "/portfolio" && t("Digital Skill Passport", "Digital Skill Passport")}
-                {pathname === "/opportunities" && t("Peluang Karier & Rekrutmen Industri", "Career & Industry Opportunities")}
-                {pathname === "/admin" && t("Pusat Kendali & Tata Kelola Platform", "Governance & Admin Control Center")}
-              </span>
-            </div>
-          </div>
-
-          {/* Right: Language Switcher, Notification Bell & User Avatar */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-            {/* Language Switcher Pill Toggle */}
-            <div className="flex items-center p-0.5 rounded-xl bg-zinc-100 border border-zinc-200/90 shadow-2xs shrink-0">
-              <button
-                type="button"
-                onClick={() => setLanguage("id")}
-                className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
-                  language === "id"
-                    ? "bg-white text-red-600 shadow-2xs font-extrabold"
-                    : "text-zinc-500 hover:text-zinc-900"
-                }`}
-                title="Bahasa Indonesia"
-                aria-label="Ubah ke Bahasa Indonesia"
-              >
-                <span>🇮🇩</span>
-                <span className="hidden sm:inline">ID</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage("en")}
-                className={`px-1.5 sm:px-2 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer flex items-center gap-1 ${
-                  language === "en"
-                    ? "bg-white text-red-600 shadow-2xs font-extrabold"
-                    : "text-zinc-500 hover:text-zinc-900"
-                }`}
-                title="English"
-                aria-label="Switch to English"
-              >
-                <span>🇬🇧</span>
-                <span className="hidden sm:inline">EN</span>
-              </button>
-            </div>
-
-            {/* Notification Bell */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setNotificationsOpen(!notificationsOpen);
-                  setUserMenuOpen(false);
-                }}
-                className="relative p-2 rounded-xl text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100 transition-colors"
-                aria-label="Notifications"
-              >
-                <Bell className="h-5 w-5" />
-                <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-600 ring-2 ring-white animate-pulse" />
-              </button>
-
-              {/* Notification Popover */}
-              {notificationsOpen && (
-                <div className="absolute right-0 mt-2 w-80 rounded-2xl bg-white border border-zinc-200 shadow-2xl py-3 z-50 text-xs divide-y divide-zinc-100 animate-fadeIn">
-                  <div className="px-4 pb-2 flex items-center justify-between">
-                    <span className="font-black text-zinc-900 text-sm">{t("Notifikasi Karier", "Career Notifications")}</span>
-                    <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-                      {t("3 Baru", "3 New")}
-                    </span>
-                  </div>
-                  <div className="py-2 divide-y divide-zinc-50">
-                    <div className="px-4 py-2.5 hover:bg-zinc-50 transition-colors">
-                      <div className="font-bold text-zinc-900">{t("Portofolio Industri Terverifikasi", "Industrial Portfolio Verified")}</div>
-                      <div className="text-[11px] text-zinc-500 mt-0.5">
-                        {t("Proyek Sistem Informasi Enterprise Terverifikasi oleh Mentor Vokasi.", "Enterprise Information System project verified by Vocational Mentor.")}
-                      </div>
-                      <div className="text-[10px] text-zinc-400 mt-1">{t("2 jam yang lalu", "2 hours ago")}</div>
+                      <span className="text-[10px] font-semibold text-slate-400 capitalize leading-tight">
+                        {currentUser.role === "PLATFORM_ADMIN"
+                          ? "Administrator"
+                          : currentUser.role === "MENTOR"
+                          ? "Mentor"
+                          : "Siswa"}
+                      </span>
                     </div>
-                    <div className="px-4 py-2.5 hover:bg-zinc-50 transition-colors">
-                      <div className="font-bold text-zinc-900">{t("Rekomendasi Magang MSIB Terbuka", "MSIB Internship Recommendation Open")}</div>
-                      <div className="text-[11px] text-zinc-500 mt-0.5">
-                        {t("Posisi Full-Stack Developer & Software Engineer telah dibuka oleh mitra industri.", "Full-Stack Developer & Software Engineer positions now open by industry partners.")}
-                      </div>
-                      <div className="text-[10px] text-zinc-400 mt-1">{t("Kemarin", "Yesterday")}</div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+                  </button>
 
-            {/* User Profile Dropdown */}
-            {currentUser ? (
-              <div className="relative">
-                <button
-                  onClick={() => {
-                    setUserMenuOpen(!userMenuOpen);
-                    setNotificationsOpen(false);
-                  }}
-                  className="flex items-center gap-2.5 p-1 sm:pr-3 rounded-full sm:rounded-2xl border border-zinc-200 hover:border-zinc-300 bg-white hover:bg-zinc-50 transition-all cursor-pointer shadow-xs"
-                >
-                  <CuteStudentAvatar className="w-8 h-8" showBadge={true} />
-                  <div className="flex flex-col text-left leading-tight hidden sm:block">
-                    <span className="font-bold text-zinc-950 text-xs">{currentUser.fullName}</span>
-                    <span className="text-[10px] text-zinc-400">{currentUser.role}</span>
-                  </div>
-                  <ChevronDown className="h-3.5 w-3.5 text-zinc-400 hidden sm:block ml-0.5" />
-                </button>
-
-                {userMenuOpen && (
-                  <div
-                    className="absolute right-0 mt-2 w-72 rounded-3xl bg-white border border-zinc-200 shadow-2xl py-2 z-50 text-xs divide-y divide-zinc-100 animate-fadeIn"
-                    onClick={() => setUserMenuOpen(false)}
-                  >
-                    <div className="p-3.5 flex items-center gap-3">
-                      <CuteStudentAvatar className="w-12 h-12" showBadge={false} />
-                      <div className="leading-tight">
-                        <div className="font-black text-sm text-zinc-950">{currentUser.fullName}</div>
-                        <div className="text-[11px] text-zinc-500">{currentUser.email}</div>
-                        <div className="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-0.5">
-                          <Award className="h-3 w-3" />
-                          <span>{currentUser.role}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-2 space-y-0.5">
+                  {/* Dropdown Menu */}
+                  {userDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50 animate-fadeIn">
                       <Link
                         href="/profile"
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 hover:bg-zinc-100 font-semibold"
+                        className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 rounded-xl"
                       >
-                        <User className="h-4 w-4 text-zinc-500" />
-                        <span>Profil Akun Saya</span>
+                        <User className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{t("Profil Saya", "My Profile")}</span>
                       </Link>
-                      <Link
-                        href="/portfolio"
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 hover:bg-zinc-100 font-semibold"
-                      >
-                        <FileCheck className="h-4 w-4 text-zinc-500" />
-                        <span>{t("Portofolio Terverifikasi", "Verified Portfolio")}</span>
-                      </Link>
-                      <Link
-                        href="/development-plans"
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 hover:bg-zinc-100 font-semibold"
-                      >
-                        <GraduationCap className="h-4 w-4 text-zinc-500" />
-                        <span>Rencana Aksi IDP (3 Fase)</span>
-                      </Link>
-                      <Link
-                        href="/admin"
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 hover:bg-zinc-100 font-semibold"
-                      >
-                        <ShieldCheck className="h-4 w-4 text-zinc-500" />
-                        <span>Pusat Tata Kelola Platform</span>
-                      </Link>
-                    </div>
-
-                    <div className="p-2">
                       <button
                         type="button"
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-red-600 hover:bg-red-50 font-bold transition-colors cursor-pointer text-left"
+                        className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 rounded-xl w-full text-left"
                       >
-                        <LogOut className="h-4 w-4" />
-                        <span>{t("Keluar / Ganti Akun", "Sign Out / Switch Account")}</span>
+                        <LogOut className="w-3.5 h-3.5 text-rose-500" />
+                        <span>{t("Keluar Akun", "Sign Out")}</span>
                       </button>
                     </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/login"
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold bg-red-600 text-white hover:bg-red-700 transition-colors shadow-2xs"
-                >
-                  {t("Masuk Akun", "Sign In")}
-                </Link>
-              </div>
-            )}
-          </div>
-        </header>
-
-        {/* Dynamic Page Content */}
-        <main className="flex-1 w-full">{children}</main>
-      </div>
-
-      {/* 3. MENTOR CONSULTATION MODAL */}
-      {mentorModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/40 backdrop-blur-xs animate-fadeIn">
-          <div className="w-full max-w-lg rounded-3xl bg-white border border-zinc-200 p-6 sm:p-7 shadow-2xl space-y-5 animate-scaleUp">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-3">
-                <CuteMentorAvatar className="w-12 h-12" />
-                <div>
-                  <h3 className="text-lg font-black text-zinc-950">
-                    Bimbingan Mentor & Konselor Vokasi
-                  </h3>
-                  <p className="text-xs text-zinc-500">
-                    {t(
-                      "Konsultasi penyelarasan profil dengan standar kompetensi industri nasional.",
-                      "Consultation aligning student profile with national industry standards."
-                    )}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setMentorModalOpen(false)}
-                className="p-1.5 rounded-xl text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="space-y-3 text-xs">
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 space-y-2">
-                <div className="font-bold text-zinc-900 flex items-center gap-2">
-                  <Award className="h-4 w-4 text-red-600" />
-                  <span>Saran AI Mentor (Gemini 3.5 Pro):</span>
-                </div>
-                <p className="text-zinc-600 leading-relaxed">
-                  {t(
-                    "\"Profil talenta vokasi dengan IPK kuat dan portofolio proyek terverifikasi memberikan kesiapan tinggi pada posisi Software Engineer. Fokuskan 6 bulan ke depan pada sertifikasi BNSP Rekayasa Perangkat Lunak dan arsitektur microservices untuk memperkuat daya saing industri Anda.\"",
-                    "\"A strong academic profile combined with verified project portfolios yields high readiness for Software Engineer roles. Focus the next 6 months on national software certifications and microservices to solidify your competitive edge.\""
                   )}
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-red-100 bg-red-50/50 p-4 space-y-1.5">
-                <div className="font-bold text-red-900 flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-red-600" />
-                  <span>Konselor Human-in-the-Loop:</span>
                 </div>
-                <p className="text-red-800 leading-relaxed text-[11px]">
-                  Jadwal konsultasi bimbingan karier dibuka setiap Selasa & Kamis secara tatap muka atau via konferensi video.
-                </p>
-              </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Link
+                    href="/login"
+                    className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold text-slate-700 hover:bg-white transition-all"
+                  >
+                    <span>{t("Masuk", "Sign In")}</span>
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="flex items-center gap-1.5 px-4 py-2 bg-[#5452e6] hover:bg-[#433ec8] text-white rounded-2xl text-xs font-bold shadow-sm shadow-purple-500/20 transition-all"
+                  >
+                    <span>{t("Daftar", "Register")}</span>
+                  </Link>
+                </div>
+              )}
             </div>
+          </header>
 
-            <div className="pt-2 flex items-center justify-end gap-2.5">
-              <button
-                onClick={() => setMentorModalOpen(false)}
-                className="px-4 py-2 rounded-xl text-zinc-600 hover:bg-zinc-100 text-xs font-bold"
-              >
-                Tutup
-              </button>
-              <Link
-                href="/mentoring"
-                onClick={() => setMentorModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm"
-              >
-                Buka Portal Bimbingan ➔
-              </Link>
-            </div>
-          </div>
+          {/* Main Content Area */}
+          <main className="flex-1 w-full max-w-full">
+            {children}
+          </main>
         </div>
-      )}
+      </div>
     </div>
   );
 }
