@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:migrate:pg": "node scripts/migrate-pg.js",
+    "db:setup:supabase": "node scripts/migrate-pg.js",
     "db:seed:onet": "node scripts/import-onet-kbji.js",
     "evaluate": "npx tsx scripts/evaluate-model.ts"
   },

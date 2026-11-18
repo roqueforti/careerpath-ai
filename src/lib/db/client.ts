@@ -19,8 +19,16 @@ class PgDatabaseClient implements DatabaseClient {
 
   constructor(connectionStringOrConfig: string | PoolConfig) {
     if (typeof connectionStringOrConfig === "string") {
+      const isRemote =
+        !connectionStringOrConfig.includes("127.0.0.1") &&
+        !connectionStringOrConfig.includes("localhost");
+
       this.pool = new Pool({
         connectionString: connectionStringOrConfig,
+        ssl: isRemote ? { rejectUnauthorized: false } : undefined,
+        max: 10,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 10000,
       });
     } else {
       this.pool = new Pool(connectionStringOrConfig);
@@ -96,25 +104,6 @@ class LibSqlDatabaseClient implements DatabaseClient {
 export function getDb(): DatabaseClient {
   if (dbInstance) {
     return dbInstance;
-  }
-
-  // Load .env.local if not already in process.env
-  if (!process.env.DATABASE_URL) {
-    const envLocalPath = path.join(process.cwd(), ".env.local");
-    if (fs.existsSync(envLocalPath)) {
-      const content = fs.readFileSync(envLocalPath, "utf-8");
-      for (const line of content.split("\n")) {
-        const trimmed = line.trim();
-        if (trimmed && !trimmed.startsWith("#") && trimmed.includes("=")) {
-          const [k, ...v] = trimmed.split("=");
-          const key = k.trim();
-          const val = v.join("=").replace(/^["']|["']$/g, "").trim();
-          if (!process.env[key]) {
-            process.env[key] = val;
-          }
-        }
-      }
-    }
   }
 
   const dbUrl = process.env.DATABASE_URL || "file:data/careerpath.db";
