@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKPL & SRS - CareerPath AI-Assisted Mentoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background-color: #ffffff;
+      line-height: 1.55;
+      font-size: 10pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Page Breaks */
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    .no-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Header & Footer */
+    .doc-header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5pt;
+      color: #64748b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .doc-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.5pt;
+      color: #94a3b8;
+    }
+
+    /* Cover Page */
+    .cover-container {
+      height: 98vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 12px;
+    }
+    .cover-badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid #bae6fd;
+    }
+    .cover-title {
+      font-size: 26pt;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .cover-title span {
+      color: #0284c7;
+    }
+    .cover-subtitle {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+    .cover-desc {
+      font-size: 10pt;
+      color: #64748b;
+      max-width: 90%;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .cover-meta-grid {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .meta-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 3px;
+    }
+    .meta-val {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .cover-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8pt;
+      color: #64748b;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 16pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 6px;
+      margin-top: 22px;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: #0369a1;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    h4 {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 8.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* Callout & Cards */
+    .callout {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      font-size: 9pt;
+      color: #0c4a6e;
+    }
+    .callout-title {
+      font-weight: 700;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .callout-warning {
+      border-left-color: #eab308;
+      background: #fefce8;
+      color: #713f12;
+    }
+    .callout-success {
+      border-left-color: #22c55e;
+      background: #f0fdf4;
+      color: #14532d;
+    }
+
+    /* Formulas & Code Blocks */
+    .formula-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 9pt;
+      color: #0f172a;
+      overflow-x: auto;
+    }
+    .code-pill {
+      font-family: 'Courier New', Courier, monospace;
+      background: #f1f5f9;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 8.5pt;
+      border: 1px solid #e2e8f0;
+      color: #0369a1;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-critical { background: #fee2e2; color: #991b1b; }
+    .badge-high { background: #ffedd5; color: #9a3412; }
+    .badge-medium { background: #fef3c7; color: #92400e; }
+    .badge-low { background: #dcfce7; color: #166534; }
+    .badge-info { background: #e0f2fe; color: #075985; }
+
+    /* Sign-off grid */
+    .signoff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .signoff-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      background: #f8fafc;
+    }
+    .signoff-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .signoff-name {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-top: 1px solid #94a3b8;
+      padding-top: 6px;
+    }
+    .signoff-role {
+      font-size: 7.5pt;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- COVER PAGE -->
+  <!-- ========================================================================= -->
+  <div class="cover-container page-break">
+    <div>
+      <div class="doc-header">
+        <span>Sistem Dokumentasi Rekayasa Perangkat Lunak</span>
+        <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+      </div>
+      <div class="cover-badge">Standar Rekayasa IEEE Std 830-1998 & ISO/IEC/IEEE 29148</div>
+      <h1 class="cover-title">Spesifikasi Kebutuhan<br>Perangkat Lunak (SKPL)<br><span>Software Requirements Specification (SRS)</span></h1>
+      <div class="cover-subtitle">CareerPath AI-Assisted Mentoring Platform</div>
+      <p class="cover-desc">
+        Dokumen teknis komprehensif yang menguraikan kerangka konseptual SKPL/SRS serta mendefinisikan seluruh spesifikasi kebutuhan fungsional (FR), kebutuhan non-fungsional (NFR), arsitektur antarmuka, model data, dan batasan operasional platform bimbingan karier berbasis data O*NET v31.0 dan KBJI 2026.
+      </p>
+
+      <div class="cover-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Nama Proyek</span>
+          <span class="meta-val">CareerPath AI-Assisted Mentoring</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Versi Dokumen</span>
+          <span class="meta-val">v1.0.0 (Production Prototype 1)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Disusun Oleh</span>
+          <span class="meta-val">Lead Software Engineer & Systems Analyst</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Klasifikasi Dokumen</span>
+          <span class="meta-val">Confidential / Technical Core Baseline</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Target Pengguna</span>
+          <span class="meta-val">Siswa SMP/SMA, Mahasiswa, Mentor, Institusi</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Basis Database & Engine</span>
+          <span class="meta-val">PostgreSQL (Supabase) + Next.js App Router</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <table style="margin-bottom: 16px;">
+        <thead>
+          <tr>
+            <th style="width: 15%;">Versi</th>
+            <th style="width: 20%;">Tanggal</th>
+            <th style="width: 25%;">Penyusun</th>
+            <th style="width: 40%;">Ringkasan Perubahan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>v1.0.0</strong></td>
+            <td>18 November 2026</td>
+            <td>Tim Pengembang CareerPath AI</td>
+            <td>Rilis awal dokumen terpadu SKPL & SRS Proyek CareerPath AI.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cover-footer">
+        <span>© 2026 CareerPath AI Project. All Rights Reserved.</span>
+        <span>Halaman 1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN I: PANDUAN KONSEPTUAL SKPL & SRS -->
+  <!-- ========================================================================= -->
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian I: Panduan Konseptual SKPL & SRS</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h1>BAGIAN I: PANDUAN KONSEPTUAL &amp; KORELASI SKPL &ndash; SRS</h1>
+
+  <h2>1.1 Hakikat dan Definisi SKPL dan SRS</h2>
+  <p>
+    Dalam disiplin rekayasa perangkat lunak (<em>Software Engineering</em>), <strong>Spesifikasi Kebutuhan Perangkat Lunak (SKPL)</strong> dan <strong>Software Requirements Specification (SRS)</strong> merujuk pada entitas dokumen fundamental yang sama. <strong>SKPL</strong> merupakan terminologi baku resmi berbahasa Indonesia yang diadopsi secara luas di lingkungan akademik nasional, instansi pemerintah, dan BUMN, sedangkan <strong>SRS</strong> merupakan istilah standar internasional yang distandardisasi oleh <em>Institute of Electrical and Electronics Engineers</em> (IEEE) melalui standar <strong>IEEE Std 830-1998</strong> yang kini diperbarui menjadi <strong>ISO/IEC/IEEE 29148:2018</strong>.
+  </p>
+  <p>
+    SKPL/SRS berfungsi sebagai <strong>kontrak formal rekayasa</strong> yang menjembatani kebutuhan domain pengguna akhir (<em>user/business requirements</em>) dengan rancangan teknis yang harus dieksekusi oleh arsitek perangkat lunak, perekayasa kode, dan penguji mutu (QA). Tanpa SKPL/SRS yang presisi, proyek perangkat lunak rentan mengalami <em>scope creep</em>, salah tafsir arsitektur, dan kegagalan validasi sistem.
+  </p>
+
+  <h2>1.2 Karakteristik Kebutuhan Berkualitas Menurut Standar IEEE 830</h2>
+  <p>Setiap butir spesifikasi kebutuhan dalam dokumen ini disusun dengan mematuhi 8 kriteria kualitas IEEE:</p>
+  <ul>
+    <li><strong>Benar (Correct):</strong> Setiap spesifikasi mencerminkan kapabilitas yang sungguh-sungguh dibutuhkan oleh stakeholder bimbingan karier nasional.</li>
+    <li><strong>Tidak Bermakna Ganda (Unambiguous):</strong> Setiap klausa hanya memiliki satu penafsiran tunggal yang jelas dan terukur.</li>
+    <li><strong>Lengkap (Complete):</strong> Mencakup seluruh kondisi input, respon sistem, penanganan galat, serta batasan numerik dan algoritmik.</li>
+    <li><strong>Konsisten (Consistent):</strong> Tidak ada butir kebutuhan fungsional yang bertentangan dengan kebutuhan lainnya.</li>
+    <li><strong>Terurut Berdasarkan Prioritas (Ranked for Importance):</strong> Setiap kebutuhan dilabeli prioritas (<em>Critical, High, Medium, Low</em>).</li>
+    <li><strong>Dapat Diverifikasi (Verifiable):</strong> Setiap kebutuhan memiliki kriteria penerimaan pengujian (<em>acceptance criteria</em>) yang konkret dan teruji.</li>
+    <li><strong>Dapat Dimodifikasi (Modifiable):</strong> Struktur dokumen modular sehingga penambahan atau revisi tidak merusak keteraturan penomoran.</li>
+    <li><strong>Dapat Ditelusuri (Traceable):</strong> Setiap kebutuhan dapat dipetakan dari sumber masalah bisnis hingga tabel database dan API implementasinya.</li>
+  </ul>
+
+  <h2>1.3 Tabel Pemetaan Komparatif Struktur: SKPL Nasional vs SRS IEEE Std 830</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Format SKPL Standar Nasional</th>
+        <th style="width: 25%;">Format SRS IEEE Std 830-1998</th>
+        <th style="width: 50%;">Deskripsi Substansi dan Penjelasan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>BAB 1: Pendahuluan</strong></td>
+        <td><strong>1. Introduction</strong></td>
+        <td>Memuat tujuan dokumen, lingkup produk, definisi/akronim, referensi teknis, dan ikhtisar keseluruhan isi dokumen.</td>
+      </tr>
+      <tr>
+        <td><strong>BAB 2: Deskripsi Umum Sistem</strong></td>
+        <td><strong>2. Overall Description</strong></td>
+        <td>Menguraikan perspektif produk, antarmuka sistem, fungsi utama, karakteristik pengguna (RBAC), batasan desain, asumsi, dan kebergantungan.</td>
+      </tr>
+      <tr>
+        <td><strong>BAB 3: Kebutuhan Antarmuka Eksternal</strong></td>
+        <td><strong>3.1 External Interface Requirements</strong></td>
+        <td>Mendefinisikan antarmuka pengguna (UI/responsivitas mobile), antarmuka perangkat keras, perangkat lunak (DB/OS), dan protokol komunikasi (HTTPS/TLS).</td>
+      </tr>
+      <tr>
+        <td><strong>BAB 4: Kebutuhan Fungsional Rinci</strong></td>
+        <td><strong>3.2 System Features & Functional Requirements</strong></td>
+        <td>Mendokumentasikan setiap aksi, algoritma perhitungan matematis, proses transaksi bisnis, dan respon sistem terhadap input pengguna.</td>
+      </tr>
+      <tr>
+        <td><strong>BAB 5: Kebutuhan Non-Fungsional</strong></td>
+        <td><strong>3.3 Non-Functional Requirements</strong></td>
+        <td>Menetapkan parameter performa latensi, keamanan, ketersediaan (<em>uptime</em>), skalabilitas, kepatuhan privasi data, dan portabilitas.</td>
+      </tr>
+      <tr>
+        <td><strong>BAB 6: Matriks Ketertelusuran (RTM)</strong></td>
+        <td><strong>Appendix: Traceability Matrix</strong></td>
+        <td>Memetakan setiap kode kebutuhan ke tabel database, modul backend, dan skenario pengujian unit/integrasi.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout no-break">
+    <div class="callout-title">
+      <span>💡</span> Prinsip Integrasi Dua-dalam-Satu (Dual-Standard Synthesis)
+    </div>
+    Dokumen ini secara sengaja menggabungkan kekayaan terminologi formal standar nasional <strong>SKPL</strong> dengan presisi analitis internasional <strong>IEEE SRS</strong>. Hal ini memastikan dokumen dapat digunakan secara sah untuk keperluan akademik, akreditasi institusi, audit tata kelola perangkat lunak, maupun pedoman implementasi langsung bagi tim perekayasa perangkat lunak.
+  </div>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 2</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 1 PENDAHULUAN -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 1: Pendahuluan</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h1>BAGIAN II: DOKUMEN SPESIFIKASI KEBUTUHAN PERANGKAT LUNAK RESMI</h1>
+
+  <h2>BAB 1: PENDAHULUAN (INTRODUCTION)</h2>
+
+  <h3>1.1 Tujuan Dokumen (Purpose)</h3>
+  <p>
+    Tujuan penyusunan dokumen SKPL/SRS ini adalah mendefinisikan secara spesifik, terstruktur, dan tervalidasi seluruh kebutuhan fungsional dan non-fungsional dari sistem <strong>CareerPath AI-Assisted Mentoring</strong>. Dokumen ini menjadi acuan tunggal yang mengikat bagi pengembang full-stack, perekayasa data, penguji perangkat lunak, konselor karier, dan pengelola institusi pendidikan dalam merealisasikan prototipe produksi tahap 1 (<em>Production Prototype 1 - P1</em>) yang beroperasi secara riil tanpa pintasan data tiruan (<em>no toy mockups</em>).
+  </p>
+
+  <h3>1.2 Ruang Lingkup Sistem (Scope)</h3>
+  <p>
+    CareerPath AI adalah platform ekosistem bimbingan dan pengembangan karier digital berbasis data ilmiah yang menghubungkan:
+  </p>
+  <ol>
+    <li><strong>Asesmen Psikometri Mandiri:</strong> Inventori minat terstandarisasi Holland RIASEC 6 dimensi (Realistic, Investigative, Artistic, Social, Enterprising, Conventional).</li>
+    <li><strong>Pemetaan Karier Berbasis Taksonomi Resmi:</strong> Katalog okupasi yang terintegrasi dengan basis data O*NET v31.0 (U.S. Department of Labor) dan Klasifikasi Baku Jabatan Indonesia (KBJI 2014/2026).</li>
+    <li><strong>Individual Development Plan (IDP):</strong> Rencana aksi pengembangan karier berbasis kompetensi yang terhubung dengan tanggal target, status progres, dan indikator keberhasilan.</li>
+    <li><strong>Skill Passport & 3-Tier Evidence-Based Competence:</strong> Portofolio bukti keahlian nyata dengan tingkatan validasi: <em>Declared</em> (klaim mandiri), <em>Evidence-Backed</em> (didukung berkas/repositori), dan <em>Mentor-Validated</em> (diverifikasi konselor manusia).</li>
+    <li><strong>Kurasi Peluang Nasional:</strong> Papan kurasi terverifikasi untuk lowongan magang industri, beasiswa studi talenta, pelatihan bersertifikat, dan rekrutmen lulusan baru dengan mesin pencocokan kelayakan (<em>rule-based eligibility engine</em>).</li>
+    <li><strong>Asisten Karier Berbasis AI dengan Guardrails Ketat:</strong> Agen percakapan pendamping berbasis konteks profil yang dilarang melakukan halusinasi diagnosis psikologis atau jaminan kerja palsu.</li>
+    <li><strong>Mentoring Asinkron (Human-in-the-Loop):</strong> Kolaborasi terstruktur antara siswa/mahasiswa dengan guru BK, dosen pembimbing, dan mentor profesional.</li>
+  </ol>
+
+  <h3>1.3 Definisi, Akronim, dan Singkatan</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Istilah / Akronim</th>
+        <th style="width: 80%;">Definisi Formal dalam Konteks Sistem</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL / SRS</strong></td>
+        <td>Spesifikasi Kebutuhan Perangkat Lunak / Software Requirements Specification.</td>
+      </tr>
+      <tr>
+        <td><strong>O*NET</strong></td>
+        <td><em>Occupational Information Network</em>; sistem klasifikasi okupasi terperinci standar Amerika Serikat v31.0 yang memuat atribut keahlian, minat RIASEC, dan deskripsi kerja.</td>
+      </tr>
+      <tr>
+        <td><strong>KBJI</strong></td>
+        <td>Klasifikasi Baku Jabatan Indonesia; standar nasional kodifikasi profesi yang diterbitkan oleh Badan Pusat Statistik (BPS) dan Kementerian Ketenagakerjaan RI.</td>
+      </tr>
+      <tr>
+        <td><strong>RIASEC</strong></td>
+        <td>Teori tipologi minat kepribadian karier John L. Holland: <em>Realistic, Investigative, Artistic, Social, Enterprising, Conventional</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>IDP</strong></td>
+        <td><em>Individual Development Plan</em>; dokumen rencana pengembangan kompetensi terstruktur seorang peserta didik dalam kurun waktu tertentu.</td>
+      </tr>
+      <tr>
+        <td><strong>Skill Passport</strong></td>
+        <td>Ringkasan paspor kompetensi terverifikasi yang mengelompokkan keahlian teknis (<em>hard skills</em>) dan kompetensi perilaku (<em>soft skills</em>) berdasarkan tingkatan bukti.</td>
+      </tr>
+      <tr>
+        <td><strong>RBAC</strong></td>
+        <td><em>Role-Based Access Control</em>; mekanisme pembatasan hak akses sistem berdasarkan peran formal pengguna (Student, Mentor, Institution Admin, Platform Admin).</td>
+      </tr>
+      <tr>
+        <td><strong>P1 (Prototype 1)</strong></td>
+        <td>Standar rekayasa prototipe produksi fungsional penuh dengan persistensi database relasional riil (PostgreSQL), tanpa data palsu/in-memory mockup.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>1.4 Referensi Standar</h3>
+  <ul>
+    <li>IEEE Std 830-1998, <em>IEEE Recommended Practice for Software Requirements Specifications</em>.</li>
+    <li>ISO/IEC/IEEE 29148:2018, <em>Systems and software engineering &mdash; Life cycle processes &mdash; Requirements engineering</em>.</li>
+    <li>National Center for O*NET Development, <em>O*NET v31.0 Database Taxonomy and Content Model</em> (2026).</li>
+    <li>Badan Pusat Statistik (BPS) RI, <em>Klasifikasi Baku Jabatan Indonesia (KBJI 2014 & Pemutakhiran 2026)</em>.</li>
+    <li>Standar Kompetensi Kerja Nasional Indonesia (SKKNI) Bidang Teknologi Informasi dan Komunikasi.</li>
+  </ul>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 3</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 2 DESKRIPSI UMUM SISTEM -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 2: Deskripsi Umum</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h2>BAB 2: DESKRIPSI UMUM SISTEM (OVERALL DESCRIPTION)</h2>
+
+  <h3>2.1 Perspektif Produk &amp; Arsitektur Sistem</h3>
+  <p>
+    CareerPath AI dibangun dengan pola arsitektur <strong>Modular Monolith</strong> berperforma tinggi menggunakan kerangka kerja <strong>Next.js App Router (Full-Stack TypeScript)</strong> yang terhubung ke basis data relasional <strong>Supabase PostgreSQL</strong>. Seluruh proses bisnis berjalan di sisi server yang terisolasi aman (<em>Server Actions / Server Components</em>) guna menjamin integritas kalkulasi matematis dan kepatuhan otorisasi.
+  </p>
+
+  <div class="formula-box no-break">
+    +---------------------------------------------------------------------------------+<br>
+    |                             TIER KLIEN (RESPONSIF MOBILE-FIRST)                 |<br>
+    |  - Peramban Ponsel Pintar (360px+) / Tablet / Laptop / Desktop                  |<br>
+    |  - Antarmuka Bahasa Ganda (ID/EN) + Desain Bersih Tipografi Montserrat          |<br>
+    +---------------------------------------------------------------------------------+<br>
+                                            |<br>
+                                            v (HTTPS / TLS 1.3 / JSON REST)<br>
+    +---------------------------------------------------------------------------------+<br>
+    |                             GATEWAY &amp; MIDDLEWARE APLIKASI                       |<br>
+    |  - Autentikasi Sesi HTTP-Only Cookie + Verifikasi Token JWT                     |<br>
+    |  - Sanitasi Input Payload Menggunakan Validasi Skema Zod                        |<br>
+    |  - Penegakan Matriks Peran RBAC (Role-Based Access Control)                      |<br>
+    +---------------------------------------------------------------------------------+<br>
+                                            |<br>
+                                            v<br>
+    +---------------------------------------------------------------------------------+<br>
+    |                         LAYANAN DOMAIN APLIKASI (SERVER-SIDE)                   |<br>
+    |  [Asesmen RIASEC]  [Career Match Engine]  [Siklus Hidup IDP]  [Kurasi Peluang]  |<br>
+    |  [Skill Passport]  [Antrean Validasi BK]  [AI Mentor Adaptif] [Analitik Matur]  |<br>
+    +---------------------------------------------------------------------------------+<br>
+                                            |<br>
+                                            v (Connection Pooler Port 6543 / SSL)<br>
+    +---------------------------------------------------------------------------------+<br>
+    |                       TIER BASIS DATA PERSISTEN (SUPABASE POSTGRESQL)           |<br>
+    |  - 22+ Tabel Relasional Berelasi Ketat (Foreign Keys ON DELETE CASCADE/SET NULL)|<br>
+    |  - Indeks Performa B-Tree pada Atribut Kunci (User ID, Assessment, Deadline)    |<br>
+    |  - Enkripsi Data Sensitif &amp; Hashing Password Bcrypt (Salt Factor 10)         |<br>
+    +---------------------------------------------------------------------------------+
+  </div>
+
+  <h3>2.2 Karakteristik Pengguna &amp; Matriks Otorisasi (RBAC)</h3>
+  <p>Sistem mendukung empat kelompok pengguna formal dengan batas wewenang yang tegas:</p>
+  <ol>
+    <li><strong>Siswa / Mahasiswa (<code>STUDENT</code>):</strong> Peserta didik jenjang SMP, SMA/SMK, mahasiswa aktif, dan mahasiswa tingkat akhir. Berhak mengambil asesmen, menetapkan karier impian, menyusun IDP, mengunggah portofolio bukti keahlian, berkonsultasi dengan asisten AI, dan melamar peluang.</li>
+    <li><strong>Konselor / Mentor (<code>MENTOR</code>):</strong> Guru BK, dosen wali, konselor karier, atau profesional industri. Berwenang meninjau IDP mentee bimbingan, memvalidasi bukti portofolio (Approve/Reject/Revision), memberikan tugas pengayaan, dan mengisi umpan balik asinkron.</li>
+    <li><strong>Admin Institusi (<code>INSTITUTION_ADMIN</code>):</strong> Pengelola pusat karier sekolah/universitas. Berwenang mendaftarkan anggota institusi, menetapkan pasangan mentor-mentee, dan memantau analitik kematangan karier agregat.</li>
+    <li><strong>Platform Superadmin (<code>PLATFORM_ADMIN</code>):</strong> Pengelola tata kelola sistem nasional. Mengontrol katalog master okupasi O*NET/KBJI, instrumen asesmen, bank kompetensi, serta memantau log audit keamanan.</li>
+  </ol>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 32%;">Entitas Sumber Daya &amp; Aksi</th>
+        <th style="width: 17%;">Siswa (STUDENT)</th>
+        <th style="width: 17%;">Mentor (MENTOR)</th>
+        <th style="width: 17%;">Admin Institusi</th>
+        <th style="width: 17%;">Superadmin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Profil Pribadi &amp; Privasi</strong></td>
+        <td><span class="badge badge-info">CRUD Mandiri</span></td>
+        <td><span class="badge badge-info">CRUD Mandiri</span></td>
+        <td><span class="badge badge-info">CRUD Mandiri</span></td>
+        <td><span class="badge badge-critical">CRUD Penuh</span></td>
+      </tr>
+      <tr>
+        <td><strong>Asesmen &amp; Lembar Hasil RIASEC</strong></td>
+        <td><span class="badge badge-info">Kerjakan &amp; Lihat</span></td>
+        <td><span class="badge badge-low">Lihat Mentee</span></td>
+        <td><span class="badge badge-low">Agregat Institusi</span></td>
+        <td><span class="badge badge-critical">Kelola Master</span></td>
+      </tr>
+      <tr>
+        <td><strong>Individual Development Plan (IDP)</strong></td>
+        <td><span class="badge badge-info">CRUD Mandiri</span></td>
+        <td><span class="badge badge-high">Review &amp; Catatan</span></td>
+        <td><span class="badge badge-low">Agregat Institusi</span></td>
+        <td><span class="badge badge-low">Audit Baca</span></td>
+      </tr>
+      <tr>
+        <td><strong>Validasi Portofolio Bukti (Passport)</strong></td>
+        <td><span class="badge badge-low">Unggah Berkas</span></td>
+        <td><span class="badge badge-critical">Hak Validasi</span></td>
+        <td><span class="badge badge-low">Lihat Status</span></td>
+        <td><span class="badge badge-critical">Override Audit</span></td>
+      </tr>
+      <tr>
+        <td><strong>Katalog Kurasi Peluang Nasional</strong></td>
+        <td><span class="badge badge-info">Telusuri &amp; Simpan</span></td>
+        <td><span class="badge badge-info">Telusuri Peluang</span></td>
+        <td><span class="badge badge-info">Telusuri Peluang</span></td>
+        <td><span class="badge badge-critical">CRUD Master</span></td>
+      </tr>
+      <tr>
+        <td><strong>Log Audit &amp; Keamanan Sistem</strong></td>
+        <td><span class="badge" style="background:#e2e8f0; color:#64748b;">Akses Ditolak</span></td>
+        <td><span class="badge" style="background:#e2e8f0; color:#64748b;">Akses Ditolak</span></td>
+        <td><span class="badge" style="background:#e2e8f0; color:#64748b;">Akses Ditolak</span></td>
+        <td><span class="badge badge-critical">Inspeksi Penuh</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.3 Kerangka Kematangan Karier 4 Fase (Career Maturity Framework)</h3>
+  <p>
+    Sistem mengevaluasi kesiapan karier peserta secara deterministik tanpa terikat usia biologis semata, terbagi dalam 4 fase perkembangan:
+  </p>
+  <ul>
+    <li><strong>L1: EXPLORE (Fase Eksplorasi Dini):</strong> Berfokus pada penemuan minat fundamental, mengenali tipologi RIASEC, dan menjelajahi spektrum profesi secara luas.</li>
+    <li><strong>L2: PLAN (Fase Perencanaan Jalur Studi):</strong> Menetapkan target karier primer dan membandingkan kecocokan jurusan studi (IPA/IPS, Kejuruan, atau Program Studi Sarjana/Vokasi).</li>
+    <li><strong>L3: DEVELOP (Fase Pengembangan Portofolio &amp; Kompetensi):</strong> Menutup kesenjangan kompetensi (<em>skill gap</em>) melalui eksekusi IDP aktif dan mengunggah portofolio berbasis bukti.</li>
+    <li><strong>L4: READY (Fase Kesiapan Rekrutmen Industri):</strong> Memiliki paspor keahlian tervalidasi mentor, simulasi wawancara teruji, dan siap melamar peluang magang/karier industri.</li>
+  </ul>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 4</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 3 KEBUTUHAN ANTARMUKA EKSTERNAL -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 3: Antarmuka Eksternal</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h2>BAB 3: KEBUTUHAN ANTARMUKA EKSTERNAL (EXTERNAL INTERFACE REQUIREMENTS)</h2>
+
+  <h3>3.1 Antarmuka Pengguna (User Interface Requirements)</h3>
+  <p>
+    Antarmuka sistem dirancang dengan paradigma <strong>Mobile-First Responsive Design</strong> guna memastikan aksesibilitas sempurna bagi siswa sekolah dan mahasiswa di seluruh penjuru Indonesia:
+  </p>
+  <ul>
+    <li><strong>Responsivitas Layar Lebar &amp; Ponsel:</strong> Tampilan web harus dapat beradaptasi secara mulus mulai dari layar ponsel ultra-kompak (lebar viewport minimal <strong>360px</strong>) hingga monitor desktop resolusi 4K tanpa menimbulkan <em>horizontal scrolling blowout</em> (sumbu X offside).</li>
+    <li><strong>Navigasi Mobile Khusus:</strong> Bilah navigasi atas (<em>navbar</em>) pada viewport mobile (&lt; 1024px) harus menyajikan tombol hamburger interaktif yang membuka laci menu (<em>mobile slide-down drawer</em>) berisi tautan menu utama dan aksi akun tanpa terpotong.</li>
+    <li><strong>Kompatibilitas Sentuhan (Touch Target Size):</strong> Setiap tombol interaktif, radio option asesmen, dan kartu karier memiliki ukuran area sentuh minimal <strong>44 &times; 44 piksel</strong> sesuai panduan Web Content Accessibility Guidelines (WCAG 2.1 Level AA).</li>
+    <li><strong>Tipografi Terbaca:</strong> Menggunakan keluarga rupa huruf <strong>Montserrat</strong> dengan skala hirarki kontras tinggi (rasio kontras teks terhadap latar belakang minimal 4.5:1).</li>
+    <li><strong>Dukungan Bahasa Ganda (Bilingual Support):</strong> Antarmuka menyediakan tombol pengalih bahasa instan antara Bahasa Indonesia dan Bahasa Inggris yang tersinkronisasi di seluruh komponen.</li>
+  </ul>
+
+  <h3>3.2 Antarmuka Perangkat Lunak (Software Interfaces)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Komponen Perangkat Lunak</th>
+        <th style="width: 25%;">Spesifikasi &amp; Versi</th>
+        <th style="width: 50%;">Tujuan &amp; Integrasi Teknis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Runtime Environment</strong></td>
+        <td>Node.js v20.x s/d v24.x LTS</td>
+        <td>Eksekutor server-side JavaScript/TypeScript asinkron berkinerja tinggi.</td>
+      </tr>
+      <tr>
+        <td><strong>Web Framework</strong></td>
+        <td>Next.js 16.4.x (App Router)</td>
+        <td>Pondasi full-stack monolit modular dengan kompilasi Turbopack dan SSR/SSG.</td>
+      </tr>
+      <tr>
+        <td><strong>Mesin Basis Data</strong></td>
+        <td>PostgreSQL 15+ (Supabase)</td>
+        <td>Penyimpanan relasional ACID dengan dukungan Connection Pooling (PgBouncer).</td>
+      </tr>
+      <tr>
+        <td><strong>Konektivitas Database</strong></td>
+        <td><code>pg.Pool</code> (node-postgres)</td>
+        <td>Driver koneksi pooler TLS/SSL dengan penanganan transformasi DDL otomatis.</td>
+      </tr>
+      <tr>
+        <td><strong>Keamanan Password</strong></td>
+        <td><code>bcryptjs</code> v3.0.x</td>
+        <td>Fungsi hashing satu arah kriptografis dengan salt round factor 10.</td>
+      </tr>
+      <tr>
+        <td><strong>Token Sesi</strong></td>
+        <td><code>jsonwebtoken</code> (JWT) v9.0.x</td>
+        <td>Autentikasi tanpa status (stateless) yang dienkapsulasi dalam HTTP-only Cookie.</td>
+      </tr>
+      <tr>
+        <td><strong>Penyedia Kecerdasan Buatan</strong></td>
+        <td>Google Gemini / OpenAI API</td>
+        <td>Mesin penalaran bahasa kontekstual dengan fallback mode offline terdeterminasi.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3.3 Antarmuka Perangkat Keras (Hardware Interfaces)</h3>
+  <ul>
+    <li><strong>Sisi Klien (Pengguna Akhir):</strong>
+      Gawai ponsel pintar, tablet, atau komputer desktop yang memiliki layar minimal 360 &times; 640 piksel, prosesor minimal dual-core 1.2 GHz, RAM minimal 2 GB, dan peramban web modern (Google Chrome, Safari, Mozilla Firefox, Microsoft Edge) yang mendukung JavaScript ES6+.
+    </li>
+    <li><strong>Sisi Server (Infrastruktur Cloud):</strong>
+      Instans server cloud berbasis container/serverless dengan minimal 1 Virtual CPU (vCPU), 1024 MB RAM, penyimpanan persisten SSD berkecepatan tinggi, dan koneksi internet simetris minimal 100 Mbps.
+    </li>
+  </ul>
+
+  <h3>3.4 Antarmuka Komunikasi (Communication Interfaces)</h3>
+  <p>
+    Seluruh pertukaran data antara klien peramban dan server aplikasi wajib dienkripsi menggunakan protokol aman <strong>HTTPS / TLS 1.3</strong> melalui port standar 443. Komunikasi internal antara server aplikasi dan klaster Supabase PostgreSQL menggunakan koneksi database terenkripsi TLS melalui <strong>Transaction Pooler pada port 6543</strong> dengan parameter <code>ssl: { rejectUnauthorized: false }</code> guna menjamin stabilitas dalam arsitektur serverless.
+  </p>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 5</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 4 KEBUTUHAN FUNGSIONAL RINCI -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 4: Kebutuhan Fungsional</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h2>BAB 4: KEBUTUHAN FUNGSIONAL RINCI (DETAILED FUNCTIONAL REQUIREMENTS)</h2>
+  <p>
+    Kebutuhan fungsional dikelompokkan ke dalam 8 modul operasional sistem. Setiap butir diberi kode identifikasi unik berformat <code>SKPL-F-XX</code>:
+  </p>
+
+  <h3>4.1 Modul 1: Asesmen Psikometri Mandiri (RIASEC Inventory)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-01</strong></td>
+        <td>Katalog Instrumen Asesmen</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem harus menyediakan katalog instrumen psikometri baku yang aktif (Holland RIASEC v1.0) dengan instruksi pengerjaan yang jelas dan batas jenjang pendidikan minimal.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-02</strong></td>
+        <td>Penyajian Butir Soal Terstruktur</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem harus menyajikan 24 butir pertanyaan asesmen (4 butir per dimensi R-I-A-S-E-C) dengan format skala Likert 1 (Sangat Tidak Suka) hingga 5 (Sangat Suka) secara responsif.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-03</strong></td>
+        <td>Skoring Deterministik Server-Side</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem harus mengakumulasi skor setiap dimensi secara deterministik di sisi server:
+          <br><code>Skor(D) = &Sigma; nilai_butir(q)</code> untuk seluruh <code>q &isin; Dimensi D</code>.
+          Dimensi dengan skor tertinggi pertama dan kedua ditetapkan sebagai tipe dominan primer dan sekunder.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-04</strong></td>
+        <td>Visualisasi Radar &amp; Riwayat Pengerjaan</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus memvisualisasikan sebaran skor 6 dimensi ke dalam grafik radar segi-enam, menyertakan interpretasi psikologis baku, dan menyimpan riwayat pengerjaan permanen di tabel <code>assessment_attempts</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 Modul 2: Career Mapping &amp; Algoritma Pencocokan Okupasi ($S_{\text{fit}}$)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-05</strong></td>
+        <td>Katalog Okupasi Standar O*NET/KBJI</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem wajib menyediakan katalog okupasi yang dilengkapi kodifikasi resmi O*NET v31.0, kodifikasi KBJI 2026, rentang gaji pasar, prospek pertumbuhan kerja, dan pemetaan kompetensi prasyarat.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-06</strong></td>
+        <td>Algoritma Pencocokan Matematis</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem wajib menghitung kecocokan karier menggunakan formula ilmiah teroptimasi:
+          <div class="formula-box">
+            S_fit(u, c) = 0.10 &middot; Sim_RIASEC(u, c) + 0.30 &middot; Coverage_Skill(u, c) + 0.30 &middot; Academic(u) + 0.30 &middot; Maturity(u)
+          </div>
+          Hasil pencocokan dikonversi menjadi persentase kecocokan 0&ndash;100% dengan penjelasan rasional transparan.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-07</strong></td>
+        <td>Penetapan Target Karier Impian</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Pengguna dapat memilih satu okupasi sebagai target karier aktif yang langsung tersinkronisasi ke profil dan menjadi dasar penyesuaian bimbingan IDP.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-08</strong></td>
+        <td>Analisis Kesenjangan Keahlian (Skill Gap)</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus membandingkan daftar kompetensi yang dituntut okupasi target terhadap paspor keahlian pengguna, mengklasifikasikan keahlian yang sudah dikuasai versus yang masih harus dipelajari.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.3 Modul 3: Individual Development Plan (IDP)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-09</strong></td>
+        <td>Pembuatan Rencana IDP Terstruktur</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Pengguna dapat menyusun IDP dengan mengisi target karier, judul rencana, rasionalisasi pemilihan, dan tanggal penyelesaian target.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-10</strong></td>
+        <td>Daftar Aktivitas &amp; Siklus Hidup</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Setiap aktivitas IDP memuat kompetensi target, skala prioritas (High/Medium/Low), tanggal tenggat, dan siklus status: <code>NOT_STARTED</code> &rarr; <code>IN_PROGRESS</code> &rarr; <code>COMPLETED</code> / <code>CANCELLED</code>.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-11</strong></td>
+        <td>Kalkulasi Persentase Ketuntasan IDP</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus memperbarui persentase progres IDP secara otomatis berdasarkan rasio aktivitas berstatus <code>COMPLETED</code> terhadap total aktivitas terencana.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-12</strong></td>
+        <td>Pemberian Umpan Balik Mentor pada IDP</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Mentor yang ditugaskan dapat memberikan ulasan tertulis, saran perbaikan langkah aksi, dan rating efektivitas rencana pengembangan mentee.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 6</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 4 KEBUTUHAN FUNGSIONAL (LANJUTAN) -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 4: Kebutuhan Fungsional (Lanjutan)</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h3>4.4 Modul 4: Portofolio &amp; 3-Tier Skill Passport</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-13</strong></td>
+        <td>Pengelolaan Butir Portofolio Proyek</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus memfasilitasi pencatatan artefak karya proyek, sertifikat pelatihan, riwayat kepanitiaan, atau repositori tautan (GitHub/Figma).</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-14</strong></td>
+        <td>Tingkatan Validasi 3-Tier Evidence</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Setiap kompetensi pengguna harus memiliki status tingkatan bukti:
+          <ol style="margin-left: 14px; margin-top: 4px;">
+            <li><code>CLAIMED</code>: Dinyatakan sendiri tanpa bukti berkas terlampir.</li>
+            <li><code>EVIDENCE_BACKED</code>: Memiliki bukti berkas/tautan proyek nyata.</li>
+            <li><code>MENTOR_VALIDATED</code>: Diverifikasi dan disetujui resmi oleh konselor/mentor.</li>
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-15</strong></td>
+        <td>Alur Verifikasi Bukti oleh Konselor</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Mentor dapat meninjau berkas bukti dalam antrean verifikasi, memberikan catatan telaah, dan menetapkan putusan: <em>Approved</em>, <em>Rejected</em>, atau <em>Revision Requested</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-16</strong></td>
+        <td>Skill Passport Interaktif &amp; Dapat Dicetak</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus menampilkan paspor keahlian ringkas yang mengelompokkan kompetensi teknis dan metodologis berdasarkan tier validasi tertinggi.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.5 Modul 5: Kurasi Peluang Nasional &amp; Eligibility Engine</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-17</strong></td>
+        <td>Direktori Peluang Nasional Terkurasi</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem wajib menyediakan direktori peluang terverifikasi lintas kategori: <code>INTERNSHIP</code> (magang), <code>SCHOLARSHIP</code> (beasiswa), <code>TRAINING</code> (pelatihan bersertifikat), dan <code>JOB</code> (rekrutmen).</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-18</strong></td>
+        <td>Mesin Penilai Kelayakan (Eligibility Engine)</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Sistem harus mengevaluasi kelayakan pelamar secara otomatis:
+          <br>&bull; <code>ELIGIBLE</code>: Memenuhi seluruh prasyarat jenjang pendidikan &amp; kompetensi wajib.
+          <br>&bull; <code>POTENTIAL_MATCH</code>: Memenuhi &ge; 60% kompetensi yang disyaratkan.
+          <br>&bull; <code>NOT_ELIGIBLE</code>: Jenjang studi tidak cocok atau belum memenuhi kriteria wajib.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-19</strong></td>
+        <td>Penyimpanan Bookmark Peluang</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Pengguna dapat menyimpan (bookmark) peluang yang diminati ke daftar pantauan pribadi untuk memudahkan akses menjelang batas tenggat pendaftaran.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.6 Modul 6: Asisten AI Mentor &amp; Batasan Keamanan (Guardrails)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-20</strong></td>
+        <td>Percakapan Berkonteks Profil Riil</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Asisten AI harus menyerap konteks profil siswa secara dinamis (dimensi RIASEC, karier impian, daftar IDP aktif, dan status kompetensi) saat merespon pertanyaan.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-21</strong></td>
+        <td>Batasan Keamanan (Safety Guardrails)</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Asisten AI dilarang keras memberikan diagnosis gangguan psikologis klinis, dilarang menjamin kelulusan seleksi kerja, dan wajib mengarahkan persoalan mental berat ke konselor manusia.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-22</strong></td>
+        <td>Mode Operasi Cadangan (Offline Fallback)</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Jika kuota atau sambungan API AI eksternal mengalami kendala jaringan, sistem harus beralih secara mulus ke mesin rekomendasi aturan deterministik internal tanpa menghasilkan eror 500.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.7 Modul 7: Mentoring Asinkron &amp; Kolaborasi Manusia (Human-in-the-Loop)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-23</strong></td>
+        <td>Penugasan Pembimbingan Mentor-Mentee</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Admin Institusi dapat memasangkan mentor dan siswa binaan dengan relasi formal di tabel <code>mentor_assignments</code>, membatasi akses data siswa hanya pada pembimbing resminya.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-24</strong></td>
+        <td>Pemberian Tugas Mentoring Terjadwal</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Mentor dapat memberikan tugas pengayaan (misal: "Revisi portofolio bab 2") lengkap dengan tanggal tenggat dan indikator penyelesaian.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-25</strong></td>
+        <td>Ruang Diskusi &amp; Catatan Asinkron</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Sistem harus menyediakan utas percakapan asinkron dua arah antara mentor dan siswa yang terhubung langsung dengan dokumen IDP atau bukti portofolio tertentu.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4.8 Modul 8: Tata Kelola Sistem, Analitik Institusi &amp; Log Audit</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Kode ID</th>
+        <th style="width: 26%;">Nama Kebutuhan</th>
+        <th style="width: 12%;">Prioritas</th>
+        <th style="width: 48%;">Deskripsi Fungsional &amp; Kriteria Penerimaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-F-26</strong></td>
+        <td>Dasbor Analitik Institusi Pendidikan</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Admin Institusi dapat melihat agregat statistik kematangan siswa (persentase L1-L4), persebaran karier target paling populer, dan kesenjangan kompetensi kolektif.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-27</strong></td>
+        <td>Pengelolaan Katalog Master Sistem</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Superadmin memiliki wewenang mengelola data master okupasi, taksonomi keahlian, butir pertanyaan psikometri, dan instansi pendidikan mitra.</td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-F-28</strong></td>
+        <td>Pencatatan Log Audit Keamanan Permanen</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Setiap aksi penting (perubahan peran, validasi portofolio, reset kata sandi, penghapusan data) wajib dicatat otomatis di tabel <code>audit_logs</code> lengkap dengan identitas aktor, alamat IP, dan stempel waktu.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="doc-footer">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 7</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BAGIAN II: BAB 5 KEBUTUHAN NON-FUNGSIONAL -->
+  <!-- ========================================================================= -->
+  <div class="page-break"></div>
+  <div class="doc-header">
+    <span>CareerPath AI &mdash; Bagian II: Dokumen SKPL / SRS &mdash; Bab 5: Kebutuhan Non-Fungsional</span>
+    <span>DOC ID: SKPL-SRS-CPAI-2026-V1.0</span>
+  </div>
+
+  <h2>BAB 5: KEBUTUHAN NON-FUNGSIONAL (NON-FUNCTIONAL REQUIREMENTS)</h2>
+  <p>
+    Kebutuhan non-fungsional mendefinisikan batasan kualitas, kriteria performa, kepatuhan keamanan, dan karakteristik keandalan sistem:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Kode ID</th>
+        <th style="width: 20%;">Kategori Kualitas</th>
+        <th style="width: 65%;">Spesifikasi Kebutuhan Teknis &amp; Metrik Pengujian</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SKPL-NF-01</strong></td>
+        <td><strong>Performa &amp; Latensi (Performance)</strong></td>
+        <td>
+          Waktu eksekusi query database standar (p95) harus kurang dari <strong>200 ms</strong>. Halaman utama dan dasbor harus mencapai status interaktif (<em>Time to Interactive</em>) dalam waktu kurang dari <strong>2.5 detik</strong> pada jaringan seluler 4G reguler. Kompilasi halaman SSR teroptimasi tanpa kebocoran memori.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-NF-02</strong></td>
+        <td><strong>Keamanan &amp; Kriptografi (Security)</strong></td>
+        <td>
+          Seluruh kata sandi pengguna wajib dienkripsi menggunakan fungsi <em>salted hash</em> <strong>Bcrypt dengan work factor minimal 10</strong>. Token sesi JWT harus disimpan secara eksklusif dalam <strong>HTTP-Only Secure Cookie</strong> yang kebal terhadap eksploitasi <em>Cross-Site Scripting (XSS)</em>. Seluruh parameter masukan API wajib divalidasi dan disanitasi menggunakan pustaka validasi skema <strong>Zod</strong> sebelum dieksekusi ke lapisan database.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-NF-03</strong></td>
+        <td><strong>Ketersediaan &amp; Ketahanan (Availability)</strong></td>
+        <td>
+          Sistem harus menjamin tingkat ketersediaan layanan operasional (<em>system uptime</em>) minimal <strong>99.9%</strong>. Koneksi ke basis data PostgreSQL memanfaatkan <em>Connection Pooling</em> (PgBouncer port 6543) dengan konfigurasi penanganan lonjakan koneksi (<em>concurrency handling</em>) guna mencegah kegagalan pada lingkungan serverless.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-NF-04</strong></td>
+        <td><strong>Responsivitas &amp; Portabilitas (Portability)</strong></td>
+        <td>
+          Antarmuka sistem harus responsif sepenuhnya pada berbagai ukuran layar mulai dari <strong>360px hingga 1920px</strong>. Bilah navigasi atas dilarang keluar batas layar (<em>no offside navbar</em>) dan grafik alur karier harus memiliki mode tumpukan kartu (<em>card stack</em>) adaptif khusus perangkat seluler.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-NF-05</strong></td>
+        <td><strong>Integritas Relasional Data (Data Integrity)</strong></td>
+        <td>
+          Basis data wajib menegakkan integritas referensial secara ketat melalui deklarasi <em>Foreign Keys</em> dengan klausul penghapusan terkontrol (<code>ON DELETE CASCADE</code> untuk entitas riwayat dan <code>ON DELETE SET NULL</code> untuk penugasan pembimbing). Transaksi yang melibatkan multitabel wajib dibungkus dalam blok atomik ACID.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SKPL-NF-06</strong></td>
+        <td><strong>Kepatuhan Privasi Data (Privacy)</strong></td>
+        <td>
+          Informasi profil dan hasil asesmen siswa dilindungi oleh izin eksplisit (tabel <code>user_consents</code>). Guru BK atau mentor hanya dapat melihat hasil asesmen dan IDP dari siswa yang secara formal ditugaskan kepadanya. Akses pihak luar ke berkas portofolio dibatasi oleh hak kepemilikan.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========================================================================= -->
+  <!-- BAB 6 MATRIKS KETERTELUSURAN KEBUTUHAN (RTM) -->
+  <!-- ========================================================================= -->
+  <h2 style="margin-top: 24px;">BAB 6: MATRIKS KETERTELUSURAN KEBUTUHAN (TRACEABILITY MATRIX)</h2>
+  <p>
+    Matriks ini menjamin setiap butir kebutuhan fungsional (FR) dapat dilacak secara langsung ke implementasi fisik tabel database, endpoint API backend, antarmuka halaman pengguna, dan skenario pengujian verifikasinya:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 12%;">ID Kebutuhan</th>
+        <th style="width: 20%;">Modul Sistem</th>
+        <th style="width: 20%;">Tabel Database Supabase</th>
+        <th style="width: 26%;">API Endpoint / Server Action</th>
+        <th style="width: 22%;">Metode Uji Verifikasi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>SKPL-F-01..04</code></td>
+        <td>Asesmen Psikometri</td>
+        <td><code>assessments</code>, <code>assessment_questions</code>, <code>assessment_results</code></td>
+        <td><code>/api/assessments</code><br><code>/api/assessments/results/[id]</code></td>
+        <td>Unit Test Skoring Likert &amp; Integrasi Radar RIASEC</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-05..08</code></td>
+        <td>Career Mapping</td>
+        <td><code>occupations</code>, <code>competencies</code>, <code>occupation_competencies</code></td>
+        <td><code>/api/careers</code><br><code>/api/careers/instant-match</code></td>
+        <td>Uji Validasi Formula $S_{\text{fit}}$ (Dataset 100 Sampel)</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-09..12</code></td>
+        <td>Pengembangan IDP</td>
+        <td><code>development_plans</code>, <code>development_activities</code></td>
+        <td><code>/api/idp</code><br><code>/api/idp/activities/[id]</code></td>
+        <td>Pengujian Siklus Status &amp; Hitung Progres Aktivitas</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-13..16</code></td>
+        <td>Skill Passport</td>
+        <td><code>portfolios</code>, <code>portfolio_items</code>, <code>competency_evidence</code></td>
+        <td><code>/api/portfolio</code><br><code>/api/portfolio/review</code></td>
+        <td>Pengujian Hak Validasi 3-Tier oleh Peran Mentor</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-17..19</code></td>
+        <td>Kurasi Peluang</td>
+        <td><code>opportunities</code>, <code>saved_opportunities</code></td>
+        <td><code>/api/opportunities</code><br><code>/api/opportunities/save</code></td>
+        <td>Pengujian Logika Rule-Based Eligibility Engine</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-20..22</code></td>
+        <td>AI Career Mentor</td>
+        <td><code>ai_conversations</code>, <code>ai_messages</code></td>
+        <td><code>/api/ai/chat</code><br><code>/api/ai/conversations</code></td>
+        <td>Pengujian Guardrails &amp; Fallback Mesin Offline</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-23..25</code></td>
+        <td>Mentoring Asinkron</td>
+        <td><code>mentor_assignments</code>, <code>mentoring_discussions</code></td>
+        <td><code>/api/mentor/mentees</code><br><code>/api/mentor/discussions</code></td>
+        <td>Uji Penegakan Isolasi Hak Akses Mentee Antar-Mentor</td>
+      </tr>
+      <tr>
+        <td><code>SKPL-F-26..28</code></td>
+        <td>Tata Kelola &amp; Audit</td>
+        <td><code>users</code>, <code>institutions</code>, <code>audit_logs</code></td>
+        <td><code>/api/admin/stats</code><br><code>/api/admin/audit-logs</code></td>
+        <td>Uji Mutasi Akun &amp; Verifikasi Rekaman Tamper-Evident</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========================================================================= -->
+  <!-- BAB 7 PENUTUP & LEMBAR PENGESAHAN -->
+  <!-- ========================================================================= -->
+  <div class="no-break" style="margin-top: 24px;">
+    <h2>BAB 7: PENUTUP &amp; LEMBAR PENGESAHAN DOKUMEN</h2>
+    <p>
+      Dokumen Spesifikasi Kebutuhan Perangkat Lunak (SKPL) / Software Requirements Specification (SRS) ini telah disusun, ditinjau secara ketat, dan disahkan sebagai acuan rekayasa resmi proyek <strong>CareerPath AI-Assisted Mentoring</strong>. Seluruh pihak yang terlibat menyetujui implementasi teknis mematuhi standar mutu Prototype 1 (P1) dengan integritas data ilmiah penuh.
+    </p>
+
+    <div class="signoff-grid">
+      <div class="signoff-box">
+        <div class="signoff-title">Disusun Oleh:</div>
+        <div class="signoff-name">Tim Perekayasa Perangkat Lunak</div>
+        <div class="signoff-role">Lead Full-Stack Engineer</div>
+      </div>
+      <div class="signoff-box">
+        <div class="signoff-title">Ditinjau &amp; Diverifikasi:</div>
+        <div class="signoff-name">Systems Analyst &amp; AI Architect</div>
+        <div class="signoff-role">Software Quality Assurance</div>
+      </div>
+      <div class="signoff-box">
+        <div class="signoff-title">Disetujui Oleh:</div>
+        <div class="signoff-name">Product Owner &amp; Sponsor</div>
+        <div class="signoff-role">Head of Educational Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer" style="margin-top: 30px;">
+    <span>CareerPath AI &mdash; Spesifikasi Kebutuhan Perangkat Lunak (SKPL / SRS)</span>
+    <span>Halaman 8 &mdash; Selesai</span>
+  </div>
+
+</body>
+</html>
